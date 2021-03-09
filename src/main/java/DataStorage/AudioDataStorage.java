@@ -27,7 +27,7 @@ public class AudioDataStorage
         return startTime;
     }
 
-    public boolean getLoop()
+    public boolean isLoop()
     {
         return loop;
     }
