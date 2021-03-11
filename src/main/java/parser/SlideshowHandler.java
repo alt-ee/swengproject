@@ -1,12 +1,32 @@
 package parser;
 
+import DataStorage.*;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 public class SlideshowHandler extends DefaultHandler {
 
-    //TODO attriubtes for media elements and slides once classes are written
+    private Color defaultBackgroundColour;
+    private String defaultFont;
+    private int defaultFontSize;
+    private Color defaultFontColour;
+    private Color defaultLineColour;
+    private Color defaultShapeColour;
+
+    private ArrayList<SlideDataStorage> slideshow;
+
+    private SlideDataStorage tempSlide;
+    private TextDataStorage tempText;
+    private ImageDataStorage tempImage;
+    private AudioDataStorage tempAudio;
+    private VideoDataStorage tempVideo;
+    private LineDataStorage tempLine;
+    private ShapeDataStorage tempShape;
+    private ShaderDataStorage tempShader;
 
     private String elementValue;
 
@@ -17,17 +37,115 @@ public class SlideshowHandler extends DefaultHandler {
 
     @Override
     public void startDocument() throws SAXException {
-        //TODO create new slideshow
+        slideshow = new ArrayList<SlideDataStorage>();
     }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        //TODO handle start elements
+        switch (qName.toLowerCase()) {
+            case "defaults":
+                defaultBackgroundColour = Color.decode(attributes.getValue("backgroundcolour"));
+                defaultFont = attributes.getValue("font");
+                defaultFontSize = Integer.parseInt(attributes.getValue("fontsize"));
+                defaultFontColour = Color.decode(attributes.getValue("fontcolour"));
+                defaultLineColour = Color.decode(attributes.getValue("linecolour"));
+                defaultShapeColour = Color.decode(attributes.getValue("fillcolour"));
+
+                break;
+            case "slide":
+                tempSlide = new SlideDataStorage();
+
+                break;
+            case "text":
+                int xPos = Integer.parseInt(attributes.getValue("xstart"));
+                int yPos = Integer.parseInt(attributes.getValue("ystart"));
+
+                String font;
+                String fontString = attributes.getValue("font");
+                if (fontString != null) {
+                    font = fontString;
+                } else {
+                    font = defaultFont;
+                }
+
+                int fontSize;
+                String fontSizeString = attributes.getValue("fontsize");
+                if (fontSizeString != null) {
+                    fontSize = Integer.parseInt(fontSizeString);
+                } else {
+                    fontSize = defaultFontSize;
+                }
+
+                Color fontColour;
+                String fontColourString = attributes.getValue("fontcolour");
+                if (fontColourString != null) {
+                    fontColour = Color.decode(fontColourString.substring(1));
+                } else {
+                    fontColour = defaultFontColour;
+                }
+
+                tempText = new TextDataStorage(xPos, yPos, "<html>", font, fontSize, fontColour);
+
+                break;
+            case "b":
+            case "i":
+                // if a bold or italic element starts then we can assume that either standard text or nothing
+                // proceeded it and append this to the text.
+                tempText.appendText(elementValue);
+
+                break;
+
+                /*
+            case"image":
+
+                break;
+            case "audio":
+
+                break;
+            case "video":
+
+                break;
+            case "line":
+
+                break;
+            case "shape":
+
+                break;
+            case "shading":
+
+                break;
+
+                 */
+        }
+
+
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        //TODO handle end elements
+        switch (qName.toLowerCase()) {
+            case "slide":
+                slideshow.add(tempSlide);
+
+                break;
+            case "text":
+                tempText.appendText(elementValue);
+                tempText.appendText("</html>");
+                tempSlide.addText(tempText);
+
+                break;
+            case "b":
+                tempText.appendBoldText(elementValue);
+
+                break;
+            case "i":
+                tempText.appendItalicText(elementValue);
+                break;
+        }
+    }
+
+    public ArrayList<SlideDataStorage> getSlideshow() {
+        return slideshow;
     }
 
     //TODO getter for finished slideshow
