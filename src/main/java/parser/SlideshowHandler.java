@@ -118,6 +118,8 @@ public class SlideshowHandler extends DefaultHandler {
                 break;
             }
             case"image": {
+                ImageDataStorage tempImage;
+
                 int xPos = Integer.parseInt(attributes.getValue("xstart"));
                 int yPos = Integer.parseInt(attributes.getValue("ystart"));
                 int width = Integer.parseInt(attributes.getValue("width"));
@@ -136,15 +138,40 @@ public class SlideshowHandler extends DefaultHandler {
                     duration = 0;
                 }
 
-                ImageDataStorage tempImage = new ImageDataStorage(xPos, yPos, location, width, height, duration);
+                tempImage = new ImageDataStorage(xPos, yPos, location, width, height, duration);
 
                 tempSlide.addImage(tempImage);
                 break;
             }
-                /*
-            case "audio":
+            case "audio": {
+                AudioDataStorage tempAudio;
+
+                URL location = null;
+                try {
+                    location = new URL("file://" + attributes.getValue("urlname"));
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                boolean loop = Boolean.parseBoolean(attributes.getValue("loop"));
+
+                int startTime;
+                String durationString = attributes.getValue("duration");
+                if (durationString != null) {
+                    startTime = Integer.parseInt(durationString);
+                    tempAudio = new AudioDataStorage(location, startTime, loop);
+                } else {
+                    String id = attributes.getValue("id");
+
+                    //TODO raise exception if neither starttime nor id are set
+
+                    tempAudio = new AudioDataStorage(location, id, loop);
+                }
+
+                tempSlide.addAudio(tempAudio);
 
                 break;
+            }
+                /*
             case "video":
 
                 break;
