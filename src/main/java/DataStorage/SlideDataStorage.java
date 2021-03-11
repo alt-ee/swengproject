@@ -10,6 +10,8 @@ This should work in the mean time
 
 public class SlideDataStorage
 {
+    private String id;
+    private int duration;
     private ArrayList<TextDataStorage> textArr = new ArrayList<>();
     private ArrayList<VideoDataStorage> videoArr = new ArrayList<>();
     private ArrayList<AudioDataStorage> audioArr = new ArrayList<>();
@@ -17,6 +19,10 @@ public class SlideDataStorage
     private ArrayList<LineDataStorage> lineArr = new ArrayList<>();
     private ArrayList<ShapeDataStorage> shapeArr = new ArrayList<>();
 
+    public SlideDataStorage(String id, int duration) {
+        this.id = id;
+        this.duration = duration;
+    }
 
     //adders
     public void addText(TextDataStorage newText)

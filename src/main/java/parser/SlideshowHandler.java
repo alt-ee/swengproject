@@ -56,7 +56,9 @@ public class SlideshowHandler extends DefaultHandler {
                 break;
             }
             case "slide": {
-                tempSlide = new SlideDataStorage();
+                String id = attributes.getValue("id");
+                int duration = Integer.parseInt(attributes.getValue("duration"));
+                tempSlide = new SlideDataStorage(id, duration);
 
                 break;
             }
