@@ -10,9 +10,10 @@ public class TextDataStorage
     private final String font;
     private final int fontSize;
     private final Color colour;
+    private final int duration;
 
 
-    public TextDataStorage(int XPos, int YPos, String text, String font, int fontSize, Color colour)
+    public TextDataStorage(int XPos, int YPos, String text, String font, int fontSize, Color colour, int duration)
     {
         this.XPos = XPos;
         this.YPos = YPos;
@@ -20,6 +21,7 @@ public class TextDataStorage
         this.font = font;
         this.fontSize = fontSize;
         this.colour = colour;
+        this.duration = duration;
     }
 
     //setter
@@ -29,20 +31,17 @@ public class TextDataStorage
     }
 
     //append-ers
-    public String appendText(String newText)
+    public void appendText(String newText)
     {
         text += newText;
-        return text;
     }
-    public String appendBoldText(String newText)
+    public void appendBoldText(String newText)
     {
         text += "<b>" + newText + "</b>";
-        return text;
     }
-    public String appendItalicText(String newText)
+    public void appendItalicText(String newText)
     {
         text += "<i>" + newText + "</i>";
-        return text;
     }
 
     //getters

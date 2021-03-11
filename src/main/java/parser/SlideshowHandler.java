@@ -57,7 +57,14 @@ public class SlideshowHandler extends DefaultHandler {
             }
             case "slide": {
                 String id = attributes.getValue("id");
-                int duration = Integer.parseInt(attributes.getValue("duration"));
+                int duration;
+                String durationString = attributes.getValue("duration");
+                if (durationString != null) {
+                    duration = Integer.parseInt(durationString);
+                } else {
+                    duration = 0;
+                }
+
                 tempSlide = new SlideDataStorage(id, duration);
 
                 break;
@@ -90,7 +97,15 @@ public class SlideshowHandler extends DefaultHandler {
                     fontColour = defaultFontColour;
                 }
 
-                tempText = new TextDataStorage(xPos, yPos, "<html>", font, fontSize, fontColour);
+                int duration;
+                String durationString = attributes.getValue("duration");
+                if (durationString != null) {
+                    duration = Integer.parseInt(durationString);
+                } else {
+                    duration = 0;
+                }
+
+                tempText = new TextDataStorage(xPos, yPos, "<html>", font, fontSize, fontColour, duration);
 
                 break;
             }
