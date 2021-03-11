@@ -1,5 +1,6 @@
 package parser;
 
+import DataStorage.ImageDataStorage;
 import DataStorage.SlideDataStorage;
 import DataStorage.TextDataStorage;
 import org.xml.sax.SAXException;
@@ -28,6 +29,7 @@ public class ParserTest {
         for (SlideDataStorage slide : slideshow) {
             for(Iterator<TextDataStorage> iter = slide.textIterator(); iter.hasNext();){
                 TextDataStorage text = iter.next();
+                System.out.println("Text: ");
                 String xText = "x: " + text.getXPos();
                 String yText = "y: " + text.getYPos();
                 String fontText = "font: " + text.getFont();
@@ -40,6 +42,22 @@ public class ParserTest {
                 System.out.println(fontSizeText);
                 System.out.println(fontColourText);
                 System.out.println(textText);
+            }
+            for(Iterator<ImageDataStorage> iter = slide.imageIterator(); iter.hasNext();) {
+                ImageDataStorage image = iter.next();
+                System.out.println("Image:");
+                String xText = "x: " + image.getXPos();
+                String yText = "y: " + image.getYPos();
+                String widthText = "width: " + image.getWidth();
+                String heightText = "height: " + image.getHeight();
+                String urlText = "url: " + image.getFileLocation().toString();
+                String durationText = "duration: " + image.getDuration();
+                System.out.println(xText);
+                System.out.println(yText);
+                System.out.println(widthText);
+                System.out.println(heightText);
+                System.out.println(urlText);
+                System.out.println(durationText);
             }
         }
     }
