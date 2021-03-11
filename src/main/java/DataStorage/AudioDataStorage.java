@@ -42,4 +42,8 @@ public class AudioDataStorage
         return loop;
     }
 
+    public boolean hasStartTime() {
+        return startTime != -1;
+    }
+
 }

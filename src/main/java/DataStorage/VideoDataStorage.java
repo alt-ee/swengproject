@@ -9,6 +9,7 @@ public class VideoDataStorage
     private final URL location;
     private final int startTime;
     private final boolean loop;
+    private final String id;
 
     public VideoDataStorage(int XPos, int YPos, URL location, int startTime, boolean loop)
     {
@@ -17,6 +18,17 @@ public class VideoDataStorage
         this.location = location;
         this.startTime = startTime;
         this.loop = loop;
+        this.id = null;
+    }
+
+    public VideoDataStorage(int XPos, int YPos, URL location, String id, boolean loop)
+    {
+        this.XPos = XPos;
+        this.YPos = YPos;
+        this.location = location;
+        this.startTime = -1;
+        this.loop = loop;
+        this.id = id;
     }
 
     public int getXPos()
@@ -42,5 +54,9 @@ public class VideoDataStorage
     public boolean isLoop()
     {
         return loop;
+    }
+
+    public boolean hasStartTime() {
+        return startTime != -1;
     }
 }

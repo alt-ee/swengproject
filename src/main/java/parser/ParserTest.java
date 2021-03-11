@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/*
+Temporary test class for parser, should be turned into unit test eventually
+ */
 public class ParserTest {
     SAXParserFactory factory = SAXParserFactory.newInstance();
     SAXParser saxParser = factory.newSAXParser();
@@ -59,6 +62,7 @@ public class ParserTest {
                 System.out.println(urlText);
                 System.out.println(durationText);
             }
+            //TODO Test audio and video parsing
         }
     }
 }

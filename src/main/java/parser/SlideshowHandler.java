@@ -171,10 +171,39 @@ public class SlideshowHandler extends DefaultHandler {
 
                 break;
             }
-                /*
-            case "video":
+            case "video": {
+                VideoDataStorage tempVideo;
+
+                int xPos = Integer.parseInt(attributes.getValue("xstart"));
+                int yPos = Integer.parseInt(attributes.getValue("ystart"));
+
+                URL location = null;
+                try {
+                    location = new URL("file://" + attributes.getValue("urlname"));
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+
+                boolean loop = Boolean.parseBoolean(attributes.getValue("loop"));
+
+                int startTime;
+                String durationString = attributes.getValue("duration");
+                if (durationString != null) {
+                    startTime = Integer.parseInt(durationString);
+                    tempVideo = new VideoDataStorage(xPos, yPos, location, startTime, loop);
+                } else {
+                    String id = attributes.getValue("id");
+
+                    //TODO raise exception if neither starttime nor id are set
+
+                    tempVideo = new VideoDataStorage(xPos, yPos, location, id, loop);
+                }
+
+                tempSlide.addVideo(tempVideo);
+            }
 
                 break;
+                /*
             case "line":
 
                 break;
