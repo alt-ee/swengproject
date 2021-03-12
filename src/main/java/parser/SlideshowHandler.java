@@ -5,6 +5,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.sound.sampled.Line;
 import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -92,7 +93,7 @@ public class SlideshowHandler extends DefaultHandler {
                 Color fontColour;
                 String fontColourString = attributes.getValue("fontcolour");
                 if (fontColourString != null) {
-                    fontColour = Color.decode(fontColourString.substring(1));
+                    fontColour = Color.decode(fontColourString);
                 } else {
                     fontColour = defaultFontColour;
                 }
@@ -200,13 +201,39 @@ public class SlideshowHandler extends DefaultHandler {
                 }
 
                 tempSlide.addVideo(tempVideo);
+                break;
             }
 
-                break;
-                /*
-            case "line":
+            case "line": {
+                LineDataStorage tempLine;
+
+                int x1 = Integer.parseInt(attributes.getValue("xstart"));
+                int y1 = Integer.parseInt(attributes.getValue("ystart"));
+                int x2 = Integer.parseInt(attributes.getValue("xend"));
+                int y2 = Integer.parseInt(attributes.getValue("yend"));
+
+                Color lineColour;
+                String lineColourString = attributes.getValue("linecolour");
+                if (lineColourString != null) {
+                    lineColour = Color.decode(lineColourString);
+                } else {
+                    lineColour = defaultLineColour;
+                }
+
+                int duration;
+                String durationString = attributes.getValue("duration");
+                if (durationString != null) {
+                    duration = Integer.parseInt(durationString);
+                } else {
+                    duration = 0;
+                }
+
+                tempLine = new LineDataStorage(x1, y1, x2, y2, lineColour, duration);
+                tempSlide.addLine(tempLine);
 
                 break;
+            }
+                /*
             case "shape":
 
                 break;
