@@ -25,7 +25,7 @@ public class ParserTest {
 
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
         ParserTest myTest = new ParserTest();
-        myTest.saxParser.parse("src/main/resources/testXML.xml", myTest.slideshowHandler);
+        myTest.saxParser.parse("src/main/resources/PWS_Example_File.xml", myTest.slideshowHandler);
 
         ArrayList<SlideDataStorage> slideshow = myTest.slideshowHandler.getSlideshow();
 

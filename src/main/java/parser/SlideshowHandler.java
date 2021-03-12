@@ -25,9 +25,6 @@ public class SlideshowHandler extends DefaultHandler {
 
     private SlideDataStorage tempSlide;
     private TextDataStorage tempText;
-    private AudioDataStorage tempAudio;
-    private VideoDataStorage tempVideo;
-    private LineDataStorage tempLine;
     private ShapeDataStorage tempShape;
     private ShaderDataStorage tempShader;
 
@@ -233,15 +230,57 @@ public class SlideshowHandler extends DefaultHandler {
 
                 break;
             }
-                /*
-            case "shape":
+            case "shape": {
+
+                int xPos = Integer.parseInt(attributes.getValue("xstart"));
+                int yPos = Integer.parseInt(attributes.getValue("ystart"));
+                int width = Integer.parseInt(attributes.getValue("width"));
+                int height = Integer.parseInt(attributes.getValue("height"));
+
+                Color shapeColour;
+                String shapeColourString = attributes.getValue("fillcolour");
+                if (shapeColourString != null) {
+                    shapeColour = Color.decode(shapeColourString);
+                } else {
+                    shapeColour = defaultShapeColour;
+                }
+
+                int duration;
+                String durationString = attributes.getValue("duration");
+                if (durationString != null) {
+                    duration = Integer.parseInt(durationString);
+                } else {
+                    duration = 0;
+                }
+
+                switch (attributes.getValue("type").toLowerCase()) {
+                    case "oval" :
+                        tempShape = new ShapeDataStorage(xPos, yPos, width, height, shapeColour, duration, ShapeDataStorage.Shapes.Oval);
+                        break;
+                    case "rectangle":
+                        tempShape = new ShapeDataStorage(xPos, yPos, width, height, shapeColour, duration, ShapeDataStorage.Shapes.Rectangle);
+                        break;
+                }
 
                 break;
+            }
             case "shading":
 
+                int x1 = Integer.parseInt(attributes.getValue("x1"));
+                int y1 = Integer.parseInt(attributes.getValue("y1"));
+                int x2 = Integer.parseInt(attributes.getValue("x2"));
+                int y2 = Integer.parseInt(attributes.getValue("y2"));
+
+                Color colour1 = Color.decode(attributes.getValue("colour1"));
+                Color colour2 = Color.decode(attributes.getValue("colour2"));
+
+                boolean cyclic = Boolean.parseBoolean(attributes.getValue("cyclic"));
+
+                tempShader = new ShaderDataStorage(x1, y1, x2, y2, colour1, colour2, cyclic);
+                tempShape.setShader(tempShader);
+
                 break;
 
-                 */
         }
 
 

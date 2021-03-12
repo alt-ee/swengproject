@@ -19,21 +19,9 @@
         <text xstart="7" ystart="34" font="Joker">
             more test text with specified font
         </text>
-        <button xstart="100" ystart="200" width="20" height="10">
-            <text>
-                This is a button to navigate to slide 2
-            </text>
-            <slideid>
-                slide02
-            </slideid>
-        </button>
     </slide>
 
     <slide id="slide02">
         <video urlname="resources/videos/video.mp4" loop="true" xstart="20" ystart="9" id="testVideo" />
-        <button xstart="10" ystart="10" width="20" height="60">
-            <image urlname="resources/images/playButton.png" />
-            <mediaid>testVideo</mediaid>
-        </button>
     </slide>
 </slideshow>
