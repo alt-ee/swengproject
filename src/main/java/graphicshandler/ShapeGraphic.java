@@ -1,8 +1,6 @@
 package graphicshandler;
 
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 
 public class ShapeGraphic {
     enum ShapeType {
@@ -19,17 +17,19 @@ public class ShapeGraphic {
     private ShapeType shapeType;
     private Boolean shapeFilled;
 
+    //Constructor
     public ShapeGraphic(ShapeType type, int height, int width, int xPos, int yPos, String hexColor, Boolean filled, int duration) {
         shapeType = type;
         shapeHeight = height;
         shapeWidth = width;
         shapeXPos = xPos;
         shapeYPos = yPos;
-        shapeColor = Color.decode(hexColor);
+        shapeColor = Color.decode(hexColor);    //Decodes hexadecimal colour value so it can be used by the Graphics library
         shapeFilled = filled;
         shapeDuration = duration;
     }
 
+    //Getters for required parameters
     public int getShapeHeight() {
         return shapeHeight;
     }
@@ -62,23 +62,3 @@ public class ShapeGraphic {
         return shapeType;
     }
 }
-//
-//class RectGraphic extends ShapeGraphic {
-//    public RectGraphic(int height, int width, int xPos, int yPos, Color color, Boolean filled, int duration) {
-//        shape = new Rectangle2D.Double(height, width, xPos, yPos);
-//        shapeColor = color;
-//        shapeDuration = duration;
-//        shapeType = ShapeType.Rectangle;
-//        shapeFilled = filled;
-//    }
-//}
-//
-//class OvalGraphic extends ShapeGraphic {
-//    public OvalGraphic(int height, int width, int xPos, int yPos, Color color, Boolean filled, int duration) {
-//        shape = new Ellipse2D.Double(height, width, xPos, yPos);
-//        shapeColor = color;
-//        shapeDuration = duration;
-//        shapeType = ShapeType.Oval;
-//        shapeFilled = filled;
-//    }
-//}
