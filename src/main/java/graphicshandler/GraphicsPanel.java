@@ -39,16 +39,16 @@ public class GraphicsPanel extends JPanel {
         }
     }
 
-    public void addLine(int x1, int y1, int x2, int y2, Color color, int duration) {
-        lines.add(new LineGraphic(x1, y1, x2, y2, color, duration));
+    public void addLine(int x1, int y1, int x2, int y2, String hexColor, int duration) {
+        lines.add(new LineGraphic(x1, y1, x2, y2, hexColor, duration));
     }
 
-    public void addRect(int height, int width, int xPos, int yPos, Color color, Boolean filled, int duration) {
-        shapes.add(new ShapeGraphic(ShapeGraphic.ShapeType.Rectangle, height, width, xPos, yPos, color, filled, duration));
+    public void addRect(int height, int width, int xPos, int yPos, String hexColor, Boolean filled, int duration) {
+        shapes.add(new ShapeGraphic(ShapeGraphic.ShapeType.Rectangle, height, width, xPos, yPos, hexColor, filled, duration));
     }
 
-    public void addOval(int height, int width, int xPos, int yPos, Color color, Boolean filled, int duration) {
-        shapes.add(new ShapeGraphic(ShapeGraphic.ShapeType.Oval, height, width, xPos, yPos, color, filled, duration));
+    public void addOval(int height, int width, int xPos, int yPos, String hexColor, Boolean filled, int duration) {
+        shapes.add(new ShapeGraphic(ShapeGraphic.ShapeType.Oval, height, width, xPos, yPos, hexColor, filled, duration));
     }
 
     public void clearAll() {

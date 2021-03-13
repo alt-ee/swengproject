@@ -19,13 +19,13 @@ public class ShapeGraphic {
     private ShapeType shapeType;
     private Boolean shapeFilled;
 
-    public ShapeGraphic(ShapeType type, int height, int width, int xPos, int yPos, Color color, Boolean filled, int duration) {
+    public ShapeGraphic(ShapeType type, int height, int width, int xPos, int yPos, String hexColor, Boolean filled, int duration) {
         shapeType = type;
         shapeHeight = height;
         shapeWidth = width;
         shapeXPos = xPos;
         shapeYPos = yPos;
-        shapeColor = color;
+        shapeColor = Color.decode(hexColor);
         shapeFilled = filled;
         shapeDuration = duration;
     }
