@@ -19,26 +19,27 @@ public class ShapeGraphic {
     private GradientPaint shapeShading;
 
     //Constructor
-    public ShapeGraphic(ShapeType type, int height, int width, int xPos, int yPos, String hexColor, Boolean filled, int duration) {
+    public ShapeGraphic(ShapeType type, int height, int width, int xPos, int yPos, Color color, Boolean filled, int duration) {
         shapeType = type;
         shapeHeight = height;
         shapeWidth = width;
         shapeXPos = xPos;
         shapeYPos = yPos;
-        shapeColor = Color.decode(hexColor);    //Decodes hexadecimal colour value so it can be used by the Graphics library
+        shapeColor = color;
         shapeFilled = filled;
         shapeShading = null;                    //By default, shape will have no shading applied. Use addShadedShape(...) function in GraphicsPanel to add shading
         shapeDuration = duration;
     }
 
-    public ShapeGraphic(ShapeType type, int height, int width, int xPos, int yPos,  int shadeX1, int shadeY1, String hexShadeColor1, int shadeX2, int shadeY2, String hexShadeColor2, Boolean cyclic, int duration) {
+    //Alternative constructor for constructing a shape with painted with a GradientPaint
+    public ShapeGraphic(ShapeType type, int height, int width, int xPos, int yPos,  int shadeX1, int shadeY1, Color shadeColor1, int shadeX2, int shadeY2, Color shadeColor2, Boolean cyclic, int duration) {
         shapeType = type;
         shapeHeight = height;
         shapeWidth = width;
         shapeXPos = xPos;
         shapeYPos = yPos;
         shapeFilled = true;                    //If shaded with a gradient, filled parameter is true
-        shapeShading = new GradientPaint(shadeX1, shadeY1, Color.decode(hexShadeColor1), shadeX2, shadeY2, Color.decode(hexShadeColor2), cyclic);  //Creates a new ShadingGraphic object with the defined parameters
+        shapeShading = new GradientPaint(shadeX1, shadeY1, shadeColor1, shadeX2, shadeY2, shadeColor2, cyclic);  //Creates a new ShadingGraphic object with the defined parameters
         shapeDuration = duration;
     }
 
