@@ -1,7 +1,6 @@
 package graphicshandler;
 
 import javax.swing.JFrame;
-import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
