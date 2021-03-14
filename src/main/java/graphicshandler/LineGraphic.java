@@ -20,6 +20,11 @@ public class LineGraphic {
         return lineShape;
     }
 
+    public double getLineX1() { return lineShape.getX1(); }
+    public double getLineY1() { return lineShape.getY1(); }
+    public double getLineX2() { return lineShape.getX2(); }
+    public double getLineY2() { return lineShape.getY2(); }
+
     public Color getLineColor() {
         return lineColor;
     }
