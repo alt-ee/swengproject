@@ -41,43 +41,44 @@ public class AudioPlayer implements LineListener {
     }
 
     /**
-     * Start playback of the clip
+     * Start playback of the clip. If no clip is loaded then does nothing.
      *
      * @param loop whether or not to loop the clip. If true clip will loop until stopped with {@link #stopClip()}
-     * @throws NullPointerException if no clip is loaded
      */
-    public void playClip(boolean loop) throws NullPointerException {
+    public void playClip(boolean loop) {
 
-        audioClip.setFramePosition(0);
+        if (audioClip != null) {
+            audioClip.setFramePosition(0);
 
-        if (loop) {
-            audioClip.loop(Clip.LOOP_CONTINUOUSLY);
-        } else {
-            audioClip.start();
-        }
-
-        donePlaying = false;
-
-        new Thread(() -> {
-            while (!donePlaying) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException exception) {
-                    exception.printStackTrace();
-                }
+            if (loop) {
+                audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+            } else {
+                audioClip.start();
             }
-            audioClip.stop();
-        }).start();
+
+            donePlaying = false;
+
+            new Thread(() -> {
+                while (!donePlaying) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException exception) {
+                        exception.printStackTrace();
+                    }
+                }
+                audioClip.stop();
+            }).start();
+        }
     }
 
     /**
-     * Stop playback of the clip
-     *
-     * @throws NullPointerException if no clip is loaded
+     * Stop playback of the clip. If no clip is loaded then does nothing.
      */
     public void stopClip() {
-        if (audioClip.isActive()) {
-            audioClip.stop();
+        if (audioClip != null) {
+            if (audioClip.isActive()) {
+                audioClip.stop();
+            }
         }
     }
 
