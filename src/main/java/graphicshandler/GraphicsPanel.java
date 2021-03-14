@@ -16,6 +16,19 @@ public class GraphicsPanel extends JPanel {
     ArrayList<LineGraphic> lines = new ArrayList<>();
     ArrayList<ShapeGraphic> shapes = new ArrayList<>();
 
+    //The current time in milliseconds that an external timer has been running for
+    int currentTime = 0;
+
+    public int getCurrentTime() { return currentTime; }
+
+    public void setCurrentTime(int updatedCurrentTime) {
+        currentTime = updatedCurrentTime;
+    }
+
+    public void incrementCurrentTime(int increment) {
+        currentTime += increment;
+    }
+
     //Override JPanel's paintComponent method
     @Override
     public void paintComponent(Graphics g) {
@@ -25,35 +38,41 @@ public class GraphicsPanel extends JPanel {
 
         //Iterate through and draw every line in line array
         for (LineGraphic line : lines) {
-            g2d.setColor(line.getLineColor());
-            g2d.draw(line.getLine());
+            //Check if line's specified duration is indefinite (duration = 0) or greater than the current time before displaying
+            if (line.getLineDuration() == 0 || line.getLineDuration() >= currentTime) {
+                g2d.setColor(line.getLineColor());
+                g2d.draw(line.getLine());
+            }
         }
 
         //Iterate through and draw every shape in shape array
         for (ShapeGraphic shape : shapes) {
-            //If shape has no shapeShading member, set the graphics context color to shapeColor
-            //Otherwise, set the graphics context paint style as the shapeShading GradientPaint
-            if (shape.getShapeShading() == null) {
-                g2d.setColor(shape.getShapeColor());
-            }
-            else {
-                g2d.setPaint(shape.getShapeShading());
-            }
+            //Check if shape's specified duration is indefinite (duration = 0) or greater than the current time before displaying
+            if (shape.getShapeDuration() == 0 || shape.getShapeDuration() >= currentTime) {
+                //If shape has no shapeShading member, set the graphics context color to shapeColor
+                //Otherwise, set the graphics context paint style as the shapeShading GradientPaint
+                if (shape.getShapeShading() == null) {
+                    g2d.setColor(shape.getShapeColor());
+                }
+                else {
+                    g2d.setPaint(shape.getShapeShading());
+                }
 
-            //Check if shape is rectangle or oval, then check if the shape should be filled/unfilled and draw appropriately
-            switch (shape.getShapeType()) {
-                case Rectangle:
-                    if (shape.isFilled())
-                        g2d.fillRect(shape.getShapeXPos(), shape.getShapeYPos(), shape.getShapeWidth(), shape.getShapeHeight());
-                    else
-                        g2d.drawRect(shape.getShapeXPos(), shape.getShapeYPos(), shape.getShapeWidth(), shape.getShapeHeight());
-                    break;
-                case Oval:
-                    if (shape.isFilled())
-                        g2d.fillOval(shape.getShapeXPos(), shape.getShapeYPos(), shape.getShapeWidth(), shape.getShapeHeight());
-                    else
-                        g2d.drawOval(shape.getShapeXPos(), shape.getShapeYPos(), shape.getShapeWidth(), shape.getShapeHeight());
-                    break;
+                //Check if shape is rectangle or oval, then check if the shape should be filled/unfilled and draw appropriately
+                switch (shape.getShapeType()) {
+                    case Rectangle:
+                        if (shape.isFilled())
+                            g2d.fillRect(shape.getShapeXPos(), shape.getShapeYPos(), shape.getShapeWidth(), shape.getShapeHeight());
+                        else
+                            g2d.drawRect(shape.getShapeXPos(), shape.getShapeYPos(), shape.getShapeWidth(), shape.getShapeHeight());
+                        break;
+                    case Oval:
+                        if (shape.isFilled())
+                            g2d.fillOval(shape.getShapeXPos(), shape.getShapeYPos(), shape.getShapeWidth(), shape.getShapeHeight());
+                        else
+                            g2d.drawOval(shape.getShapeXPos(), shape.getShapeYPos(), shape.getShapeWidth(), shape.getShapeHeight());
+                        break;
+                }
             }
         }
     }
