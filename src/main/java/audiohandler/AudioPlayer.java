@@ -2,6 +2,7 @@ package audiohandler;
 
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -10,20 +11,44 @@ public class AudioPlayer implements LineListener {
     boolean donePlaying;
     Clip audioClip;
 
-    public void playClip(String clipURL, boolean loop) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    /**
+     * Load a sound file
+     *
+     * @param clipURL location of the sound file to load
+     * @throws IOException if there was an issue loading the file
+     * @throws UnsupportedAudioFileException if the file is not a usable format
+     * @throws LineUnavailableException if the line could not be opened
+     */
+    public void loadClip(String clipURL) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 
         File clipFile = new File(clipURL);
+
         AudioInputStream inputStream = AudioSystem.getAudioInputStream(clipFile);
+
+        // Get info about the dataline to construct the clip from
         AudioFormat format = inputStream.getFormat();
         DataLine.Info info = new DataLine.Info(Clip.class, format);
 
+        if (audioClip != null) {
+            if (audioClip.isOpen()) {
+                audioClip.close();
+            }
+        }
+
         audioClip = (Clip) AudioSystem.getLine(info);
-
         audioClip.addLineListener(this);
-
         audioClip.open(inputStream);
+    }
 
-        donePlaying = false;
+    /**
+     * Start playback of the clip
+     *
+     * @param loop whether or not to loop the clip. If true clip will loop until stopped with {@link #stopClip()}
+     * @throws NullPointerException if no clip is loaded
+     */
+    public void playClip(boolean loop) throws NullPointerException {
+
+        audioClip.setFramePosition(0);
 
         if (loop) {
             audioClip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -31,6 +56,7 @@ public class AudioPlayer implements LineListener {
             audioClip.start();
         }
 
+        donePlaying = false;
 
         new Thread(() -> {
             while (!donePlaying) {
@@ -40,13 +66,16 @@ public class AudioPlayer implements LineListener {
                     exception.printStackTrace();
                 }
             }
-
-            audioClip.close();
-        });
+            audioClip.stop();
+        }).start();
     }
 
+    /**
+     * Stop playback of the clip
+     *
+     * @throws NullPointerException if no clip is loaded
+     */
     public void stopClip() {
-        System.out.println("trying to stop");
         if (audioClip.isActive()) {
             audioClip.stop();
         }
@@ -55,18 +84,13 @@ public class AudioPlayer implements LineListener {
     @Override
     public void update(LineEvent event) {
         LineEvent.Type type = event.getType();
-
-        if (type == LineEvent.Type.START) {
-            System.out.println("Started");
-        } else if (type == LineEvent.Type.STOP) {
+        if (type == LineEvent.Type.STOP) {
             donePlaying = true;
-            System.out.println("Stopped");
         }
     }
 
-    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public static void main(String[] args) {
         // Temporary test - not for final release
-        String file = "src/main/resources/bird.wav";
         AudioPlayer player = new AudioPlayer();
 
         boolean running = true;
@@ -76,11 +100,32 @@ public class AudioPlayer implements LineListener {
             String input = scanner.nextLine();
 
             switch (input) {
+                case "load":
+                    System.out.println("enter the location of the file");
+                    input = scanner.nextLine();
+                    try {
+                        player.loadClip(input);
+                    } catch (IOException e) {
+                        System.out.println("File not found");
+                    } catch (UnsupportedAudioFileException e) {
+                        System.out.println("File is of incorrect format");
+                    } catch (LineUnavailableException e) {
+                        System.out.println("Line unavailable");
+                    }
+                    break;
                 case "start":
-                    player.playClip(file, false);
+                    try {
+                        player.playClip(false);
+                    } catch (NullPointerException e) {
+                        System.out.println("No clip loaded");
+                    }
                     break;
                 case "loop":
-                    player.playClip(file, true);
+                    try {
+                        player.playClip(true);
+                    } catch (NullPointerException e) {
+                        System.out.println("No clip loaded");
+                    }
                     break;
                 case "stop":
                     player.stopClip();
