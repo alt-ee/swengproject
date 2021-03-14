@@ -2,13 +2,10 @@ package audiohandler;
 
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
-public class AudioPlayer implements LineListener {
+public class AudioPlayer {
 
-    boolean donePlaying;
     Clip audioClip;
 
     /**
@@ -25,7 +22,7 @@ public class AudioPlayer implements LineListener {
 
         AudioInputStream inputStream = AudioSystem.getAudioInputStream(clipFile);
 
-        // Get info about the dataline to construct the clip from
+        // Get info about the dataLine to construct the clip from
         AudioFormat format = inputStream.getFormat();
         DataLine.Info info = new DataLine.Info(Clip.class, format);
 
@@ -36,7 +33,6 @@ public class AudioPlayer implements LineListener {
         }
 
         audioClip = (Clip) AudioSystem.getLine(info);
-        audioClip.addLineListener(this);
         audioClip.open(inputStream);
     }
 
@@ -55,19 +51,6 @@ public class AudioPlayer implements LineListener {
             } else {
                 audioClip.start();
             }
-
-            donePlaying = false;
-
-            new Thread(() -> {
-                while (!donePlaying) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException exception) {
-                        exception.printStackTrace();
-                    }
-                }
-                audioClip.stop();
-            }).start();
         }
     }
 
@@ -82,60 +65,11 @@ public class AudioPlayer implements LineListener {
         }
     }
 
-    @Override
-    public void update(LineEvent event) {
-        LineEvent.Type type = event.getType();
-        if (type == LineEvent.Type.STOP) {
-            donePlaying = true;
-        }
+    /**
+     * Close the DataLine, unloading the clip from the player.
+     */
+    public void closeClip() {
+        audioClip.close();
     }
 
-    public static void main(String[] args) {
-        // Temporary test - not for final release
-        AudioPlayer player = new AudioPlayer();
-
-        boolean running = true;
-        Scanner scanner = new Scanner(System.in);
-
-        while (running) {
-            String input = scanner.nextLine();
-
-            switch (input) {
-                case "load":
-                    System.out.println("enter the location of the file");
-                    input = scanner.nextLine();
-                    try {
-                        player.loadClip(input);
-                    } catch (IOException e) {
-                        System.out.println("File not found");
-                    } catch (UnsupportedAudioFileException e) {
-                        System.out.println("File is of incorrect format");
-                    } catch (LineUnavailableException e) {
-                        System.out.println("Line unavailable");
-                    }
-                    break;
-                case "start":
-                    try {
-                        player.playClip(false);
-                    } catch (NullPointerException e) {
-                        System.out.println("No clip loaded");
-                    }
-                    break;
-                case "loop":
-                    try {
-                        player.playClip(true);
-                    } catch (NullPointerException e) {
-                        System.out.println("No clip loaded");
-                    }
-                    break;
-                case "stop":
-                    player.stopClip();
-                    break;
-                case "exit":
-                    player.stopClip();
-                    running = false;
-                    break;
-            }
-        }
-    }
 }
