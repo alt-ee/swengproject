@@ -19,8 +19,8 @@ public class GraphicsTest {
 
     public static void main(String[] args) {
         GraphicsTest myTest = new GraphicsTest();
-        myTest.gp.addLine(100, 100, 200, 200, Color.red, 10);
-        myTest.gp.addRect(100, 100, 300, 300, Color.cyan, true, 10);
-        myTest.gp.addOval(100, 100, 600, 300, Color.blue, true, 10);
+        myTest.gp.addLine(100, 100, 200, 200, "#ff0000", 10);                       //Inserts a red line
+        myTest.gp.addRect(100, 100, 300, 300, "#00ffff", true, 10);   //Inserts a cyan filled rectangle
+        myTest.gp.addOval(100, 100, 600, 300, "#0000ff", true, 10);   //Inserts a blue unfilled oval (circle)
     }
 }
