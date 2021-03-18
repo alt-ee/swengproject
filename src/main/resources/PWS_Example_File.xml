@@ -5,6 +5,7 @@
     <defaults backgroundcolour="#43675a" font="Calibri" fontsize="16" fontcolour="#a6aeae" linecolour="#f2c95e" fillcolour="#6dcbdb" />
 
     <slide id="slide01">
+
         <text xstart="100" ystart="200">
             test text
             <b>some bold text</b>

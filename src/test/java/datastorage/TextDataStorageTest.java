@@ -1,4 +1,4 @@
-package DataStorage;
+package datastorage;
 
 import org.junit.jupiter.api.Test;
 

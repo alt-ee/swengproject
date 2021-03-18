@@ -1,7 +1,5 @@
 package survivalapp;
 
-import DataStorage.ImageDataStorage;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 

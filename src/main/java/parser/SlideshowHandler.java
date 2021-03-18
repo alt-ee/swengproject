@@ -1,14 +1,12 @@
 package parser;
 
-import DataStorage.*;
+import datastorage.*;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.sound.sampled.Line;
 import java.awt.*;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -21,7 +19,7 @@ public class SlideshowHandler extends DefaultHandler {
     private Color defaultLineColour;
     private Color defaultShapeColour;
 
-    private ArrayList<SlideDataStorage> slideshow;
+    private Slideshow slideshow;
 
     private SlideDataStorage tempSlide;
     private TextDataStorage tempText;
@@ -37,7 +35,7 @@ public class SlideshowHandler extends DefaultHandler {
 
     @Override
     public void startDocument() throws SAXException {
-        slideshow = new ArrayList<SlideDataStorage>();
+        slideshow = new Slideshow();
     }
 
     @Override
@@ -50,6 +48,8 @@ public class SlideshowHandler extends DefaultHandler {
                 defaultFontColour = Color.decode(attributes.getValue("fontcolour"));
                 defaultLineColour = Color.decode(attributes.getValue("linecolour"));
                 defaultShapeColour = Color.decode(attributes.getValue("fillcolour"));
+
+                slideshow.setDefaults(defaultBackgroundColour, defaultFont, defaultFontSize, defaultFontColour, defaultLineColour, defaultShapeColour);
 
                 break;
             }
@@ -290,7 +290,7 @@ public class SlideshowHandler extends DefaultHandler {
     public void endElement(String uri, String localName, String qName) throws SAXException {
         switch (qName.toLowerCase()) {
             case "slide":
-                slideshow.add(tempSlide);
+                slideshow.addSlide(tempSlide);
 
                 break;
             case "text":
@@ -309,7 +309,7 @@ public class SlideshowHandler extends DefaultHandler {
         }
     }
 
-    public ArrayList<SlideDataStorage> getSlideshow() {
+    public Slideshow getSlideshow() {
         return slideshow;
     }
 
