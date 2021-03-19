@@ -1,21 +1,33 @@
 package survivalapp;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import datastorage.Slideshow;
+import org.xml.sax.SAXException;
+import parser.*;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class SurvivalApp {
 
-    public static void main(String[] args) throws MalformedURLException
-    {
+    public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
 
-        URL testURL = new URL ("https://wikipedia.org");
+        File xmlFile = new File("src/main/resources/firstIterationSlide.xml");
+        URI xmlFileLocation = xmlFile.toURI();
 
-        /*
-        AudioDataStorage audio = new AudioDataStorage(testURL, 0, false);
-        System.out.println(audio.getAudioLocation() + "\n" + audio.getStartTime() + "\n" + audio.getLoop());
-        */
+        Parser myParser = new Parser();
+        Slideshow slideshow = myParser.parse(xmlFileLocation);
 
-        System.out.print("Hello World from eclipse");
+        ParserHandlerInterface audioGraphicsDemo = new ParserHandlerInterface();
+        audioGraphicsDemo.toHandlers(slideshow);
 
     }
+
+
 }

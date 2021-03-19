@@ -65,6 +65,16 @@ public class LineDataStorage {
         return colour;
     }
 
+    //return colour in form of hex string
+    public String getColourInHex()
+        {
+            int RGB = colour.getRGB();
+            String hex = String.format("#%06X", (0xffffff & RGB));
+            System.out.println(hex);
+            return hex;
+        }
+
+
     /**
      * @return duration to display shape for
      */

@@ -11,7 +11,8 @@ import java.net.URI;
 
 public class Parser {
 
-    public static Slideshow parse(URI fileLocation) throws IOException, SAXException, ParserConfigurationException {
+    public static Slideshow parse(URI fileLocation) throws IOException, SAXException, ParserConfigurationException
+    {
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
@@ -25,4 +26,5 @@ public class Parser {
 
         return handler.getSlideshow();
     }
+
 }

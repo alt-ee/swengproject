@@ -261,7 +261,7 @@ public class SlideshowHandler extends DefaultHandler {
                         tempShape = new ShapeDataStorage(xPos, yPos, width, height, shapeColour, duration, ShapeDataStorage.Shapes.Rectangle);
                         break;
                 }
-
+                tempSlide.addShape(tempShape);
                 break;
             }
             case "shading":

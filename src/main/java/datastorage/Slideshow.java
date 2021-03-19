@@ -31,6 +31,10 @@ public class Slideshow {
         slides.add(slide);
     }
 
+    public ArrayList<SlideDataStorage> getSlides() {
+        return slides;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
