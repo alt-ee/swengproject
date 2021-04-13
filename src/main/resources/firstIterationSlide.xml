@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PWS_Schema.xsd"?>
+
+<slideshow author="" version="" comment="">
+    <defaults backgroundcolour="#000000"
+              font="Arial" fontsize="11"
+              fontcolour="#FF00FF"
+              linecolour="#FF00FF"
+              fillcolour="#FF00FF" />
+
+    <slide id="01">
+        <audio urlname="src/main/resources/RedKite1.wav"
+               starttime="2"
+               loop="false"
+               duration="10"
+        />
+        <shape type="rectangle"
+               xstart="50"
+               ystart="50"
+               width="300"
+               height="300"
+        />
+        <shape type="rectangle"
+               xstart="375"
+               ystart="50"
+               width="300"
+               height="300"
+               fillcolour="#F00050"
+        />
+        <shape type="oval"
+               xstart="700"
+               ystart="50"
+               width="300"
+               height="300"
+        />
+        <shape type="oval"
+               xstart="1025"
+               ystart="50"
+               width="300"
+               height="300"
+               fillcolour="#F00050"
+        />
+        <line xstart="0"
+              ystart="500"
+              xend="1600"
+              yend="500"
+              linecolour="#005050"
+        />
+        <line xstart="0"
+              ystart="550"
+              xend="1600"
+              yend="550"
+              linecolour="#00F1F1"
+        />
+    </slide>
+</slideshow>

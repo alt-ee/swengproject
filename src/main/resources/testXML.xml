@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PWS_Schema.xsd"?>
+
+<slideshow author="alex tee" version="0.1" comment="test">
+    <defaults backgroundcolour="#43675a" font="Calibri" fontsize="16" fontcolour="#a6aeae" linecolour="#f2c95e" fillcolour="#6dcbdb" />
+
+    <slide id="slide01">
+        <text xstart="100" ystart="200">
+            test text
+            <b>some bold text</b>
+            <i>some italic text</i>
+            <b>some more bold text</b>
+            some normal text
+        </text>
+        <text xstart="7" ystart="34" font="Joker">
+            more test text with specified font
+        </text>
+    </slide>
+    <slide id = "slide02">
+        <image
+        urlname="/resources/images/image1.png"
+        xstart="10"
+        ystart="20"
+        width="8"
+        height="15"/>
+    </slide>
+</slideshow>
