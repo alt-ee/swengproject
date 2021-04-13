@@ -1,6 +1,7 @@
 package datastorage;
 
 import java.awt.Color;
+import java.util.Objects;
 
 public class LineDataStorage {
 
@@ -28,6 +29,24 @@ public class LineDataStorage {
         this.y2 = y2;
         this.colour = colour;
         this.duration = duration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineDataStorage that = (LineDataStorage) o;
+        return x1 == that.x1 &&
+                y1 == that.y1 &&
+                x2 == that.x2 &&
+                y2 == that.y2 &&
+                duration == that.duration &&
+                colour.equals(that.colour);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x1, y1, x2, y2, colour, duration);
     }
 
     /**

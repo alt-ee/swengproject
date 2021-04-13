@@ -1,6 +1,7 @@
 package datastorage;
 
 import java.net.URL;
+import java.util.Objects;
 
 public class AudioDataStorage
 {
@@ -25,6 +26,21 @@ public class AudioDataStorage
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AudioDataStorage that = (AudioDataStorage) o;
+        return startTime == that.startTime &&
+                loop == that.loop &&
+                fileLocation.equals(that.fileLocation) &&
+                id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fileLocation, startTime, id, loop);
+    }
 
     //getters
     public URL getAudioLocation()

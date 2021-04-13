@@ -6,6 +6,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -17,12 +18,9 @@ class SlideshowHandlerTest {
     @Test
     void testSlides() {
 
-        URI testFileLocation = null;
-        try {
-            testFileLocation = new URI("src/test/resources/defaults_test.xml");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        String filePath = "src/test/resources/defaults_test.xml";
+        File file = new File(filePath).getAbsoluteFile();
+        URI testFileLocation = file.toURI();
 
         Slideshow parsedSlideShow;
         Slideshow expectedSlideshow = new Slideshow();
@@ -31,8 +29,8 @@ class SlideshowHandlerTest {
         String expectedFont = "Calibri";
         int expectedFontSize = 16;
         Color expectedTextColour = Color.decode("#855797");
-        Color expectedLineColour = Color.decode("fa44dd");
-        Color expectedShapeColour = Color.decode("88cd02");
+        Color expectedLineColour = Color.decode("#fa44dd");
+        Color expectedShapeColour = Color.decode("#88cd02");
 
         expectedSlideshow.setDefaults(expectedBackgroundColour, expectedFont, expectedFontSize, expectedTextColour, expectedLineColour, expectedShapeColour);
 

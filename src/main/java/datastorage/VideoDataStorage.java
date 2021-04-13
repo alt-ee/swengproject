@@ -1,6 +1,7 @@
 package datastorage;
 
 import java.net.URL;
+import java.util.Objects;
 
 public class VideoDataStorage
 {
@@ -29,6 +30,24 @@ public class VideoDataStorage
         this.startTime = -1;
         this.loop = loop;
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VideoDataStorage that = (VideoDataStorage) o;
+        return XPos == that.XPos &&
+                YPos == that.YPos &&
+                startTime == that.startTime &&
+                loop == that.loop &&
+                location.equals(that.location) &&
+                id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(XPos, YPos, location, startTime, loop, id);
     }
 
     public int getXPos()

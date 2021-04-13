@@ -1,6 +1,7 @@
 package datastorage;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Objects;
 
 /*
 Lots of repeated/similar code, working on a better implementation
@@ -22,6 +23,26 @@ public class SlideDataStorage
     public SlideDataStorage(String id, int duration) {
         this.id = id;
         this.duration = duration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SlideDataStorage that = (SlideDataStorage) o;
+        return duration == that.duration &&
+                id.equals(that.id) &&
+                textArr.equals(that.textArr) &&
+                videoArr.equals(that.videoArr) &&
+                audioArr.equals(that.audioArr) &&
+                imageArr.equals(that.imageArr) &&
+                lineArr.equals(that.lineArr) &&
+                shapeArr.equals(that.shapeArr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, duration, textArr, videoArr, audioArr, imageArr, lineArr, shapeArr);
     }
 
     //adders

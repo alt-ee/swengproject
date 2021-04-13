@@ -1,6 +1,7 @@
 package datastorage;
 
 import java.awt.Color;
+import java.util.Objects;
 
 public class TextDataStorage
 {
@@ -22,6 +23,25 @@ public class TextDataStorage
         this.fontSize = fontSize;
         this.colour = colour;
         this.duration = duration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TextDataStorage that = (TextDataStorage) o;
+        return XPos == that.XPos &&
+                YPos == that.YPos &&
+                fontSize == that.fontSize &&
+                duration == that.duration &&
+                text.equals(that.text) &&
+                font.equals(that.font) &&
+                colour.equals(that.colour);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(XPos, YPos, text, font, fontSize, colour, duration);
     }
 
     //setter

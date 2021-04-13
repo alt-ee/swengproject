@@ -27,14 +27,6 @@ public class Slideshow {
         defaultShapeColour = shapeColour;
     }
 
-    public void addSlide(SlideDataStorage slide) {
-        slides.add(slide);
-    }
-
-    public ArrayList<SlideDataStorage> getSlides() {
-        return slides;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,4 +45,13 @@ public class Slideshow {
     public int hashCode() {
         return Objects.hash(slides, defaultBackgroundColour, defaultFont, defaultFontSize, defaultTextColour, defaultLineColour, defaultShapeColour);
     }
+
+    public void addSlide(SlideDataStorage slide) {
+        slides.add(slide);
+    }
+
+    public ArrayList<SlideDataStorage> getSlides() {
+        return slides;
+    }
+
 }
