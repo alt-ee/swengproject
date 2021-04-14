@@ -73,6 +73,9 @@ class SlideshowHandlerTest {
         SlideDataStorage goodAudioSlide = new SlideDataStorage("goodAudio", 0);
         SlideDataStorage goodVideoSlide = new SlideDataStorage("goodVideo", 0);
         SlideDataStorage goodImageSlide = new SlideDataStorage("goodImage", 0);
+        SlideDataStorage badAudioSlide = new SlideDataStorage("badAudio", 0);
+        SlideDataStorage badVideoSlide = new SlideDataStorage("badVideo", 0);
+        SlideDataStorage badImageSlide = new SlideDataStorage("badImage", 0);
 
         URL audioURL =  new URL("file://bird.wav");
         goodAudioSlide.addAudio(new AudioDataStorage(audioURL, 0, false));
@@ -84,8 +87,11 @@ class SlideshowHandlerTest {
         goodImageSlide.addImage(new ImageDataStorage(100, 100, imageURL, 10, 10, 0));
 
         expectedSlideshow.addSlide(goodAudioSlide);
+        expectedSlideshow.addSlide(badAudioSlide);
         expectedSlideshow.addSlide(goodVideoSlide);
+        expectedSlideshow.addSlide(badVideoSlide);
         expectedSlideshow.addSlide(goodImageSlide);
+        expectedSlideshow.addSlide(badImageSlide);
 
         parser.parse(bufferedInputStream, handler);
         parsedSlideshow = handler.getSlideshow();
