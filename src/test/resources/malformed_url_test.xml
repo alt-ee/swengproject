@@ -7,7 +7,7 @@
     <defaults backgroundcolour="#faf347" font="Calibri" fontsize="16" fontcolour="#855797" linecolour="#fa44dd"
               fillcolour="#88cd02"/>
     <slide id="goodAudio">
-        <audio urlname="bird1.wav" loop="false"/>
+        <audio urlname="bird1.wav" starttime="0" loop="false"/>
     </slide>
     <slide id="badAudio">
         <audio urlname="this isnt a url" starttime="0" loop="false"/>
@@ -16,7 +16,7 @@
         <video urlname="bird.mov" starttime="0" loop="true" xstart="100" ystart="100"/>
     </slide>
     <slide id="badVideo">
-        <video urlname="hhtp://lso no;#@''t a url" loop="true" xstart="100" ystart="100"/>
+        <video urlname="hhtp://lso no;#@''t a url" starttime="0" loop="true" xstart="100" ystart="100"/>
     </slide>
     <slide id="goodImage">
         <image urlname="bird.png" xstart="100" ystart="100" width="10" height="10"/>
