@@ -48,6 +48,16 @@ class SlideshowHandlerTest {
     }
 
     @Test
+    void testInvalidXMLFile() throws Exception {
+
+        BufferedInputStream bufferedInputStream = getBufferedInputStreamFromFilepath( "src/test/resources/invalid_xml_file.xml");
+
+        Assertions.assertThrows(SAXParseException.class, () -> {
+            parser.parse(bufferedInputStream, handler);
+        });
+    }
+
+    @Test
     void testDefaults() throws Exception{
 
 
