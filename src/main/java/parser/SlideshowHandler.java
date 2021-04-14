@@ -29,17 +29,17 @@ public class SlideshowHandler extends DefaultHandler {
     private String elementValue;
 
     @Override
-    public void characters(char [] chars, int start, int length) throws SAXException {
+    public void characters(char [] chars, int start, int length) {
         elementValue = new String(chars, start, length);
     }
 
     @Override
-    public void startDocument() throws SAXException {
+    public void startDocument() {
         slideshow = new Slideshow();
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         switch (qName.toLowerCase()) {
             case "defaults": {
                 defaultBackgroundColour = Color.decode(attributes.getValue("backgroundcolour"));
@@ -287,7 +287,7 @@ public class SlideshowHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         switch (qName.toLowerCase()) {
             case "slide":
                 slideshow.addSlide(tempSlide);
