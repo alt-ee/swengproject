@@ -10,18 +10,18 @@
         <audio urlname="bird1.wav" loop="false"/>
     </slide>
     <slide id="badAudio">
-        <audio urlname="this isnt a url lol" starttime="0" loop="false"/>
+        <audio urlname="this isnt a url" starttime="0" loop="false"/>
     </slide>
     <slide id="goodVideo">
         <video urlname="bird.mov" starttime="0" loop="true" xstart="100" ystart="100"/>
     </slide>
     <slide id="badVideo">
-        <video urlname="also not a url" loop="true" xstart="100" ystart="100"/>
+        <video urlname="hhtp://lso no;#@''t a url" loop="true" xstart="100" ystart="100"/>
     </slide>
     <slide id="goodImage">
         <image urlname="bird.png" xstart="100" ystart="100" width="10" height="10"/>
     </slide>
     <slide id="badImage">
-        <image urlname="weeoowweoeowoow" xstart="100" ystart="100" width="10" height="10"/>
+        <image urlname="file://weeoowweoeow" xstart="100" ystart="100" width="10" height="10"/>
     </slide>
 </slideshow>
