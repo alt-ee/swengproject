@@ -1,19 +1,15 @@
 package parser;
 
-import datastorage.Slideshow;
+import datastorage.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
-
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.awt.*;
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.URL;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,7 +34,7 @@ class SlideshowHandlerTest {
     }
 
     @Test
-    void testInvalidFile() throws  Exception{
+    void testInvalidFile() throws Exception{
 
         BufferedInputStream bufferedInputStream = getBufferedInputStreamFromFilepath("src/test/resources/not_an_xml_file.txt");
 
@@ -58,8 +54,47 @@ class SlideshowHandlerTest {
     }
 
     @Test
-    void testDefaults() throws Exception{
+    void testMalformedURLs() throws Exception {
 
+        BufferedInputStream bufferedInputStream = getBufferedInputStreamFromFilepath("src/test/resources/malformed_url_test.xml");
+
+        Slideshow parsedSlideshow;
+        Slideshow expectedSlideshow = new Slideshow();
+
+        Color expectedBackgroundColour = Color.decode("#faf347");
+        String expectedFont = "Calibri";
+        int expectedFontSize = 16;
+        Color expectedTextColour = Color.decode("#855797");
+        Color expectedLineColour = Color.decode("#fa44dd");
+        Color expectedShapeColour = Color.decode("#88cd02");
+
+        expectedSlideshow.setDefaults(expectedBackgroundColour, expectedFont, expectedFontSize, expectedTextColour, expectedLineColour, expectedShapeColour);
+
+        SlideDataStorage goodAudioSlide = new SlideDataStorage("goodAudio", 0);
+        SlideDataStorage goodVideoSlide = new SlideDataStorage("goodVideo", 0);
+        SlideDataStorage goodImageSlide = new SlideDataStorage("goodImage", 0);
+
+        URL audioURL =  new URL("file://bird.wav");
+        goodAudioSlide.addAudio(new AudioDataStorage(audioURL, 0, false));
+
+        URL videoURL = new URL("file://bird.mov");
+        goodVideoSlide.addVideo(new VideoDataStorage(100, 100, videoURL, 0, true));
+
+        URL imageURL = new URL("file://bird.png");
+        goodImageSlide.addImage(new ImageDataStorage(100, 100, imageURL, 10, 10, 0));
+
+        expectedSlideshow.addSlide(goodAudioSlide);
+        expectedSlideshow.addSlide(goodVideoSlide);
+        expectedSlideshow.addSlide(goodImageSlide);
+
+        parser.parse(bufferedInputStream, handler);
+        parsedSlideshow = handler.getSlideshow();
+
+        assertEquals(parsedSlideshow, expectedSlideshow);
+    }
+
+    @Test
+    void testDefaults() throws Exception{
 
         BufferedInputStream bufferedInputStream = getBufferedInputStreamFromFilepath("src/test/resources/defaults_test.xml");
 
