@@ -1,13 +1,17 @@
 package parser;
 
 import datastorage.Slideshow;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -15,12 +19,29 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SlideshowHandlerTest {
 
-    @Test
-    void testSlides() {
+    private static SAXParser parser;
+    private static SlideshowHandler handler;
 
-        String filePath = "src/test/resources/defaults_test.xml";
+    BufferedInputStream getBufferedInputStreamFromFilepath(String filePath) throws FileNotFoundException{
         File file = new File(filePath).getAbsoluteFile();
-        URI testFileLocation = file.toURI();
+
+        FileInputStream inputStream = new FileInputStream(file);
+
+        return new BufferedInputStream(inputStream);
+    }
+
+    @BeforeAll
+    static void init() throws Exception{
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        parser = factory.newSAXParser();
+        handler = new SlideshowHandler();
+    }
+
+    @Test
+    void testDefaults() throws Exception{
+
+
+        BufferedInputStream bufferedInputStream = getBufferedInputStreamFromFilepath("src/test/resources/defaults_test.xml");
 
         Slideshow parsedSlideShow;
         Slideshow expectedSlideshow = new Slideshow();
@@ -34,15 +55,9 @@ class SlideshowHandlerTest {
 
         expectedSlideshow.setDefaults(expectedBackgroundColour, expectedFont, expectedFontSize, expectedTextColour, expectedLineColour, expectedShapeColour);
 
-        try {
-            parsedSlideShow = Parser.parse(testFileLocation);
-            assertTrue(expectedSlideshow.equals(parsedSlideShow));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
+        parser.parse(bufferedInputStream, handler);
+
+        parsedSlideShow = handler.getSlideshow();
+        assertEquals(parsedSlideShow, expectedSlideshow);
     }
 }
