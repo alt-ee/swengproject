@@ -42,7 +42,7 @@ public class VideoDataStorage
                 startTime == that.startTime &&
                 loop == that.loop &&
                 location.equals(that.location) &&
-                id.equals(that.id);
+                Objects.equals(id, that.id);
     }
 
     @Override

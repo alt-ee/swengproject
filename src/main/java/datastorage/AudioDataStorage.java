@@ -34,7 +34,7 @@ public class AudioDataStorage
         return startTime == that.startTime &&
                 loop == that.loop &&
                 fileLocation.equals(that.fileLocation) &&
-                id.equals(that.id);
+                Objects.equals(id, that.id);
     }
 
     @Override
