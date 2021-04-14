@@ -125,9 +125,11 @@ public class SlideshowHandler extends DefaultHandler {
                 URL location = null;
                 try {
                     location = new URL("file://" + attributes.getValue("urlname"));
+
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
+
                 int duration;
                 String durationString = attributes.getValue("duration");
                 if (durationString != null) {
@@ -150,12 +152,13 @@ public class SlideshowHandler extends DefaultHandler {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
+
                 boolean loop = Boolean.parseBoolean(attributes.getValue("loop"));
 
                 int startTime;
-                String durationString = attributes.getValue("duration");
-                if (durationString != null) {
-                    startTime = Integer.parseInt(durationString);
+                String startTimeString = attributes.getValue("starttime");
+                if (startTimeString != null) {
+                    startTime = Integer.parseInt(startTimeString);
                     tempAudio = new AudioDataStorage(location, startTime, loop);
                 } else {
                     String id = attributes.getValue("id");
@@ -164,9 +167,7 @@ public class SlideshowHandler extends DefaultHandler {
 
                     tempAudio = new AudioDataStorage(location, id, loop);
                 }
-
                 tempSlide.addAudio(tempAudio);
-
                 break;
             }
             case "video": {
@@ -185,9 +186,9 @@ public class SlideshowHandler extends DefaultHandler {
                 boolean loop = Boolean.parseBoolean(attributes.getValue("loop"));
 
                 int startTime;
-                String durationString = attributes.getValue("duration");
-                if (durationString != null) {
-                    startTime = Integer.parseInt(durationString);
+                String startTimeString = attributes.getValue("starttime");
+                if (startTimeString != null) {
+                    startTime = Integer.parseInt(startTimeString);
                     tempVideo = new VideoDataStorage(xPos, yPos, location, startTime, loop);
                 } else {
                     String id = attributes.getValue("id");
