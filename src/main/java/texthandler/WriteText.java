@@ -12,14 +12,12 @@ public class WriteText extends JPanel
 
     //The current time in milliseconds that an external timer has been running for
     int currentTime = 0;
+
     public int getCurrentTime()
     {
         return currentTime;
     }
-    public void setCurrentTime(int updatedCurrentTime)
-    {
-        currentTime = updatedCurrentTime;
-    }
+
     public void incrementCurrentTime(int increment)
     {
         currentTime += increment;
@@ -93,5 +91,4 @@ public class WriteText extends JPanel
         int i = 0;
         frame.add(labelItalic[i]);
     }
-
 }
