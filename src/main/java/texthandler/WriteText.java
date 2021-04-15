@@ -5,9 +5,10 @@ import javax.swing.*;
 
 public class WriteText extends JPanel
 {
-    JLabel[] label = new JLabel[15];
-    JLabel labelBold = new JLabel();
-    JLabel labelItalic = new JLabel();
+    //JLabels as arrays, so multiple labels of the same type (e.g. Italic) are all added to screen
+    JLabel[] label = new JLabel[20];
+    JLabel[] labelBold = new JLabel[20];
+    JLabel[] labelItalic = new JLabel[20];
 
     //The current time in milliseconds that an external timer has been running for
     int currentTime = 0;
@@ -25,11 +26,12 @@ public class WriteText extends JPanel
     }
 
     //draws PLAIN text on frame
-    public void addText(int XPos, int YPos, String text, String font, int fontSize, Color colour, int duration, int i)
+    public void addText(int XPos, int YPos, String text, String font, int fontSize, Color colour, int duration)
     {
         if (duration == 0 || duration >= currentTime) //Draw text if duration=0 or duration set is more than the currentTime
         {
-            for (i=0; i < 15; i++)
+            int i;
+            for (i =0; i < 20; i++)
             {
                 label[i] = new JLabel(); //create new JLabels for each text added
                 label[i].setBounds(XPos, YPos, fontSize * 10, fontSize); //determines x & y bound positions for text
@@ -45,12 +47,15 @@ public class WriteText extends JPanel
     {
         if (duration == 0 || duration >= currentTime)
         {
-
-                labelBold.setBounds(XPos, YPos, fontSize * 10, fontSize);
-                labelBold.setFont(new Font(font, Font.BOLD, fontSize));
-                labelBold.setForeground(colour);
-                labelBold.setText(text);
-
+            int i;
+            for (i=0; i < 20; i++)
+            {
+                labelBold[i] = new JLabel();
+                labelBold[i].setBounds(XPos, YPos, fontSize * 10, fontSize);
+                labelBold[i].setFont(new Font(font, Font.BOLD, fontSize));
+                labelBold[i].setForeground(colour);
+                labelBold[i].setText(text);
+            }
         }
     }
 
@@ -59,28 +64,34 @@ public class WriteText extends JPanel
     {
         if (duration == 0 || duration >= currentTime)
         {
-
-                labelItalic.setBounds(XPos, YPos, fontSize * 10, fontSize);
-                labelItalic.setFont(new Font(font, Font.ITALIC, fontSize));
-                labelItalic.setForeground(colour);
-                labelItalic.setText(text);
-
+            int i;
+            for (i=0; i < 20; i++)
+            {
+                labelItalic[i] = new JLabel();
+                labelItalic[i].setBounds(XPos, YPos, fontSize * 10, fontSize);
+                labelItalic[i].setFont(new Font(font, Font.ITALIC, fontSize));
+                labelItalic[i].setForeground(colour);
+                labelItalic[i].setText(text);
+            }
         }
     }
 
-    //create label to add to main JFrame
-    public void addLabel(JFrame frame, int i)
+    //create labels to add to main JFrame
+    public void addLabel(JFrame frame)
     {
+        int i = 0;
         frame.add(label[i]);
     }
 
-    public void addBoldLabel(JFrame frame, int i)
+    public void addBoldLabel(JFrame frame)
     {
-        frame.add(labelBold);
+        int i = 0;
+        frame.add(labelBold[i]);
     }
-    public void addItalicLabel(JFrame frame, int i)
+    public void addItalicLabel(JFrame frame)
     {
-        frame.add(labelItalic);
+        int i = 0;
+        frame.add(labelItalic[i]);
     }
 
 }
