@@ -20,7 +20,7 @@ public class TextTest
         frame.setLayout(null); //null for setBounds to work
 
         /*write.addItalicText(50, 375, "test", "Serif", 15, Color.CYAN, 10);
-        for (int i = 50; i < 1350; i += 50)
+        for (int i = 50; i < 1350; i += 50)      //Duration Test
         {
             write.addItalicText(50+i, 375, "test", "Serif", 15, Color.CYAN, 10);
             write.addLabel(frame);
@@ -28,11 +28,20 @@ public class TextTest
         }*/
 
         //Adding text onto JFrame
-        write.addText(400, 200, "Hello", "Serif", 40, Color.RED, 0);
-        write.addText(300, 250, "hiii", "Serif", 20, Color.ORANGE, 0);
+        write.addText(400, 200, "Hello", "Serif", 40, Color.RED, 0, 0);
+        write.addLabel(frame, 0); //adds label from WriteText Class to this JFrame
+
+        write.addText(300, 250, "hiii", "Serif", 20, Color.ORANGE, 0, 1);
+        write.addLabel(frame, 1); //2 JLabels of similar type (addText)
+
+        write.addText(450, 350, "byeeee", "Serif", 20, Color.PINK, 0, 2);
+        write.addLabel(frame, 2); //3 JLabels of similar type (addText)
+
         write.addBoldText(200, 100, "Goodbye", "Calibri", 30, Color.BLACK, 0);
         write.addItalicText(600, 300, "Wait", "Arial", 30, Color.BLUE, 0);
-        write.addLabel(frame); //adds label from WriteText Class to this JFrame
+        write.addBoldLabel(frame, 0);
+        //write.addItalicText(100, 25000, "nooo", "Arial", 20, Color.BLUE, 0, 1);
+        write.addItalicLabel(frame, 0);
 
         frame.revalidate();
     }
