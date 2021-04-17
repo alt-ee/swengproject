@@ -93,4 +93,13 @@ class SlideshowHandlerTest {
         assertEquals(0, parsedAudio.getStartTime());
         assertEquals(0, parsedVideo.getStartTime());
     }
+
+    @Test
+    void testUnexpectedElement() throws Exception {
+
+        BufferedInputStream bufferedInputStream = getBufferedInputStreamFromFilepath("src/test/resources/unexpected_element.xml");
+
+        Assertions.assertDoesNotThrow(() -> parser.parse(bufferedInputStream, handler));
+        Assertions.assertDoesNotThrow(() -> handler.getSlideshow());
+    }
 }
