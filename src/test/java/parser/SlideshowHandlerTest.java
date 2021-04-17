@@ -4,14 +4,10 @@ import datastorage.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.Text;
 import org.xml.sax.SAXParseException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.awt.*;
 import java.io.*;
-import java.net.URL;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -155,17 +155,17 @@ public class SlideshowHandler extends DefaultHandler {
 
                 boolean loop = Boolean.parseBoolean(attributes.getValue("loop"));
 
-                int startTime;
                 String startTimeString = attributes.getValue("starttime");
+                String idString = attributes.getValue("id");
                 if (startTimeString != null) {
-                    startTime = Integer.parseInt(startTimeString);
+                    int startTime = Integer.parseInt(startTimeString);
                     tempAudio = new AudioDataStorage(location, startTime, loop);
-                } else {
+                } else if (idString != null) {
                     String id = attributes.getValue("id");
 
-                    //TODO raise exception if neither starttime nor id are set
-
                     tempAudio = new AudioDataStorage(location, id, loop);
+                } else {
+                    tempAudio = new AudioDataStorage(location, 0, loop);
                 }
                 tempSlide.addAudio(tempAudio);
                 break;
@@ -185,17 +185,15 @@ public class SlideshowHandler extends DefaultHandler {
 
                 boolean loop = Boolean.parseBoolean(attributes.getValue("loop"));
 
-                int startTime;
                 String startTimeString = attributes.getValue("starttime");
+                String idString = attributes.getValue("id");
                 if (startTimeString != null) {
-                    startTime = Integer.parseInt(startTimeString);
+                    int startTime = Integer.parseInt(startTimeString);
                     tempVideo = new VideoDataStorage(xPos, yPos, location, startTime, loop);
+                } else if (idString != null) {
+                    tempVideo = new VideoDataStorage(xPos, yPos, location, idString, loop);
                 } else {
-                    String id = attributes.getValue("id");
-
-                    //TODO raise exception if neither starttime nor id are set
-
-                    tempVideo = new VideoDataStorage(xPos, yPos, location, id, loop);
+                    tempVideo = new VideoDataStorage(xPos, yPos, location, 0, loop);
                 }
 
                 tempSlide.addVideo(tempVideo);
