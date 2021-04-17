@@ -4,12 +4,14 @@ import datastorage.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.w3c.dom.Text;
 import org.xml.sax.SAXParseException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,20 +61,20 @@ class SlideshowHandlerTest {
         BufferedInputStream bufferedInputStream = getBufferedInputStreamFromFilepath("src/test/resources/defaults_test.xml");
 
         Slideshow parsedSlideShow;
-        Slideshow expectedSlideshow = new Slideshow();
-
-        Color expectedBackgroundColour = Color.decode("#faf347");
-        String expectedFont = "Calibri";
-        int expectedFontSize = 16;
-        Color expectedTextColour = Color.decode("#855797");
-        Color expectedLineColour = Color.decode("#fa44dd");
-        Color expectedShapeColour = Color.decode("#88cd02");
-
-        expectedSlideshow.setDefaults(expectedBackgroundColour, expectedFont, expectedFontSize, expectedTextColour, expectedLineColour, expectedShapeColour);
 
         parser.parse(bufferedInputStream, handler);
 
         parsedSlideShow = handler.getSlideshow();
-        assertEquals(parsedSlideShow, expectedSlideshow);
+
+        SlideDataStorage parsedSlide = parsedSlideShow.getSlides().get(0);
+        TextDataStorage parsedText = parsedSlide.textIterator().next();
+        LineDataStorage parsedLine = parsedSlide.lineIterator().next();
+        ShapeDataStorage parsedShape = parsedSlide.shapeIterator().next();
+
+        assertEquals(parsedText.getColour(), parsedSlideShow.getDefaultTextColour());
+        assertEquals(parsedText.getFont(), parsedSlideShow.getDefaultFont());
+        assertEquals(parsedText.getFontSize(), parsedSlideShow.getDefaultFontSize());
+        assertEquals(parsedLine.getColour(), parsedSlideShow.getDefaultLineColour());
+        assertEquals(parsedShape.getColour(), parsedSlideShow.getDefaultShapeColour());
     }
 }
