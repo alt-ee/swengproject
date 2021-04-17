@@ -71,10 +71,30 @@ class SlideshowHandlerTest {
         LineDataStorage parsedLine = parsedSlide.lineIterator().next();
         ShapeDataStorage parsedShape = parsedSlide.shapeIterator().next();
 
-        assertEquals(parsedText.getColour(), parsedSlideShow.getDefaultTextColour());
-        assertEquals(parsedText.getFont(), parsedSlideShow.getDefaultFont());
-        assertEquals(parsedText.getFontSize(), parsedSlideShow.getDefaultFontSize());
-        assertEquals(parsedLine.getColour(), parsedSlideShow.getDefaultLineColour());
-        assertEquals(parsedShape.getColour(), parsedSlideShow.getDefaultShapeColour());
+        assertEquals(parsedSlideShow.getDefaultTextColour(), parsedText.getColour());
+        assertEquals(parsedSlideShow.getDefaultFont(), parsedText.getFont());
+        assertEquals(parsedSlideShow.getDefaultFontSize(), parsedText.getFontSize());
+        assertEquals(parsedSlideShow.getDefaultLineColour(), parsedLine.getColour());
+        assertEquals(parsedSlideShow.getDefaultShapeColour(), parsedShape.getColour());
+    }
+
+    @Test
+    void testUnsetStartTimes() throws Exception {
+
+        BufferedInputStream bufferedInputStream = getBufferedInputStreamFromFilepath("src/test/resources/unset_start_times.xml");
+
+        Slideshow parsedSlideShow;
+
+        parser.parse(bufferedInputStream, handler);
+
+        parsedSlideShow = handler.getSlideshow();
+
+        SlideDataStorage parsedSlide = parsedSlideShow.getSlides().get(0);
+
+        AudioDataStorage parsedAudio = parsedSlide.audioIterator().next();
+        VideoDataStorage parsedVideo = parsedSlide.videoIterator().next();
+
+        assertEquals(0, parsedAudio.getStartTime());
+        assertEquals(0, parsedVideo.getStartTime());
     }
 }
