@@ -54,4 +54,27 @@ public class Slideshow {
         return slides;
     }
 
+    public Color getDefaultBackgroundColour() {
+        return defaultBackgroundColour;
+    }
+
+    public String getDefaultFont() {
+        return defaultFont;
+    }
+
+    public int getDefaultFontSize() {
+        return defaultFontSize;
+    }
+
+    public Color getDefaultTextColour() {
+        return defaultTextColour;
+    }
+
+    public Color getDefaultLineColour() {
+        return defaultLineColour;
+    }
+
+    public Color getDefaultShapeColour() {
+        return defaultShapeColour;
+    }
 }
