@@ -35,14 +35,14 @@ public class TextTest
 
         //Adding text onto JPanel
         //PLAIN TEXT
-        write.addText(panel, 30, 100, "PlainText", "Serif", 40, Color.RED, 10);
+        write.addText(panel, 30, 100, "PlainText", "Serif", 40, Color.RED, 0);
         write.addLabel(panel);  //add JLabel onto JPanel
 
-        //write.addText(panel, 30, 25, "Hello", "Serif", 20, Color.RED, 0);
-        //write.addLabel(panel);
+        write.addText(panel, 30, 25, "Hello", "Serif", 20, Color.RED, 0);
+        write.addLabel(panel);
 
-        //write.addText(panel, 45, 35, "plain text again", "Serif", 20, Color.RED, 0);
-        //write.addLabel(panel); //3 JLabels of similar type (addText)
+        write.addText(panel, 45, 65, "plain text again", "Serif", 20, Color.RED, 0);
+        write.addLabel(panel); //3 JLabels of similar type (addText)
 
         /***********************************************************************/
         //making 2nd panel to TEST
@@ -55,12 +55,12 @@ public class TextTest
         write.addBoldText(panel2, 20, 60, "Bold Text", "Calibri", 30, Color.BLACK, 0);
         write.addBoldLabel(panel2);
 
-        //write.addBoldText(panel2, 10, 25, "Goodbye", "Arial", 20, Color.BLACK, 0);
-        //write.addBoldLabel(panel2); //2 JLabels of similar type (addBoldText)
+        write.addBoldText(panel2, 10, 25, "bold test", "Arial", 20, Color.BLACK, 0);
+        write.addBoldLabel(panel2); //2 JLabels of similar type (addBoldText)
 
         /***********************************************************************/
         //making 3rd panel to TEST
-        panel3.setSize(210, 115);
+        panel3.setSize(240, 115);
         panel3.setLocation(600, 300);
         frame.add(panel3);
         panel3.setLayout(null);
@@ -69,8 +69,8 @@ public class TextTest
         write.addItalicText(panel3, 10, 75, "Italic Text", "Arial", 30, Color.BLUE, 0);
         write.addItalicLabel(panel3);
 
-        //write.addItalicText(panel3, 50, 15, "Wait", "Calibri", 40, Color.BLUE, 0);
-        //write.addItalicLabel(panel3); //2 JLabels of similar type (addItalicText)
+        write.addItalicText(panel3, 50, 15, "test italic", "Calibri", 40, Color.BLUE, 0);
+        write.addItalicLabel(panel3); //2 JLabels of similar type (addItalicText)
 
         /***********************************************************************/
         //making 4th duration panel to TEST
@@ -81,16 +81,9 @@ public class TextTest
 
         for (int j = 50; j < 950; j += 50)      //Duration Test, text:"test" should disappear one-by-one
         {
-            write.addItalicText(panelDuration, j, 20, "test", "Serif", 15, Color.PINK, j*10);
+            write.addItalicText(panelDuration, j, 20, "test", "Serif", 15, Color.BLACK, j*10);
             write.addItalicLabel(panelDuration);
         }
-
-        frame.revalidate();
-    }
-
-    public static void main(String[] args)
-    {
-        TextTest test = new TextTest(); //Entry point
 
         //Example of using an external timer so that text will be displayed only for their specified duration
         int period = 500;    //How often the timer task will be called in milliseconds
@@ -104,15 +97,22 @@ public class TextTest
             public void run()
             {
                 //Increment the WriteText's stored time value by the period of the timer
-                test.write.incrementCurrentTime(period);
-                System.out.println("Current time: " + test.write.getCurrentTime() + " milliseconds");
-                //Refresh the test JFrame so changes can be seen
-                //test.write.repaint();
-                test.frame.revalidate();
+                write.incrementCurrentTime(period);
+                System.out.println("Current panel time: " + write.getCurrentTime() + " milliseconds");
+                //Refresh the test JPanel so changes can be seen
+                panelDuration.repaint();
+                panelDuration.revalidate();
             }
         };
 
         //Schedule timer to run the timer task with no initial delay every 500 milliseconds (half a second)
-        timer.scheduleAtFixedRate(task, 3, period);
+        timer.scheduleAtFixedRate(task, 0, period);
+
+        //panel.revalidate();
+    }
+
+    public static void main(String[] args)
+    {
+        new TextTest(); //Entry point
     }
 }

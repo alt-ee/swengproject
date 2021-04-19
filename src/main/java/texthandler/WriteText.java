@@ -29,9 +29,9 @@ public class WriteText
         if (duration == 0 || duration >= currentTime) //Draw text if duration=0 or duration set is more than the currentTime
         {
             int i;
-            for (i =0; i < 20; i++)
+            for (i = 0; i < 20; i++)
             {
-                panel.setBackground(Color.YELLOW); // make JPanel Yellow for identification during TESTING
+                panel.setBackground(Color.PINK); // make JPanel Yellow for identification during TESTING
                 label[i] = new JLabel(); //create new JLabels for each text added
                 label[i].setBounds(XPos, YPos, fontSize * 10, fontSize); //determines x & y bound positions for text
                 label[i].setFont(new Font(font, Font.PLAIN, fontSize)); //determines font and font size of text
@@ -47,9 +47,9 @@ public class WriteText
         if (duration == 0 || duration >= currentTime)
         {
             int i;
-            for (i=0; i < 20; i++)
+            for (i = 0; i < 20; i++)
             {
-                panel.setBackground(Color.YELLOW);
+                panel.setBackground(Color.PINK);
                 labelBold[i] = new JLabel();
                 labelBold[i].setBounds(XPos, YPos, fontSize * 10, fontSize);
                 labelBold[i].setFont(new Font(font, Font.BOLD, fontSize));
@@ -65,9 +65,9 @@ public class WriteText
         if (duration == 0 || duration >= currentTime)
         {
             int i;
-            for (i=0; i < 20; i++)
+            for (i = 0; i < 20; i++)
             {
-                panel.setBackground(Color.YELLOW);
+                panel.setBackground(Color.PINK);
                 labelItalic[i] = new JLabel();
                 labelItalic[i].setBounds(XPos, YPos, fontSize * 10, fontSize);
                 labelItalic[i].setFont(new Font(font, Font.ITALIC, fontSize));
@@ -91,7 +91,10 @@ public class WriteText
     }
     public void addItalicLabel(JPanel panel)
     {
-        int i = 0;
-        panel.add(labelItalic[i]);
+        //if (duration == 0 || duration >= currentTime) //Draw text if duration=0 or duration set is more than the currentTime
+        {
+            int i = 0;
+            panel.add(labelItalic[i]);
+        }
     }
 }
