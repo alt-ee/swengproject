@@ -1,7 +1,7 @@
 package texthandler;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class WriteText
 {
@@ -76,20 +76,5 @@ public class WriteText
                 panel.add(labelItalic[i]);
             }
         }
-    }
-
-    //create labels to add to JPanels
-    //public void addLabel(JPanel panel)
-    {
-        //panel.add(label[i]);
-    }
-
-    //public void addBoldLabel(JPanel panel)
-    {
-        //panel.add(labelBold[i]);
-    }
-    //public void addItalicLabel(JPanel panel)
-    {
-        //panel.add(labelItalic[i]);
     }
 }

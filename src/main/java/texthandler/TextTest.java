@@ -8,7 +8,6 @@ import java.util.TimerTask;
 public class TextTest
 {
     WriteText write = new WriteText();
-    JFrame frame = new JFrame();
 
     // 4 different JPanels, to test 4 different JLabels
     JPanel panel = new JPanel();         //Test 1st JPanel
@@ -20,6 +19,7 @@ public class TextTest
     {
         //example JFrame to test
         //Frame onto which the JPanel will be shown
+        JFrame frame = new JFrame();
         frame.setVisible(true);
         frame.setSize(1000, 600);
         frame.setTitle("Text Test");
@@ -29,7 +29,7 @@ public class TextTest
         /***********************************************************************/
         //1st panel to TEST
         panel.setSize(210, 190);    //set the height and width of JPanel
-        panel.setLocation(240, 250);      //set the X-position and Y-position of the JLabel
+        panel.setLocation(240, 250);      //set the X-position and Y-position of the JPanel
         frame.add(panel);                       //add JPanel onto JFrame
         panel.setLayout(null);                  //set layout at null to manually input where text is drawn in panel
 
