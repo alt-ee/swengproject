@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class WriteText
 {
-    //JLabels as arrays, so multiple labels of the same type (e.g. Italic) are all added to screen
+    //JLabels as arrays, so multiple labels of the same type (e.g. Italic) are all added to JPanel
     JLabel[] label = new JLabel[20];
     JLabel[] labelBold = new JLabel[20];
     JLabel[] labelItalic = new JLabel[20];
@@ -26,17 +26,18 @@ public class WriteText
     //draws PLAIN text on frame
     public void addText(JPanel panel, int XPos, int YPos, String text, String font, int fontSize, Color colour, int duration)
     {
-        if (duration == 0 || duration >= currentTime) //Draw text if duration=0 or duration set is more than the currentTime
+        //Draw text if duration=0 or duration set is more than the currentTime
+        if (duration == 0 || duration >= currentTime)
         {
-            int i;
-            for (i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
-                panel.setBackground(Color.PINK); // make JPanel Yellow for identification during TESTING
-                label[i] = new JLabel(); //create new JLabels for each text added
-                label[i].setBounds(XPos, YPos, fontSize * 10, fontSize); //determines x & y bound positions for text
-                label[i].setFont(new Font(font, Font.PLAIN, fontSize)); //determines font and font size of text
-                label[i].setForeground(colour); //changes text colour
-                label[i].setText(text); //writes text on frame
+                panel.setBackground(Color.PINK);                                //make JPanel Yellow for identification during TESTING
+                label[i] = new JLabel();                                        //create new JLabels for each text added
+                label[i].setBounds(XPos, YPos, fontSize * 10, fontSize);  //determines x & y bound positions for text
+                label[i].setFont(new Font(font, Font.PLAIN, fontSize));         //determines font and font size of text
+                label[i].setForeground(colour);                                 //changes text colour
+                label[i].setText(text);                                         //writes text on panel
+                panel.add(label[i]);                                            //add JLabel onto JPanel
             }
         }
     }
@@ -46,8 +47,7 @@ public class WriteText
     {
         if (duration == 0 || duration >= currentTime)
         {
-            int i;
-            for (i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 panel.setBackground(Color.PINK);
                 labelBold[i] = new JLabel();
@@ -55,6 +55,7 @@ public class WriteText
                 labelBold[i].setFont(new Font(font, Font.BOLD, fontSize));
                 labelBold[i].setForeground(colour);
                 labelBold[i].setText(text);
+                panel.add(labelBold[i]);
             }
         }
     }
@@ -64,8 +65,7 @@ public class WriteText
     {
         if (duration == 0 || duration >= currentTime)
         {
-            int i;
-            for (i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 panel.setBackground(Color.PINK);
                 labelItalic[i] = new JLabel();
@@ -73,28 +73,23 @@ public class WriteText
                 labelItalic[i].setFont(new Font(font, Font.ITALIC, fontSize));
                 labelItalic[i].setForeground(colour);
                 labelItalic[i].setText(text);
+                panel.add(labelItalic[i]);
             }
         }
     }
 
     //create labels to add to JPanels
-    public void addLabel(JPanel panel)
+    //public void addLabel(JPanel panel)
     {
-        int i = 0;
-        panel.add(label[i]);
+        //panel.add(label[i]);
     }
 
-    public void addBoldLabel(JPanel panel)
+    //public void addBoldLabel(JPanel panel)
     {
-        int i = 0;
-        panel.add(labelBold[i]);
+        //panel.add(labelBold[i]);
     }
-    public void addItalicLabel(JPanel panel)
+    //public void addItalicLabel(JPanel panel)
     {
-        //if (duration == 0 || duration >= currentTime) //Draw text if duration=0 or duration set is more than the currentTime
-        {
-            int i = 0;
-            panel.add(labelItalic[i]);
-        }
+        //panel.add(labelItalic[i]);
     }
 }
