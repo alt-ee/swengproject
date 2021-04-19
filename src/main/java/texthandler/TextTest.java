@@ -8,46 +8,81 @@ import java.util.TimerTask;
 public class TextTest
 {
     WriteText write = new WriteText();
+    JFrame frame = new JFrame();
+
+    // Make 4 different JPanels, to test 4 different JLabel on
+    JPanel panel = new JPanel();         //Test 1st JPanel
+    JPanel panel2 = new JPanel();        //Test 2nd JPanel
+    JPanel panel3 = new JPanel();        //Test 3rd JPanel
+    JPanel panelDuration = new JPanel(); //Test 4th Duration JPanel
 
     public TextTest()
     {
         //example JFrame to test
-        JFrame frame = new JFrame(); //Frame onto which the text will be shown
+        //Frame onto which the JPanel will be shown
         frame.setVisible(true);
-        frame.setSize(1000, 500);
+        frame.setSize(1000, 700);
         frame.setTitle("Text Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null); //null for setBounds to work
 
-        //Adding text onto JFrame
+        /***********************************************************************/
+        //making 1st panel to TEST
+        panel.setSize(210, 190);
+        panel.setLocation(240, 250);
+        frame.add(panel);       //add JPanel onto JFrame
+        panel.setLayout(null);  //null for JLabel to be at specific position on JPanel
+
+        //Adding text onto JPanel
         //PLAIN TEXT
-        write.addText(400, 200, "Hello", "Serif", 40, Color.RED, 10);
-        write.addLabel(frame); //adds label from WriteText Class to this JFrame
+        write.addText(panel, 30, 100, "PlainText", "Serif", 40, Color.RED, 10);
+        write.addLabel(panel);  //add JLabel onto JPanel
 
-        write.addText(300, 250, "plainText", "Serif", 20, Color.RED, 0);
-        write.addLabel(frame);
+        //write.addText(panel, 30, 25, "Hello", "Serif", 20, Color.RED, 0);
+        //write.addLabel(panel);
 
-        write.addText(450, 350, "plain text again", "Serif", 20, Color.RED, 0);
-        write.addLabel(frame); //3 JLabels of similar type (addText)
+        //write.addText(panel, 45, 35, "plain text again", "Serif", 20, Color.RED, 0);
+        //write.addLabel(panel); //3 JLabels of similar type (addText)
+
+        /***********************************************************************/
+        //making 2nd panel to TEST
+        panel2.setSize(215, 115);
+        panel2.setLocation(200, 100);
+        frame.add(panel2);
+        panel2.setLayout(null);
 
         //BOLD TEXT
-        write.addBoldText(200, 100, "Goodbye", "Calibri", 30, Color.BLACK, 0);
-        write.addBoldLabel(frame);
+        write.addBoldText(panel2, 20, 60, "Bold Text", "Calibri", 30, Color.BLACK, 0);
+        write.addBoldLabel(panel2);
 
-        write.addBoldText(100, 250, "bold text", "Arial", 20, Color.BLACK, 0);
-        write.addBoldLabel(frame); //2 JLabels of similar type (addBoldText)
+        //write.addBoldText(panel2, 10, 25, "Goodbye", "Arial", 20, Color.BLACK, 0);
+        //write.addBoldLabel(panel2); //2 JLabels of similar type (addBoldText)
+
+        /***********************************************************************/
+        //making 3rd panel to TEST
+        panel3.setSize(210, 115);
+        panel3.setLocation(600, 300);
+        frame.add(panel3);
+        panel3.setLayout(null);
 
         //ITALIC TEXT
-        write.addItalicText(600, 300, "Wait", "Arial", 30, Color.BLUE, 0);
-        write.addItalicLabel(frame);
+        write.addItalicText(panel3, 10, 75, "Italic Text", "Arial", 30, Color.BLUE, 0);
+        write.addItalicLabel(panel3);
 
-        write.addItalicText(100, 150, "italic text", "Calibri", 40, Color.BLUE, 0);
-        write.addItalicLabel(frame); //2 JLabels of similar type (addItalicText)
+        //write.addItalicText(panel3, 50, 15, "Wait", "Calibri", 40, Color.BLUE, 0);
+        //write.addItalicLabel(panel3); //2 JLabels of similar type (addItalicText)
+
+        /***********************************************************************/
+        //making 4th duration panel to TEST
+        panelDuration.setSize(950, 50);
+        panelDuration.setLocation(10, 10);
+        frame.add(panelDuration);
+        panelDuration.setLayout(null);
 
         for (int j = 50; j < 950; j += 50)      //Duration Test, text:"test" should disappear one-by-one
         {
-            write.addItalicText(j, 20, "test", "Serif", 15, Color.PINK, j*10);
-            write.addItalicLabel(frame);
+            write.addItalicText(panelDuration, j, 20, "test", "Serif", 15, Color.PINK, j*10);
+            write.addItalicLabel(panelDuration);
         }
 
         frame.revalidate();
@@ -73,7 +108,7 @@ public class TextTest
                 System.out.println("Current time: " + test.write.getCurrentTime() + " milliseconds");
                 //Refresh the test JFrame so changes can be seen
                 //test.write.repaint();
-                test.write.revalidate();
+                test.frame.revalidate();
             }
         };
 
