@@ -25,14 +25,14 @@ class AudioPlayerTest {
         }
 
     @Test
-    void noFileLoaded(){
+    void noFileLoaded() {
         AudioPlayer myPlayer = new AudioPlayer();
         myPlayer.playClip(false);
         assertNull(myPlayer.audioClip);
     }
 
     @Test
-    void soundQuality() throws InterruptedException {
+    void soundQuality() {
         AudioPlayer myPlayer = new AudioPlayer();
         String input = "src/main/resources/RedKite1.wav";
         try {
@@ -47,6 +47,13 @@ class AudioPlayerTest {
         long clipLength = myPlayer.audioClip.getMicrosecondLength()/1000;
         myPlayer.playClip(false);
 
-        Thread.sleep(clipLength);
+        while (myPlayer.audioClip.getMicrosecondPosition() < clipLength) {
+            if (clipLength == myPlayer.audioClip.getMicrosecondPosition()) {
+                assertEquals(clipLength, myPlayer.audioClip.getMicrosecondPosition());
+            }
+            else {
+                continue;
+            }
+        }
     }
 }
