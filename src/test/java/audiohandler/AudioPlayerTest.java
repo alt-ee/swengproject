@@ -76,8 +76,22 @@ class AudioPlayerTest {
     }
 
     @Test
-    void stopFalseClip() {
+    void soundQuality() throws InterruptedException {
+        AudioPlayer myPlayer = new AudioPlayer();
+        String input = "src/main/resources/RedKite1.wav";
+        try {
+            myPlayer.loadClip(input);
+        } catch (IOException e) {
+            System.out.println("File not found");
+        } catch (UnsupportedAudioFileException e) {
+            System.out.println("File is of incorrect format");
+        } catch (LineUnavailableException e) {
+            System.out.println("Line unavailable");
+        }
+        long clipLength = myPlayer.audioClip.getMicrosecondLength()/1000;
+        myPlayer.playClip(false);
 
+        Thread.sleep(clipLength);
     }
 
 }
