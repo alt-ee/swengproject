@@ -25,6 +25,13 @@ class AudioPlayerTest {
         }
 
     @Test
+    void noFileLoaded(){
+        AudioPlayer myPlayer = new AudioPlayer();
+        myPlayer.playClip(false);
+        assertNull(myPlayer.audioClip);
+    }
+
+    @Test
     void soundQuality() throws InterruptedException {
         AudioPlayer myPlayer = new AudioPlayer();
         String input = "src/main/resources/RedKite1.wav";
