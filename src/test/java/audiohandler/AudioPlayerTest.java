@@ -24,57 +24,6 @@ class AudioPlayerTest {
         assertThrows(UnsupportedAudioFileException.class , ()-> myPlayer.loadClip(input));
         }
 
-
-    @Test
-    void playTrueClip() {
-        AudioPlayer myPlayer = new AudioPlayer();
-        String input = "src/main/resources/European-Robin-Erithacus-rubecula.au";
-        try {
-            myPlayer.loadClip(input);
-        } catch (IOException e) {
-            System.out.println("File not found");
-        } catch (UnsupportedAudioFileException e) {
-            System.out.println("File is of incorrect format");
-        } catch (LineUnavailableException e) {
-            System.out.println("Line unavailable");
-        }
-        myPlayer.playClip(false);
-    }
-
-    @Test
-    void stopTrueClip() {
-        AudioPlayer myPlayer = new AudioPlayer();
-        String input = "src/main/resources/RedKite1.wav";
-        try {
-            myPlayer.loadClip(input);
-        } catch (IOException e) {
-            System.out.println("File not found");
-        } catch (UnsupportedAudioFileException e) {
-            System.out.println("File is of incorrect format");
-        } catch (LineUnavailableException e) {
-            System.out.println("Line unavailable");
-        }
-        myPlayer.playClip(false);
-        myPlayer.stopClip();
-    }
-
-    @Test
-    void tryFalseClip() {
-        AudioPlayer myPlayer = new AudioPlayer();
-        String input = "src/main/resources/RedKite100.wav";
-        try {
-            myPlayer.loadClip(input);
-        } catch (IOException e) {
-            System.out.println("File not found");
-        } catch (UnsupportedAudioFileException e) {
-            System.out.println("File is of incorrect format");
-        } catch (LineUnavailableException e) {
-            System.out.println("Line unavailable");
-        }
-        myPlayer.playClip(false);
-        myPlayer.stopClip();
-    }
-
     @Test
     void soundQuality() throws InterruptedException {
         AudioPlayer myPlayer = new AudioPlayer();
@@ -93,5 +42,4 @@ class AudioPlayerTest {
 
         Thread.sleep(clipLength);
     }
-
 }
