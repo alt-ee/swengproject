@@ -47,7 +47,7 @@ class AudioPlayerTest {
         long clipLength = myPlayer.audioClip.getMicrosecondLength()/1000;
         myPlayer.playClip(false);
 
-        while (myPlayer.audioClip.getMicrosecondPosition() < clipLength) {
+        while (myPlayer.audioClip.getMicrosecondPosition()/1000 < clipLength) {
             if (clipLength == myPlayer.audioClip.getMicrosecondPosition()) {
                 assertEquals(clipLength, myPlayer.audioClip.getMicrosecondPosition());
             }
