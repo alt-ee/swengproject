@@ -56,4 +56,36 @@ class AudioPlayerTest {
             }
         }
     }
+
+    @Test
+    void interaction() {
+        AudioPlayer myPlayer = new AudioPlayer();
+        String input = "src/main/resources/RedKite1.wav";
+        try {
+            myPlayer.loadClip(input);
+        } catch (IOException e) {
+            System.out.println("File not found");
+        } catch (UnsupportedAudioFileException e) {
+            System.out.println("File is of incorrect format");
+        } catch (LineUnavailableException e) {
+            System.out.println("Line unavailable");
+        }
+        long clipLength = myPlayer.audioClip.getMicrosecondLength()/1000;
+        myPlayer.playClip(false);
+
+        long counter = 0;
+        while (myPlayer.audioClip.getMicrosecondPosition()/1000 < clipLength) {
+            if (clipLength == myPlayer.audioClip.getMicrosecondPosition()) {
+                assertEquals(clipLength, myPlayer.audioClip.getMicrosecondPosition());
+            }
+            if (counter == 2000000){
+                myPlayer.stopClip();
+                counter += 1;
+            }
+            if (counter == 3000000){
+                myPlayer.playClip(false);
+            }
+            counter += 1;
+        }
+    }
 }
