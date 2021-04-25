@@ -33,7 +33,7 @@ public class TextTest
         frame.add(panel);                       //add JPanel onto JFrame
         panel.setLayout(null);                  //set layout at null to manually input where text is drawn in panel
 
-        //Adding PLAIN TEXT onto JPanel
+        //Adding TEXT onto JPanel
         write.addText(panel, 30, 100, "PlainText", "Serif", 40, Color.RED, 5000);
         write.addText(panel, 30, 25, "plain text", "Serif", 20, Color.RED, 0);
         write.addText(panel, 45, 65, "plain text again", "Serif", 20, Color.RED, 0);
@@ -45,9 +45,9 @@ public class TextTest
         frame.add(panel2);
         panel2.setLayout(null);
 
-        //Adding BOLD TEXT onto JPanel
-        write.addBoldText(panel2, 20, 60, "Bold Text", "Calibri", 30, Color.BLACK, 0);
-        write.addBoldText(panel2, 10, 25, "bold test", "Arial", 20, Color.BLACK, 0);
+        //Adding TEXT onto JPanel
+        write.addText(panel2, 20, 60, "Bold Text", "Calibri", 30, Color.BLACK, 0);
+        write.addText(panel2, 10, 25, "bold test", "Arial", 20, Color.BLACK, 0);
 
         /***********************************************************************/
         //3rd panel to TEST
@@ -56,9 +56,9 @@ public class TextTest
         frame.add(panel3);
         panel3.setLayout(null);
 
-        //Adding ITALIC TEXT onto JPanel
-        write.addItalicText(panel3, 10, 75, "Italic Text", "Arial", 30, Color.BLUE, 0);
-        write.addItalicText(panel3, 50, 15, "test italic", "Calibri", 40, Color.BLUE, 0);
+        //Adding TEXT onto JPanel
+        write.addText(panel3, 10, 75, "Italic Text", "Arial", 30, Color.BLUE, 0);
+        write.addText(panel3, 50, 15, "test italic", "Calibri", 40, Color.BLUE, 0);
 
         /***********************************************************************/
         //4th duration panel to TEST
@@ -67,10 +67,10 @@ public class TextTest
         frame.add(panelDuration);
         panelDuration.setLayout(null);
 
-        //Duration Test, italic text:"test" should disappear one-by-one
+        //Duration Test, text:"test" should disappear one-by-one
         for (int i = 50; i < 950; i += 50)
         {
-            write.addItalicText(panelDuration, i, 20, "test", "Serif", 15, Color.BLACK, i*10);
+            write.addText(panelDuration, i, 20, "test", "Serif", 15, Color.BLACK, i*10);
         }
 
         //Example of using an external timer so that text will be displayed only for its specified duration
