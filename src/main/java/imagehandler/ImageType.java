@@ -1,3 +1,4 @@
+package imagehandler;
 import javax.swing.*;
 
 public class ImageType {
