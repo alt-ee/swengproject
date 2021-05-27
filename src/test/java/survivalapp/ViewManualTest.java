@@ -14,10 +14,10 @@ public class ViewManualTest {
         view.newWindow(1280, 720);
 
         try {
-            URL url1 = new URL("file://src/test/recources/image0.jpg");
+            URL url1 = new URL("file:///src/test/resources/image0.jpg");
             ImageDataStorage image1 = new ImageDataStorage(20, 20, url1, 300, 300, 0);
 
-            URL url2 = new URL("file://src/test/resources/hulk.JPEG");
+            URL url2 = new URL("file:///src/test/resources/hulk.JPEG");
             ImageDataStorage image2 = new ImageDataStorage(20, 400, url2, 300, 300, 0);
 
             view.drawImage(image1);
