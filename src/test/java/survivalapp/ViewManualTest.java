@@ -1,7 +1,10 @@
 package survivalapp;
 
 import datastorage.ImageDataStorage;
+import datastorage.ShaderDataStorage;
+import datastorage.ShapeDataStorage;
 
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -11,8 +14,10 @@ public class ViewManualTest {
 
         View view = new View();
 
+        // Window test
         view.newWindow(1280, 720);
 
+        // Image test
         try {
             URL url1 = new URL("file:///src/test/resources/image0.jpg");
             ImageDataStorage image1 = new ImageDataStorage(20, 20, url1, 300, 300, 0);
@@ -26,6 +31,16 @@ public class ViewManualTest {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
+        // Graphics test
+        ShapeDataStorage shape1 = new ShapeDataStorage(500, 20, 100, 100, Color.BLUE, 0 , ShapeDataStorage.Shapes.Oval);
+        view.drawShape(shape1);
+
+        ShaderDataStorage shader = new ShaderDataStorage(0, 0, 50, 100, Color.red, Color.green, false);
+        ShapeDataStorage shape2 = new ShapeDataStorage(500, 300, 50, 100, null, 0, ShapeDataStorage.Shapes.Rectangle);
+        shape2.setShader(shader);
+        view.drawShape(shape2);
+
 
     }
 }
