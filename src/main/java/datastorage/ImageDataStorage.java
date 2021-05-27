@@ -1,6 +1,7 @@
 package datastorage;
 
 import java.net.URL;
+import java.util.Objects;
 
 public class ImageDataStorage
 {
@@ -20,6 +21,24 @@ public class ImageDataStorage
         this.width = width;
         this.height = height;
         this.duration = duration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ImageDataStorage that = (ImageDataStorage) o;
+        return XPos == that.XPos &&
+                YPos == that.YPos &&
+                width == that.width &&
+                height == that.height &&
+                duration == that.duration &&
+                fileLocation.equals(that.fileLocation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(XPos, YPos, fileLocation, width, height, duration);
     }
 
     public int getXPos()
