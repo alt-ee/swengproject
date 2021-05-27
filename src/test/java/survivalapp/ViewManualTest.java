@@ -2,6 +2,7 @@ package survivalapp;
 
 import datastorage.ImageDataStorage;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ViewManualTest {
@@ -12,22 +13,19 @@ public class ViewManualTest {
 
         view.newWindow(1280, 720);
 
-        int xPos1 = 20;
-        int yPos1 = 20;
-        String fileLocation1 = "src/test/resources/image0.jpg";
-        int width1 = 300;
-        int height1 = 300;
-        int duration1 = 0;
-        view.drawImage(xPos1, yPos1, fileLocation1, width1, height1, duration1);
+        try {
+            URL url1 = new URL("file://src/test/recources/image0.jpg");
+            ImageDataStorage image1 = new ImageDataStorage(20, 20, url1, 300, 300, 0);
 
-        int xPos2 = 20;
-        int yPos2 = 400;
-        String fileLocation2 = "src/test/resources/hulk.JPEG";
-        int width2 = 300;
-        int height2 = 300;
-        int duration2 = 0;
+            URL url2 = new URL("file://src/test/resources/hulk.JPEG");
+            ImageDataStorage image2 = new ImageDataStorage(20, 400, url2, 300, 300, 0);
 
-        view.drawImage(xPos2, yPos2, fileLocation2, width2, height2, duration2);
+            view.drawImage(image1);
+            view.drawImage(image2);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
