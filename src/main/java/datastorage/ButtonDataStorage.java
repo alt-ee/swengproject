@@ -1,12 +1,12 @@
 package datastorage;
 
-public class ButtonDataStorage
+abstract class ButtonDataStorage
 {
-    private final int XPos;
-    private final int YPos;
-    private final int width;
-    private final int height;
-    private final int id;
+    protected int XPos;
+    protected int YPos;
+    protected int width;
+    protected int height;
+    protected int id;
 
     public ButtonDataStorage(int XPos, int YPos,
                                  int width, int height, int id)

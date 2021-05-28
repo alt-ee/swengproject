@@ -1,0 +1,34 @@
+package datastorage;
+
+import java.awt.*;
+
+public class TextButton extends ButtonDataStorage {
+    private final String text;
+    private final String font;
+    private final int fontsize;
+    private final Color fontColour;
+
+    public TextButton()
+    {
+        this.text = text;
+        this.font = font;
+        this.fontsize = fontsize;
+        this.fontColour = fontColour;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public String getFont() {
+        return font;
+    }
+
+    public int getFontsize() {
+        return fontsize;
+    }
+
+    public Color getFontColour() {
+        return fontColour;
+    }
+}
