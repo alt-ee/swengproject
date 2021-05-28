@@ -2,14 +2,15 @@ package datastorage;
 
 import java.awt.*;
 
-public class TextButton extends ButtonDataStorage {
+public class TextButton extends ButtonDataStorage
+{
     private final String text;
     private final String font;
     private final int fontsize;
     private final Color fontColour;
 
-    public TextButton()
-    {
+    public TextButton(int XPos, int YPos, int width, int height, int id, String text, String font, int fontsize, Color fontColour){
+        super(XPos, YPos, width, height, id);
         this.text = text;
         this.font = font;
         this.fontsize = fontsize;
