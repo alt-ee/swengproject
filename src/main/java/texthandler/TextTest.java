@@ -33,7 +33,7 @@ public class TextTest
         panel.removeAll(); // remove all previous labels before adding new ones
 
         //Adding TEXT onto JPanel
-        write.addText(panel, 300, 100, "Text 1", "Serif", 40, Color.RED, 4500);
+        write.addText(panel, 300, 100, "Te\nxt\n 1", "Serif", 40, Color.RED, 4500);
         write.addText(panel, 400, 200, "Text 2", "Serif", 20, Color.RED, 6500);
         write.addText(panel, 650, 300, "Text 3", "Serif", 20, Color.RED, 8500);
         write.addText(panel, 200, 370, "Text 4", "Arial", 30, Color.BLUE, 10500);
