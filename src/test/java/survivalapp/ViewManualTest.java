@@ -1,6 +1,7 @@
 package survivalapp;
 
 import datastorage.ImageDataStorage;
+import datastorage.LineDataStorage;
 import datastorage.ShaderDataStorage;
 import datastorage.ShapeDataStorage;
 
@@ -38,6 +39,10 @@ public class ViewManualTest {
         ShapeDataStorage shape2 = new ShapeDataStorage(500, 300, 50, 100, Color.cyan, 0, ShapeDataStorage.Shapes.Rectangle);
         shape2.setShader(shader);
         view.drawShape(shape2);
+
+        // Line test
+        LineDataStorage line1 = new LineDataStorage(800, 20, 850, 400, Color.green, 0);
+        view.drawLine(line1);
 
         view.repaintPanel();
     }
