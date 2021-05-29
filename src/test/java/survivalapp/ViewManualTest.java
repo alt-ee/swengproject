@@ -42,6 +42,7 @@ public class ViewManualTest {
 
         // Line test
         LineDataStorage line1 = new LineDataStorage(800, 20, 850, 400, Color.green, 0);
+        LineDataStorage line2 = new LineDataStorage(850, 20, 900, 400, Color.blue, 2);
         view.drawLine(line1);
 
         view.repaintPanel();
