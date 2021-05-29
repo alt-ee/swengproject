@@ -1,6 +1,7 @@
 package survivalapp;
 
 import datastorage.ImageDataStorage;
+import datastorage.LineDataStorage;
 import datastorage.ShaderDataStorage;
 import datastorage.ShapeDataStorage;
 import graphicshandler.GraphicsPanel;
@@ -78,5 +79,17 @@ public class View {
                 panel.addRect(height, width, xPos, yPos, colour, true, duration);
             }
         }
+    }
+
+    public void drawLine(LineDataStorage line) {
+
+        int x1 = line.getX1();
+        int y1 = line.getY1();
+        int x2 = line.getX2();
+        int y2 = line.getY2();
+        String colour = line.getColourInHex();
+        int duration = line.getDuration();
+
+        panel.addLine(x1, y1, x2, y2, colour, duration);
     }
 }
