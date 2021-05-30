@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>StringTheory</groupId>
+  <artifactId>SwingVideoModule</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+
+	<name>SwingVideoModule</name>
+  	<dependencies>
+  	<!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+<dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx</artifactId>
+    <version>17-ea+3</version>
+    <type>pom</type>
+</dependency>
+
+  	<!-- https://mvnrepository.com/artifact/org.openjfx/javafx-base -->
+		<dependency>
+		    <groupId>org.openjfx</groupId>
+		    <artifactId>javafx-base</artifactId>
+		    <version>17-ea+3</version>
+		</dependency>
+  		<dependency>
+    		<groupId>org.openjfx</groupId>
+    		<artifactId>javafx-controls</artifactId>
+    		<version>15.0.1</version>
+  		</dependency>
+  		<!-- https://mvnrepository.com/artifact/org.openjfx/javafx-media -->
+			<dependency>
+			    <groupId>org.openjfx</groupId>
+			    <artifactId>javafx-media</artifactId>
+			    <version>17-ea+3</version>
+			</dependency>
+		<!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
+			<dependency>
+			    <groupId>org.openjfx</groupId>
+			    <artifactId>javafx-swing</artifactId>
+			    <version>17-ea+3</version>
+			</dependency>
+			
+			<dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>12</version>
+        </dependency>
+		
+	</dependencies>
+	<build>
+	<plugins>
+    	<plugin>
+        	<groupId>org.openjfx</groupId>
+        	<artifactId>javafx-maven-plugin</artifactId>
+        	<version>0.0.5</version>
+       		<configuration>
+            	<mainClass>MainApp</mainClass>
+        	</configuration>
+    	</plugin>
+	</plugins>
+	</build>
+   </project>
