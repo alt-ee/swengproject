@@ -1,18 +1,18 @@
 package survivalapp;
 
-import datastorage.ImageDataStorage;
-import datastorage.LineDataStorage;
-import datastorage.ShaderDataStorage;
-import datastorage.ShapeDataStorage;
+import datastorage.*;
 import graphicshandler.GraphicsPanel;
 import imagehandler.ImageType;
+import texthandler.WriteText;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class View {
 
     private JFrame window;
     private GraphicsPanel panel;
+    private WriteText textHandler;
 
     public void newWindow(int width, int height) {
         window = new JFrame();
@@ -21,6 +21,8 @@ public class View {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         panel = new GraphicsPanel();
+        panel.setLayout(null);
+        textHandler = new WriteText();
 
         window.add(panel);
     }
@@ -47,6 +49,11 @@ public class View {
         imageType.drawImageWithScale();
     }
 
+    /***
+     * Wrapper method for shape handler to use our shape type
+     *
+     * @param shape
+     */
     public void drawShape(ShapeDataStorage shape) {
 
         int xPos = shape.getxPosition();
@@ -81,6 +88,11 @@ public class View {
         }
     }
 
+    /***
+     * Wrapper method for line handler to use our line type
+     *
+     * @param line
+     */
     public void drawLine(LineDataStorage line) {
 
         int x1 = line.getX1();
@@ -92,4 +104,21 @@ public class View {
 
         panel.addLine(x1, y1, x2, y2, colour, duration);
     }
+
+    /***
+     * Wrapper method for text handler to use our text type
+     *
+     * @param text
+     */
+    public void drawText(TextDataStorage text) {
+        int xPos = text.getXPos();
+        int yPos = text.getYPos();
+        String textString = text.getText();
+        String font = text.getFont();
+        int fontSize = text.getFontSize();
+        Color fontColour = text.getColour();
+        int duration = text.getDuration();
+        textHandler.addText(panel, xPos, yPos, textString, font, fontSize, fontColour, duration);
+    }
+
 }
