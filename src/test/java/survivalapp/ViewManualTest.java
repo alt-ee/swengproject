@@ -43,10 +43,20 @@ public class ViewManualTest {
         view.drawLine(line1);
         view.drawLine(line2);
 
-        // Test test
+        // Text test
         String textString = "Normal text <b>bold text</b>\n<i>italic text</i>";
         TextDataStorage text1 = new TextDataStorage(500, 500, textString, "Calibri", 16, Color.BLACK, 0);
         view.drawText(text1);
+
+        // Audio test
+        try {
+            URL url1 = new URL("file:///src/test/resources/bird.wav");
+            AudioDataStorage audio1 = new AudioDataStorage(url1, 0, true);
+            view.playAudio(audio1);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
 
         view.repaintPanel();
     }
