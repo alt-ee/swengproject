@@ -3,11 +3,13 @@
 <slideshow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="urn:slideshow.Namespace"
         xsi:schemaLocation="urn:slideshow.Namespace PWS_Schema.xsd"
-        author="alex tee" comment="defaults test" version="1.0">
+        author="alex tee" comment="defaults test" version="0.1">
     <defaults backgroundcolour="#faf347" font="Calibri" fontsize="16" fontcolour="#855797" linecolour="#fa44dd" fillcolour="#88cd02"/>
     <slide id="1">
         <text xstart="100" ystart="100"/>
         <line xstart="100" ystart="100" xend="100" yend="100"/>
         <shape type="oval" xstart="100" ystart="100" width="10" height="10"/>
+        <unexpected/>
     </slide>
+    <alsounexpected/>
 </slideshow>

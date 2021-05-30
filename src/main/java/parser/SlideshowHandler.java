@@ -29,17 +29,17 @@ public class SlideshowHandler extends DefaultHandler {
     private String elementValue;
 
     @Override
-    public void characters(char [] chars, int start, int length) throws SAXException {
+    public void characters(char [] chars, int start, int length) {
         elementValue = new String(chars, start, length);
     }
 
     @Override
-    public void startDocument() throws SAXException {
+    public void startDocument() {
         slideshow = new Slideshow();
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         switch (qName.toLowerCase()) {
             case "defaults": {
                 defaultBackgroundColour = Color.decode(attributes.getValue("backgroundcolour"));
@@ -125,9 +125,11 @@ public class SlideshowHandler extends DefaultHandler {
                 URL location = null;
                 try {
                     location = new URL("file://" + attributes.getValue("urlname"));
+
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
+
                 int duration;
                 String durationString = attributes.getValue("duration");
                 if (durationString != null) {
@@ -150,23 +152,22 @@ public class SlideshowHandler extends DefaultHandler {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
+
                 boolean loop = Boolean.parseBoolean(attributes.getValue("loop"));
 
-                int startTime;
-                String durationString = attributes.getValue("duration");
-                if (durationString != null) {
-                    startTime = Integer.parseInt(durationString);
+                String startTimeString = attributes.getValue("starttime");
+                String idString = attributes.getValue("id");
+                if (startTimeString != null) {
+                    int startTime = Integer.parseInt(startTimeString);
                     tempAudio = new AudioDataStorage(location, startTime, loop);
-                } else {
+                } else if (idString != null) {
                     String id = attributes.getValue("id");
 
-                    //TODO raise exception if neither starttime nor id are set
-
                     tempAudio = new AudioDataStorage(location, id, loop);
+                } else {
+                    tempAudio = new AudioDataStorage(location, 0, loop);
                 }
-
                 tempSlide.addAudio(tempAudio);
-
                 break;
             }
             case "video": {
@@ -184,17 +185,15 @@ public class SlideshowHandler extends DefaultHandler {
 
                 boolean loop = Boolean.parseBoolean(attributes.getValue("loop"));
 
-                int startTime;
-                String durationString = attributes.getValue("duration");
-                if (durationString != null) {
-                    startTime = Integer.parseInt(durationString);
+                String startTimeString = attributes.getValue("starttime");
+                String idString = attributes.getValue("id");
+                if (startTimeString != null) {
+                    int startTime = Integer.parseInt(startTimeString);
                     tempVideo = new VideoDataStorage(xPos, yPos, location, startTime, loop);
+                } else if (idString != null) {
+                    tempVideo = new VideoDataStorage(xPos, yPos, location, idString, loop);
                 } else {
-                    String id = attributes.getValue("id");
-
-                    //TODO raise exception if neither starttime nor id are set
-
-                    tempVideo = new VideoDataStorage(xPos, yPos, location, id, loop);
+                    tempVideo = new VideoDataStorage(xPos, yPos, location, 0, loop);
                 }
 
                 tempSlide.addVideo(tempVideo);
@@ -286,7 +285,7 @@ public class SlideshowHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         switch (qName.toLowerCase()) {
             case "slide":
                 slideshow.addSlide(tempSlide);
