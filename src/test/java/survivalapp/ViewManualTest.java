@@ -53,10 +53,16 @@ public class ViewManualTest {
             URL url1 = new URL("file:///src/test/resources/bird.wav");
             AudioDataStorage audio1 = new AudioDataStorage(url1, 0, true);
             view.playAudio(audio1);
+
+            /*
+            URL url2 = new URL("file:///src/test/resources/bird2.wav");
+            AudioDataStorage audio2 = new AudioDataStorage(url2, 5, false);
+            view.playAudio(audio2);
+
+             */
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
 
         view.repaintPanel();
     }
