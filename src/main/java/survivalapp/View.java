@@ -1,18 +1,27 @@
 package survivalapp;
 
+import audiohandler.AudioPlayer;
 import datastorage.*;
 import graphicshandler.GraphicsPanel;
 import imagehandler.ImageType;
 import texthandler.WriteText;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URL;
 
 public class View {
 
     private JFrame window;
     private GraphicsPanel panel;
     private WriteText textHandler;
+    private AudioPlayer audioPlayer;
+    private boolean clipLoaded;
 
     public void newWindow(int width, int height) {
         window = new JFrame();
@@ -22,7 +31,11 @@ public class View {
         window.setVisible(true);
         panel = new GraphicsPanel();
         panel.setLayout(null);
+
         textHandler = new WriteText();
+
+        audioPlayer = new AudioPlayer();
+        clipLoaded = false;
 
         window.add(panel);
     }
@@ -39,7 +52,7 @@ public class View {
      */
     public void drawImage(ImageDataStorage image) {
 
-        String url = image.getFileLocation().getFile().substring(1);
+        String url = image.getFileLocation().getFile().substring(1); // Better way to do this?
         int xPos = image.getXPos();
         int yPos = image.getYPos();
         int width = image.getWidth();
@@ -120,5 +133,40 @@ public class View {
         int duration = text.getDuration();
         textHandler.addText(panel, xPos, yPos, textString, font, fontSize, fontColour, duration);
     }
+
+    public void playAudio(AudioDataStorage audio) {
+        System.out.println("playAudio");
+        String url = audio.getAudioLocation().getPath().substring(1);
+        boolean loop = audio.isLoop();
+
+        // Is this good?
+        try {
+            audioPlayer.loadClip(url);
+            clipLoaded = true;
+        } catch (IOException e) {
+            System.out.println("File not found");
+        } catch (UnsupportedAudioFileException e) {
+            System.out.println("File is of incorrect format");
+        } catch (LineUnavailableException e) {
+            System.out.println("Line unavailable");
+        }
+
+        if (clipLoaded) {
+            System.out.println("Clip loaded");
+            if (audio.hasStartTime()) {
+                int startTime = audio.getStartTime();
+                if (startTime == 0) {
+                    System.out.println("playing");
+                    audioPlayer.playClip(loop);
+                } else {
+                    // Trigger a timer to start the clip after startTime has elapsed
+                    Timer timer = new Timer(startTime * 1000, e -> audioPlayer.playClip(loop));
+                    timer.setRepeats(false);
+                    timer.start();
+                }
+            }
+        }
+    }
+
 
 }
