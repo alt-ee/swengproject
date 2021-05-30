@@ -44,8 +44,8 @@ public class ViewManualTest {
         view.drawLine(line2);
 
         // Test test
-        String textString = "Normal text <b>bold text<\\b>\n<i>italic text<\\i>";
-        TextDataStorage text1 = new TextDataStorage(500, 500, textString, "Calibri", 16, Color.CYAN, 0);
+        String textString = "Normal text <b>bold text</b>\n<i>italic text</i>";
+        TextDataStorage text1 = new TextDataStorage(500, 500, textString, "Calibri", 16, Color.BLACK, 0);
         view.drawText(text1);
 
         view.repaintPanel();
