@@ -54,9 +54,5 @@ public class WriteText
             panel.remove(label);
             System.out.println(" OUT: " + label.getText()); //Test
         }
-
-        //Refresh the JPanel so changes can be seen
-        panel.repaint();
-        panel.revalidate();
     }
 }
