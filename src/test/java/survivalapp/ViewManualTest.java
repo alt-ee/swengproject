@@ -50,16 +50,27 @@ public class ViewManualTest {
 
         // Audio test
         try {
-            URL url1 = new URL("file:///src/test/resources/bird.wav");
+            /*
+            URL url1 = new URL("file:/src/test/resources/bird.wav");
             AudioDataStorage audio1 = new AudioDataStorage(url1, 0, true);
             view.playAudio(audio1);
+            */
 
-            /*
             URL url2 = new URL("file:///src/test/resources/bird2.wav");
-            AudioDataStorage audio2 = new AudioDataStorage(url2, 5, false);
+            AudioDataStorage audio2 = new AudioDataStorage(url2, 2, true);
             view.playAudio(audio2);
 
-             */
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        // Video test
+
+        try {
+            URL url = new URL("file:///src/test/resources/testvideo.mp4");
+            VideoDataStorage video = new VideoDataStorage(900, 500,  url, 0, false);
+
+            view.drawVideo(video);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
