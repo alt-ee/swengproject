@@ -1,9 +1,6 @@
 package survivalapp;
 
-import datastorage.ImageDataStorage;
-import datastorage.LineDataStorage;
-import datastorage.ShaderDataStorage;
-import datastorage.ShapeDataStorage;
+import datastorage.*;
 
 import java.awt.*;
 import java.net.MalformedURLException;
@@ -45,6 +42,11 @@ public class ViewManualTest {
         LineDataStorage line2 = new LineDataStorage(850, 20, 900, 400, Color.blue, 2);
         view.drawLine(line1);
         view.drawLine(line2);
+
+        // Test test
+        String textString = "Normal text <b>bold text<\\b>\n<i>italic text<\\i>";
+        TextDataStorage text1 = new TextDataStorage(500, 500, textString, "Calibri", 16, Color.CYAN, 0);
+        view.drawText(text1);
 
         view.repaintPanel();
     }
