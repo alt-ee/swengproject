@@ -85,4 +85,8 @@ public class TextDataStorage
     public Color getColour() {
         return colour;
     }
+
+    public int getDuration() {
+        return duration;
+    }
 }
