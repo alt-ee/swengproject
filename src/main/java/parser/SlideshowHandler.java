@@ -21,12 +21,18 @@ public class SlideshowHandler extends DefaultHandler {
 
     private Slideshow slideshow;
 
+    private String slideshowPath;
+
     private SlideDataStorage tempSlide;
     private TextDataStorage tempText;
     private ShapeDataStorage tempShape;
     private ShaderDataStorage tempShader;
 
     private String elementValue;
+
+    public SlideshowHandler(String slideshowPath) {
+        this.slideshowPath = slideshowPath;
+    }
 
     @Override
     public void characters(char [] chars, int start, int length) {
@@ -124,7 +130,7 @@ public class SlideshowHandler extends DefaultHandler {
                 int height = Integer.parseInt(attributes.getValue("height"));
                 URL location = null;
                 try {
-                    location = new URL("file://" + attributes.getValue("urlname"));
+                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -148,7 +154,7 @@ public class SlideshowHandler extends DefaultHandler {
 
                 URL location = null;
                 try {
-                    location = new URL("file://" + attributes.getValue("urlname"));
+                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -178,7 +184,7 @@ public class SlideshowHandler extends DefaultHandler {
 
                 URL location = null;
                 try {
-                    location = new URL("file://" + attributes.getValue("urlname"));
+                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -313,6 +319,4 @@ public class SlideshowHandler extends DefaultHandler {
     public Slideshow getSlideshow() {
         return slideshow;
     }
-
-    //TODO getter for finished slideshow
 }
