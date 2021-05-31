@@ -4,6 +4,7 @@ import audiohandler.AudioPlayer;
 import datastorage.*;
 import graphicshandler.GraphicsPanel;
 import imagehandler.ImageType;
+import media.Video;
 import texthandler.WriteText;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -18,7 +19,9 @@ import java.net.URL;
 public class View {
 
     private JFrame window;
+    private JLayeredPane layeredPane;
     private GraphicsPanel panel;
+    private JPanel videoPanel;
     private WriteText textHandler;
     private AudioPlayer audioPlayer;
     private boolean clipLoaded;
@@ -28,16 +31,26 @@ public class View {
 
         window.setSize(width, height);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
-        panel = new GraphicsPanel();
-        panel.setLayout(null);
 
         textHandler = new WriteText();
 
         audioPlayer = new AudioPlayer();
         clipLoaded = false;
 
-        window.add(panel);
+        panel = new GraphicsPanel();
+        panel.setBounds(0, 0, width, height);
+        panel.setLayout(null);
+
+        videoPanel = new JPanel();
+        videoPanel.setOpaque(true);
+        videoPanel.setLayout(null);
+
+        layeredPane = new JLayeredPane();
+        layeredPane.add(panel, 0);
+        layeredPane.add(videoPanel, 1);
+
+        window.add(layeredPane);
+        window.setVisible(true);
     }
 
     public void repaintPanel() {
@@ -134,12 +147,18 @@ public class View {
         textHandler.addText(panel, xPos, yPos, textString, font, fontSize, fontColour, duration);
     }
 
+    /***
+     * Wrapper method for audio handler to use our audio type
+     *
+     * @param audio
+     */
+
     public void playAudio(AudioDataStorage audio) {
         System.out.println("playAudio");
         String url = audio.getAudioLocation().getPath().substring(1);
         boolean loop = audio.isLoop();
 
-        // Is this good?
+        // TODO handle exceptions better
         try {
             audioPlayer.loadClip(url);
             clipLoaded = true;
@@ -166,6 +185,29 @@ public class View {
                 }
             }
         }
+    }
+
+    public void drawVideo(VideoDataStorage video) {
+
+        int xPos = video.getXPos();
+        int yPos = video.getYPos();
+        String url = video.getLocation().getPath().substring(1);
+        int startTime = video.getStartTime();
+        boolean startWithButton = false;
+        boolean loop = video.isLoop();
+
+        if (startTime == -1) {
+            startWithButton = true;
+            startTime = 0;
+        }
+
+        // TODO Need to sort out width and height
+        Video videoPlayer = new Video(videoPanel, url, startTime, loop, xPos, yPos, 200, 200, true, true);
+
+        if (!startWithButton) {
+            videoPlayer.startVideo();
+        }
+
     }
 
 
