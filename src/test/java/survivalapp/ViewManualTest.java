@@ -65,10 +65,9 @@ public class ViewManualTest {
         }
 
         // Video test
-
         try {
-            URL url = new URL("file:///src/test/resources/testvideo.mp4");
-            VideoDataStorage video = new VideoDataStorage(900, 500,  url, 0, false);
+            URL url = new URL("file:///src/test/resources/testVideo.mp4");
+            VideoDataStorage video = new VideoDataStorage(900, 400,  url, 0, false);
 
             view.drawVideo(video);
         } catch (MalformedURLException e) {
