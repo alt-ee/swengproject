@@ -15,13 +15,16 @@
         <text xstart="7" ystart="34" font="Joker">
             more test text with specified font
         </text>
-    </slide>
-    <slide id = "slide02">
+
+        <shape type="oval" xstart="100" ystart="100" width="10" height="10"/>
+
+
+
         <image
-        urlname="/resources/images/image1.png"
-        xstart="10"
-        ystart="20"
-        width="8"
-        height="15"/>
+        urlname="src/main/resources/Chaffinch.jpg"
+        xstart="0"
+        ystart="0"
+        width="390"
+        height="216"/>
     </slide>
 </slideshow>
