@@ -1,7 +1,6 @@
 package texthandler;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 
 public class WriteText
@@ -38,7 +37,7 @@ public class WriteText
         JLabel label = new JLabel();
 
         panel.remove(label);                                           //remove previous label so labels aren't stacked
-        label.setBounds(XPos, YPos, fontSize*text.length(), fontSize*countLines(text));    //determines x & y bound positions for text
+        label.setBounds(XPos, YPos, fontSize*text.length(), (fontSize + 4)*countLines(text));    //determines x & y bound positions for text
         label.setFont(new Font(font, Font.PLAIN, fontSize));           //determines font and font size of text
         label.setForeground(colour);                                   //changes text colour
         label.setText(convertToMultiline(text));                       //writes text on panel \n in string will add new line

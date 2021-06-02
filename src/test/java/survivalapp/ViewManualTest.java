@@ -39,13 +39,13 @@ public class ViewManualTest {
         String notificationBarText = "<b><i>Notification Bar</i></b>";
         String name = "<b>Chaffinch</b>";
         String latinName = "<i>Fringilla coelebs</i>";
-        String description = "<b>Description:</b> The chaffinch is one of the most\n widespread and abundant bird in Britain and Ireland.\n Its patterned plumage helps it to blend in when \nfeeding on the ground and it becomes most obvious\n when it flies, revealing a flash of white on the wings\n and white outer tail feathers. It does not feed openly\n on bird feeders - it prefers to hop about under the\n bird table or under the hedge. You'll usually hear\n chaffinches before you see them, with their loud song\n and varied calls.";
+        String description = "<b>Description:</b> The chaffinch is one of the most\n widespread and abundant bird in Britain and Ireland.\n Its patterned plumage helps it to blend in when \nfeeding on the ground and it becomes most obvious\n when it flies, revealing a flash of white on the wings\n and white outer tail feathers. It does not feed openly\n on bird feeders - it prefers to hop about under the\n bird table or under the hedge. You'll usually hear\n chaffinches before you see them, with their loud\n song and varied calls.";
 
 
         TextDataStorage text1 = new TextDataStorage(130, 10, notificationBarText, "Calibri", 16, Color.white, 0);
         TextDataStorage text2 = new TextDataStorage(15, 264, name, "Calibri", 24, Color.black, 0);
         TextDataStorage text3 = new TextDataStorage(15, 291, latinName, "Calibri", 20, Color.lightGray, 0);
-        TextDataStorage text4 = new TextDataStorage(15, 350, description, "Calibri", 16, Color.black, 0);
+        TextDataStorage text4 = new TextDataStorage(15, 318, description, "Calibri", 16, Color.black, 0);
         view.drawText(text1);
         view.drawText(text2);
         view.drawText(text3);
