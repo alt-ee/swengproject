@@ -15,7 +15,7 @@ public class Parser {
         System.out.println(xmlFile.getParent());
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
-        SlideshowHandler handler = new SlideshowHandler(xmlFile.getParent());
+        SlideshowHandler handler = new SlideshowHandler(xmlFile.getParent() + "/");
 
         FileInputStream inputStream = new FileInputStream(xmlFile);
         BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);

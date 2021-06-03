@@ -20,6 +20,7 @@ public class SlideshowHandler extends DefaultHandler {
     private Color defaultShapeColour;
 
     private Slideshow slideshow;
+    private String firstSlideID;
 
     private String slideshowPath;
 
@@ -295,6 +296,10 @@ public class SlideshowHandler extends DefaultHandler {
         switch (qName.toLowerCase()) {
             case "slide":
                 slideshow.addSlide(tempSlide);
+                if (firstSlideID == null) {
+                    firstSlideID = tempSlide.getId();
+                    slideshow.setCurrentSlide(firstSlideID);
+                }
 
                 break;
             case "text":
