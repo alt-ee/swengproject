@@ -1,7 +1,12 @@
 package survivalapp;
 
 import datastorage.*;
+import org.xml.sax.SAXException;
+import parser.Parser;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 
 public class Controller {
@@ -9,8 +14,8 @@ public class Controller {
     private View view;
 
     // Temporary constructor for testing
-    public Controller(Slideshow slideshow) {
-        this.slideshow = slideshow;
+    public Controller(File slideshowFile) throws ParserConfigurationException, SAXException, IOException {
+        slideshow = Parser.parse(slideshowFile);
 
         view = new View();
         view.newWindow(1280, 720);
