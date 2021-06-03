@@ -29,6 +29,9 @@ public class Controller {
         drawAllShapes(slide);
         drawAllLines(slide);
         drawAllVideos(slide);
+        setupAudio(slide);
+
+        view.repaintPanel();
     }
 
     private void drawAllImages(SlideDataStorage slide) {
@@ -79,6 +82,21 @@ public class Controller {
                 view.drawVideo(videoIter.next());
             }
         }
+    }
+
+    private void setupAudio(SlideDataStorage slide) {
+
+        if (slide.hasAudio()) {
+            Iterator<AudioDataStorage> audioIter = slide.audioIterator();
+
+            view.playAudio(audioIter.next());
+
+            if (audioIter.hasNext()) {
+                System.out.println("Multiple audio files in slide!? Playing first file");
+            }
+
+        }
+
     }
 
 }
