@@ -24,23 +24,39 @@ public class WriteText
         return "<html>" + orig.replaceAll("\n", "<br>");
     }
 
-    //count lines in a string
-    private static int countLines(String str)
-    {
+    private static String[] splitLines(String str) {
         String[] lines = str.split("\r\n|\r|\n");
-        return  lines.length;
+        return lines;
     }
 
     //draws text on JPanel
     public void addText(JPanel panel, int XPos, int YPos, String text, String font, int fontSize, Color colour, int duration)
     {
         JLabel label = new JLabel();
+        Font labelFont = new Font(font, Font.PLAIN, fontSize);
+        FontMetrics labelFM = label.getFontMetrics(labelFont);
+
+
+        String[] lines = splitLines(text);
+        int numLines = lines.length;
+        int maxLineWidth = 0;
+        int currentLineWidth;
+
+        for (int i = 0; i < numLines; i++) {
+            currentLineWidth = label.getFontMetrics(labelFont).stringWidth(lines[i]);
+            if (currentLineWidth > maxLineWidth) {
+                maxLineWidth = currentLineWidth;
+            }
+        }
 
         panel.remove(label);                                           //remove previous label so labels aren't stacked
-        label.setBounds(XPos, YPos, fontSize*text.length(), (fontSize + 4)*countLines(text));    //determines x & y bound positions for text
-        label.setFont(new Font(font, Font.PLAIN, fontSize));           //determines font and font size of text
+
         label.setForeground(colour);                                   //changes text colour
+        label.setFont(new Font(font, Font.PLAIN, fontSize));           //determines font and font size of text
+        label.setBounds(XPos, YPos, maxLineWidth, labelFM.getHeight() * numLines);    //determines x & y bound positions for text
         label.setText(convertToMultiline(text));                       //writes text on panel \n in string will add new line
+        label.setVerticalAlignment(JLabel.TOP);
+
 
         //Draw text if duration=0 or duration set is more than the currentTime
         if ((duration == 0 || duration >= currentTime))

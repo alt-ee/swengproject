@@ -21,10 +21,11 @@
 
 
         <image
-        urlname="src/main/resources/Chaffinch.jpg"
-        xstart="0"
-        ystart="0"
-        width="390"
-        height="216"/>
+            urlname="src/main/resources/Chaffinch.jpg"
+            xstart="0"
+            ystart="0"
+            width="390"
+            height="216"
+        />
     </slide>
 </slideshow>
