@@ -52,5 +52,13 @@
               yend="550"
               linecolour="#00F1F1"
         />
+
+        <text xstart="100" ystart="0">
+            test text
+            <b>some bold text</b>
+            <i>some italic text</i>
+            <b>some more bold text</b>
+            some normal text
+        </text>
     </slide>
 </slideshow>
