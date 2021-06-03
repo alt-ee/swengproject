@@ -20,12 +20,8 @@ public class SurvivalApp {
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
         File xmlFile = new File("src/main/resources/birds.xml");
 
-        Parser parser = new Parser();
-        Slideshow slideshow = parser.parse(xmlFile);
-
-        Controller cont = new Controller(slideshow);
-        slideshow.setCurrentSlide("Chaffinch");
-        cont.drawCurrentSlide();
+        Controller controller = new Controller(xmlFile);
+        controller.drawCurrentSlide();
     }
 
 

@@ -43,7 +43,7 @@ public class WriteText
         int currentLineWidth;
 
         for (int i = 0; i < numLines; i++) {
-            currentLineWidth = label.getFontMetrics(labelFont).stringWidth(lines[i]);
+            currentLineWidth = labelFM.stringWidth(lines[i]);
             if (currentLineWidth > maxLineWidth) {
                 maxLineWidth = currentLineWidth;
             }
