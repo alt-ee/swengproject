@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PWS_Schema.xsd"?>
+
+<slideshow author="alex tee" version="0.1" comment="test">
+    <defaults backgroundcolour="#43675a" font="Calibri" fontsize="16" fontcolour="#a6aeae" linecolour="#f2c95e" fillcolour="#6dcbdb" />
+
+    <slide id="slide01">
+
+        <text xstart="100" ystart="200">
+            test text
+            <b>some bold text</b>
+            <i>some italic text</i>
+            <b>some more bold text</b>
+            some normal text
+        </text>
+        <line xstart="40" ystart="20" xend="80" yend="20" />
+        <shape type="oval" xstart="10" ystart="10" width="20" height="34" duration="10">
+            <shading x1="0" y1="0" colour1="#f2a54b" x2="0" y2="0" colour2="#dd452a" cyclic="false" />
+        </shape>
+        <text xstart="7" ystart="34" font="Joker">
+            more test text with specified font
+        </text>
+    </slide>
+
+    <slide id="slide02">
+        <video urlname="resources/videos/video.mp4" loop="true" xstart="20" ystart="9" id="testVideo" />
+    </slide>
+</slideshow>
