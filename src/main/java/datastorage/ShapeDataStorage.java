@@ -4,9 +4,8 @@ import java.awt.Color;
 import java.util.Objects;
 
 public class ShapeDataStorage {
-    public enum Shapes {Rectangle, Oval}
+    public enum Shapes {Rectangle, Oval};
 
-    ;
 
     private final int xPosition;
     private final int yPosition;
@@ -102,7 +101,6 @@ public class ShapeDataStorage {
     {
         int RGB = colour.getRGB();
         String hex = String.format("#%06X", (0xffffff & RGB));
-        System.out.println(hex);
         return hex;
     }
 

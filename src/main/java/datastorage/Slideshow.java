@@ -2,10 +2,13 @@ package datastorage;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Slideshow {
-    ArrayList<SlideDataStorage> slides;
+    HashMap<String, SlideDataStorage> slides;
+
+    SlideDataStorage currentSlide;
 
     Color defaultBackgroundColour;
     String defaultFont;
@@ -15,7 +18,7 @@ public class Slideshow {
     Color defaultShapeColour;
 
     public Slideshow() {
-        slides = new ArrayList<SlideDataStorage>();
+        slides = new HashMap<String, SlideDataStorage>();
     }
 
     public void setDefaults (Color background, String font, int fontSize, Color textColour, Color lineColour, Color shapeColour) {
@@ -47,11 +50,17 @@ public class Slideshow {
     }
 
     public void addSlide(SlideDataStorage slide) {
-        slides.add(slide);
+        String id = slide.getId();
+        slides.put(id, slide);
+    }
+    public void setCurrentSlide(String id) {
+        if (slides.containsKey(id)) {
+            currentSlide = slides.get(id);
+        }
     }
 
-    public ArrayList<SlideDataStorage> getSlides() {
-        return slides;
+    public SlideDataStorage getCurrentSlide() {
+        return currentSlide;
     }
 
     public Color getDefaultBackgroundColour() {

@@ -73,10 +73,22 @@ public class ShaderDataStorage {
         return colour1;
     }
 
+    public String getColour1InHex()
+    {
+        int RGB = colour1.getRGB();
+        String hex = String.format("#%06X", (0xffffff & RGB));
+        return hex;
+    }
     public Color getColour2() {
         return colour2;
     }
 
+    public String getColour2InHex()
+    {
+        int RGB = colour2.getRGB();
+        String hex = String.format("#%06X", (0xffffff & RGB));
+        return hex;
+    }
     public boolean isCyclic() {
         return cyclic;
     }

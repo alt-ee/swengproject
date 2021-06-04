@@ -97,7 +97,6 @@ public class SlideDataStorage
         return !shapeArr.isEmpty();
     }
 
-
     //iterators
     public ListIterator<TextDataStorage> textIterator()
     {
@@ -124,4 +123,7 @@ public class SlideDataStorage
         return shapeArr.listIterator();
     }
 
+    public String getId() {
+        return this.id;
+    }
 }

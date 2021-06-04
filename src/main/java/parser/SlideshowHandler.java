@@ -20,6 +20,9 @@ public class SlideshowHandler extends DefaultHandler {
     private Color defaultShapeColour;
 
     private Slideshow slideshow;
+    private String firstSlideID;
+
+    private String slideshowPath;
 
     private SlideDataStorage tempSlide;
     private TextDataStorage tempText;
@@ -27,6 +30,10 @@ public class SlideshowHandler extends DefaultHandler {
     private ShaderDataStorage tempShader;
 
     private String elementValue;
+
+    public SlideshowHandler(String slideshowPath) {
+        this.slideshowPath = slideshowPath;
+    }
 
     @Override
     public void characters(char [] chars, int start, int length) {
@@ -124,7 +131,7 @@ public class SlideshowHandler extends DefaultHandler {
                 int height = Integer.parseInt(attributes.getValue("height"));
                 URL location = null;
                 try {
-                    location = new URL("file://" + attributes.getValue("urlname"));
+                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -148,7 +155,7 @@ public class SlideshowHandler extends DefaultHandler {
 
                 URL location = null;
                 try {
-                    location = new URL("file://" + attributes.getValue("urlname"));
+                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -178,7 +185,7 @@ public class SlideshowHandler extends DefaultHandler {
 
                 URL location = null;
                 try {
-                    location = new URL("file://" + attributes.getValue("urlname"));
+                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -289,6 +296,10 @@ public class SlideshowHandler extends DefaultHandler {
         switch (qName.toLowerCase()) {
             case "slide":
                 slideshow.addSlide(tempSlide);
+                if (firstSlideID == null) {
+                    firstSlideID = tempSlide.getId();
+                    slideshow.setCurrentSlide(firstSlideID);
+                }
 
                 break;
             case "text":
@@ -313,6 +324,4 @@ public class SlideshowHandler extends DefaultHandler {
     public Slideshow getSlideshow() {
         return slideshow;
     }
-
-    //TODO getter for finished slideshow
 }

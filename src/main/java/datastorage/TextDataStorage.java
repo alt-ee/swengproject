@@ -45,10 +45,7 @@ public class TextDataStorage
     }
 
     //setter
-    public void setText(String text)
-    {
-        this.text = text;
-    }
+    public void setText(String text) { this.text = text; }
 
     //append-ers
     public void appendText(String newText)
@@ -87,5 +84,9 @@ public class TextDataStorage
 
     public Color getColour() {
         return colour;
+    }
+
+    public int getDuration() {
+        return duration;
     }
 }

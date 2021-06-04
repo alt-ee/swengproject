@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<slideshow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="urn:slideshow.Namespace"
+           xsi:schemaLocation="urn:slideshow.Namespace PWS_Schema.xsd"
+           author="alex tee" comment="example file" version="1.0">
+    <defaults backgroundcolour="#43675a" font="Calibri" fontsize="16" fontcolour="#a6aeae" linecolour="#f2c95e" fillcolour="#6dcbdb" />
+
+    <slide id="slide01">
+        <text xstart="100" ystart="200">test text <b>some bold text</b> <i>some italic text</i> <b>some more bold text</b> some normal text</text>
+        <line xstart="40" ystart="20" xend="80" yend="20"/>
+        <shape type="oval" xstart="10" ystart="10" width="20" height="34" duration="10">
+            <shading x1="0" y1="0" colour1="#f2a54b" x2="0" y2="0" colour2="#dd452a" cyclic="false"/>
+        </shape>
+        <text xstart="7" ystart="34" font="Joker">more test text with specified font</text>
+        <image urlname="resources/images/image.png" xstart="10" ystart="10" width="5" height="6"/>
+    </slide>
+
+    <slide id="slide02" duration="100">
+        <video urlname="resources/videos/video.mp4" loop="true" xstart="20" ystart="9" id="testVideo" />
+        <audio urlname="resources/audio/audio.wav" loop="true" starttime="10"/>
+    </slide>
+</slideshow>
