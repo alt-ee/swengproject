@@ -67,7 +67,7 @@ public class View {
      */
     public void drawImage(ImageDataStorage image) {
 
-        String url = image.getFileLocation().getFile().substring(16); // Better way to do this?
+        String url = image.getFileLocation().getFile().substring(1); // Better way to do this?
         int xPos = image.getXPos();
         int yPos = image.getYPos();
         int width = image.getWidth();

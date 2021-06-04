@@ -12,7 +12,6 @@ public class Parser {
 
     public static Slideshow parse(File xmlFile) throws IOException, SAXException, ParserConfigurationException
     {
-        System.out.println(xmlFile.getParent());
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
         SlideshowHandler handler = new SlideshowHandler(xmlFile.getParent() + "/");
