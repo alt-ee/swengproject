@@ -2,6 +2,7 @@ package texthandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.regex.Pattern;
 
 public class WriteText
 {
@@ -21,7 +22,7 @@ public class WriteText
     // "\n" in string will add new line
     public static String convertToMultiline(String orig)
     {
-        return "<html>" + orig.replaceAll("\n", "<br>");
+        return "<html>" + orig.replaceAll("\\\\n|\n", "<br>");
     }
 
     private static String[] splitLines(String str) {
@@ -36,6 +37,7 @@ public class WriteText
         Font labelFont = new Font(font, Font.PLAIN, fontSize);
         FontMetrics labelFM = label.getFontMetrics(labelFont);
 
+        System.out.println("Text: " +  text);
 
         String[] lines = splitLines(text);
         int numLines = lines.length;
@@ -54,20 +56,21 @@ public class WriteText
         label.setForeground(colour);                                   //changes text colour
         label.setFont(new Font(font, Font.PLAIN, fontSize));           //determines font and font size of text
         label.setBounds(XPos, YPos, maxLineWidth, labelFM.getHeight() * numLines);    //determines x & y bound positions for text
-        label.setText(convertToMultiline(text));                       //writes text on panel \n in string will add new line
         label.setVerticalAlignment(JLabel.TOP);
+        label.setText(convertToMultiline(text));                       //writes text on panel \n in string will add new line
 
+//        System.out.println(convertToMultiline(text));
 
         //Draw text if duration=0 or duration set is more than the currentTime
         if ((duration == 0 || duration >= currentTime))
         {
             panel.add(label);                                          //add JLabel onto JPanel
-            System.out.println(" IN: " + label.getText()); //Test
+//            System.out.println(" IN: " + label.getText()); //Test
         }
         else
         {
             panel.remove(label);
-            System.out.println(" OUT: " + label.getText()); //Test
+//            System.out.println(" OUT: " + label.getText()); //Test
         }
     }
 }

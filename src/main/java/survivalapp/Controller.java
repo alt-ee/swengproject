@@ -48,6 +48,7 @@ public class Controller {
         if (slide.hasText()) {
             Iterator<TextDataStorage> textIter = slide.textIterator();
 
+
             while (textIter.hasNext()) {
                 view.drawText(textIter.next());
             }
