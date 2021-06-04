@@ -18,7 +18,7 @@ public class Controller {
         slideshow = Parser.parse(slideshowFile);
 
         view = new View();
-        view.newWindow(390, 844);
+        view.newWindow(406, 883);
     }
 
     public void drawCurrentSlide() {
