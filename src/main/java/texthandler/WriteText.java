@@ -2,7 +2,6 @@ package texthandler;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.regex.Pattern;
 
 public class WriteText
 {
@@ -19,15 +18,13 @@ public class WriteText
         currentTime += increment;
     }
 
-    // "\n" in string will add new line
-    public static String convertToMultiline(String orig)
-    {
+    // "\\\\n" or "\n" in string will add new line
+    public static String convertToMultiline(String orig) {
         return "<html>" + orig.replaceAll("\\\\n|\n", "<br>");
     }
 
     private static String[] splitLines(String str) {
-        String[] lines = str.split("\r\n|\r|\n");
-        return lines;
+        return str.split("\r\n|\r|\n");
     }
 
     //draws text on JPanel
@@ -35,7 +32,7 @@ public class WriteText
     {
         JLabel label = new JLabel();
         Font labelFont = new Font(font, Font.PLAIN, fontSize);
-        FontMetrics labelFM = label.getFontMetrics(labelFont);
+        FontMetrics labelFM = label.getFontMetrics(labelFont);  //Get the font metrics for the specified font in the label graphical rendering context
 
         System.out.println("Text: " +  text);
 
@@ -44,8 +41,8 @@ public class WriteText
         int maxLineWidth = 0;
         int currentLineWidth;
 
-        for (int i = 0; i < numLines; i++) {
-            currentLineWidth = labelFM.stringWidth(lines[i]);
+        for (String line : lines) {
+            currentLineWidth = labelFM.stringWidth(line);
             if (currentLineWidth > maxLineWidth) {
                 maxLineWidth = currentLineWidth;
             }
