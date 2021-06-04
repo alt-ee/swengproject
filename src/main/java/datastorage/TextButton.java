@@ -9,8 +9,8 @@ public class TextButton extends ButtonDataStorage
     private final int fontsize;
     private final Color fontColour;
 
-    public TextButton(int XPos, int YPos, int width, int height, String id, String text, String font, int fontsize, Color fontColour){
-        super(XPos, YPos, width, height, id);
+    public TextButton(int XPos, int YPos, int width, int height, String id, String text, String font, int fontsize, Color fontColour, Target target){
+        super(XPos, YPos, width, height, id, target);
         this.text = text;
         this.font = font;
         this.fontsize = fontsize;
