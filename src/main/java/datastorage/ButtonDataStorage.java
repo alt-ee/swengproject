@@ -6,10 +6,10 @@ abstract class ButtonDataStorage
     protected int YPos;
     protected int width;
     protected int height;
-    protected int id;
+    protected String id;
 
     public ButtonDataStorage(int XPos, int YPos,
-                                 int width, int height, int id)
+                                 int width, int height, String id)
     {
         this.XPos = XPos;
         this.YPos = YPos;
@@ -34,7 +34,7 @@ abstract class ButtonDataStorage
         return height;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }
