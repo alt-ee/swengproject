@@ -26,12 +26,8 @@ public class ButtonHandlerManualTest {
 
         buttonHandler.addTextButton(100, 100, 100, 20, "testid", "testButton", "Calibri", 14, Color.BLUE, new TestListener());
 
-        try {
-            URL imageURL = new URL("file:///src/test/resources/image0.jpg");
-            buttonHandler.addImageButton(100, 200, 100, 100, "testid2", imageURL, new TestListener());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        String imageURL = "src/test/resources/image0.jpg";
+        buttonHandler.addImageButton(100, 200, 100, 100, "testid2", imageURL, new TestListener());
 
 
         panel.repaint();
