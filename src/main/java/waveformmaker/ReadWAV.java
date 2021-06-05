@@ -39,7 +39,7 @@ public class ReadWAV
 			int waveformStart = 15;
 
 			//Location of the centre line / zero value of the waveform graphic in pixels
-			int centreLine = 100;
+			int centreLine = 281;
 
 			System.out.println("Frames: " + numFrames);
 
@@ -84,16 +84,26 @@ public class ReadWAV
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //Will exit out when close button pressed
 			f.add(gp);                                          //Add the GraphicsPanel object to the frame
 
-//			PrintWriter xmlWriter = new PrintWriter(,"UTF-8")
+			//Create a txt file to store the xml representation of the waveform in lines
+			PrintWriter xmlWriter = new PrintWriter("src/main/resources/" + name + " xml.txt","UTF-8");
 
 			for (int s = 0; s < waveformWidth; s++) {
 				gp.addLine(waveformStart + s, centreLine + (int)(waveformHeight * maxSample[s])/2, waveformStart + s, centreLine - (int)(waveformHeight * maxSample[s])/2, "#b0b3b8", 0);
+
+				//Write each line to xml file
+				xmlWriter.println("<line xstart=\"" + waveformStart + "\"" + " ystart=\"" + (centreLine + (int)(waveformHeight * maxSample[s])/2) + "\""
+						+ " xend=\"" + waveformStart + "\"" + " yend=\"" + (centreLine - (int)(waveformHeight * maxSample[s])/2) + "\"" + " linecolour=\""
+						+ "#b0b3b8" + "\"" + " duration=\"0\"/>");
 			}
 			gp.repaint();
 
-			System.out.println("<line xstart=\"" + waveformStart + "\"" + " ystart=\"" + (centreLine + (int)(waveformHeight * maxSample[0])/2) + "\""
-					+ " xend=\"" + waveformStart + "\"" + " yend=\"" + (centreLine + (int)(waveformHeight * maxSample[0])/2) + "\"" + " linecolour=\""
-					+ "#b0b3b8" + "\"" + " duration=\"0\"/>");
+//			System.out.println("<line xstart=\"" + waveformStart + "\"" + " ystart=\"" + (centreLine + (int)(waveformHeight * maxSample[0])/2) + "\""
+//					+ " xend=\"" + waveformStart + "\"" + " yend=\"" + (centreLine - (int)(waveformHeight * maxSample[0])/2) + "\"" + " linecolour=\""
+//					+ "#b0b3b8" + "\"" + " duration=\"0\"/>");
+
+
+			//Close the writer
+			xmlWriter.close();
 
 			// Close the wavFile
 			wavFile.close();
