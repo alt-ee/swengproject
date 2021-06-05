@@ -91,8 +91,8 @@ public class ReadWAV
 				gp.addLine(waveformStart + s, centreLine + (int)(waveformHeight * maxSample[s])/2, waveformStart + s, centreLine - (int)(waveformHeight * maxSample[s])/2, "#b0b3b8", 0);
 
 				//Write each line to xml file
-				xmlWriter.println("<line xstart=\"" + waveformStart + "\"" + " ystart=\"" + (centreLine + (int)(waveformHeight * maxSample[s])/2) + "\""
-						+ " xend=\"" + waveformStart + "\"" + " yend=\"" + (centreLine - (int)(waveformHeight * maxSample[s])/2) + "\"" + " linecolour=\""
+				xmlWriter.println("<line xstart=\"" + (waveformStart + s) + "\"" + " ystart=\"" + (centreLine + (int)(waveformHeight * maxSample[s])/2) + "\""
+						+ " xend=\"" + (waveformStart + s) + "\"" + " yend=\"" + (centreLine - (int)(waveformHeight * maxSample[s])/2) + "\"" + " linecolour=\""
 						+ "#b0b3b8" + "\"" + " duration=\"0\"/>");
 			}
 			gp.repaint();
