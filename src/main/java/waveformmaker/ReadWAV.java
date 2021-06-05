@@ -5,6 +5,7 @@ import wavreading.WavFile;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class ReadWAV
@@ -13,8 +14,14 @@ public class ReadWAV
 	{
 		try
 		{
+			//Open the file
+			File file =  new File("src/main/resources/RedKite1.wav");
+
+			String name = file.getName().replace("."," ");
+			System.out.println(name);
+
 			// Open the wav file specified as the first argument
-			WavFile wavFile = WavFile.openWavFile(new File("src/main/resources/RedKite1.wav"));
+			WavFile wavFile = WavFile.openWavFile(file);
 
 			// Get the number of audio channels in the wav file
 			int numChannels = wavFile.getNumChannels();
@@ -27,6 +34,12 @@ public class ReadWAV
 
 			//Height of the waveform graphic (max amplitude) in pixels
 			int waveformHeight = 100;
+
+			//Starting point of the waveform graphic in pixels
+			int waveformStart = 15;
+
+			//Location of the centre line / zero value of the waveform graphic in pixels
+			int centreLine = 100;
 
 			System.out.println("Frames: " + numFrames);
 
@@ -62,6 +75,7 @@ public class ReadWAV
 			}
 			while (framesRead == bufferSize);
 
+			//Set up a frame and panel to check waveform has been generated properly
 			JFrame f = new JFrame();                            //Create new JFrame, acting as the main window
 			GraphicsPanel gp = new GraphicsPanel();
 			f.setVisible(true);                                 //Set the frame to visible
@@ -70,11 +84,16 @@ public class ReadWAV
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //Will exit out when close button pressed
 			f.add(gp);                                          //Add the GraphicsPanel object to the frame
 
+//			PrintWriter xmlWriter = new PrintWriter(,"UTF-8")
+
 			for (int s = 0; s < waveformWidth; s++) {
-				gp.addLine(100 + s, 200 + (int)(waveformHeight * maxSample[s])/2, 100 + s, 200 - (int)(waveformHeight * maxSample[s])/2, "#b0b3b8", 0);
+				gp.addLine(waveformStart + s, centreLine + (int)(waveformHeight * maxSample[s])/2, waveformStart + s, centreLine - (int)(waveformHeight * maxSample[s])/2, "#b0b3b8", 0);
 			}
 			gp.repaint();
 
+			System.out.println("<line xstart=\"" + waveformStart + "\"" + " ystart=\"" + (centreLine + (int)(waveformHeight * maxSample[0])/2) + "\""
+					+ " xend=\"" + waveformStart + "\"" + " yend=\"" + (centreLine + (int)(waveformHeight * maxSample[0])/2) + "\"" + " linecolour=\""
+					+ "#b0b3b8" + "\"" + " duration=\"0\"/>");
 
 			// Close the wavFile
 			wavFile.close();
