@@ -1,6 +1,6 @@
 package datastorage;
 
-abstract class ButtonDataStorage
+public abstract class ButtonDataStorage
 {
     public enum Target {slide, media};
     protected Target target;
