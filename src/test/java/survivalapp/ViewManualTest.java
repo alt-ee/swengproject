@@ -89,6 +89,7 @@ public class ViewManualTest {
         }
 
         view.repaintPanel();
+        view.clearPanel();
     }
 
     static private class SlideListener implements ActionListener {
