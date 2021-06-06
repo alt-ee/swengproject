@@ -91,21 +91,21 @@
 
         <image urlname="icons/information_grey.png"
                xstart="15"
-               ystart="428"
+               ystart="343"
                width="16"
                height="16"
         />
 
         <image urlname="icons/knifefork_grey.png"
                xstart="15"
-               ystart="647"
+               ystart="603"
                width="16"
                height="16"
         />
 
         <image urlname="icons/barchart_grey.png"
                xstart="15"
-               ystart="668"
+               ystart="463"
                width="16"
                height="16"
         />
