@@ -11,8 +11,13 @@ public class ImageButton extends ButtonDataStorage {
             this.fileLocation = fileLocation;
         }
 
-        public URL getFileLocation() {
-            return fileLocation;
+        public ImageButton(int XPos, int YPos, int width, int height, URL fileLocation) {
+            super(XPos, YPos, width, height);
+            this.fileLocation = fileLocation;
+        }
+
+    public URL getFileLocation() {
+        return fileLocation;
         }
 
     @Override

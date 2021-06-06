@@ -18,6 +18,14 @@ public class TextButton extends ButtonDataStorage
         this.fontColour = fontColour;
     }
 
+    public TextButton(int XPos, int YPos, int width, int height,  String text, String font, int fontsize, Color fontColour){
+        super(XPos, YPos, width, height);
+        this.text = text;
+        this.font = font;
+        this.fontsize = fontsize;
+        this.fontColour = fontColour;
+    }
+
     public String getText() {
         return text;
     }

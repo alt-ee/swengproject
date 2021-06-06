@@ -6,10 +6,10 @@ public abstract class ButtonDataStorage
 {
     public enum Target {slide, media};
     protected Target target;
-    protected int XPos;
-    protected int YPos;
-    protected int width;
-    protected int height;
+    protected final int XPos;
+    protected final int YPos;
+    protected final int width;
+    protected final int height;
     protected String id;
 
     public ButtonDataStorage(int XPos, int YPos,
@@ -20,6 +20,23 @@ public abstract class ButtonDataStorage
         this.width = width;
         this.height = height;
         this.id = id;
+        this.target = target;
+    }
+
+    public ButtonDataStorage(int XPos, int YPos,
+                             int width, int height)
+    {
+        this.XPos = XPos;
+        this.YPos = YPos;
+        this.width = width;
+        this.height = height;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTarget(Target target) {
         this.target = target;
     }
 
