@@ -68,6 +68,14 @@ public class View {
         panel.repaint();
     }
 
+    public void clearPanel() {
+        panel.clearAll();
+        panel.removeAll();
+        videoPanel.removeAll();
+        audioPlayer.stopClip();
+        audioPlayer.closeClip();
+        clipLoaded = false;
+    }
 
     /***
      * Wrapper method for image handler to use our image type
