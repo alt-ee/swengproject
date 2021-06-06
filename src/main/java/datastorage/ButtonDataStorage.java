@@ -40,4 +40,8 @@ public abstract class ButtonDataStorage
     public String getId() {
         return id;
     }
+
+    public Target getTarget() {
+        return target;
+    }
 }
