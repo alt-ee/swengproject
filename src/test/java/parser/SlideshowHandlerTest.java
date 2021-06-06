@@ -181,7 +181,7 @@ class SlideshowHandlerTest {
                 100,
                 50,
                 "media01",
-                new URL("file:///src/test/resources/images/buttonimage.png"),
+                new URL("file:///src/test/resources/resources/images/buttonimage.png"),
                 ButtonDataStorage.Target.media);
 
         slide2.addVideo(video1);
@@ -190,6 +190,7 @@ class SlideshowHandlerTest {
 
         expectedSlideshow.addSlide(slide1);
         expectedSlideshow.addSlide(slide2);
+        expectedSlideshow.setCurrentSlide("slide01");
 
         parser.parse(bufferedInputStream, handler);
         parsedSlideshow = handler.getSlideshow();
