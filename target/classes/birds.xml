@@ -38,11 +38,11 @@
 
 
 
-        <image urlname="Chaffinch.jpg"
+        <image urlname="birdimages/chinch.jpg"
                xstart="0"
                ystart="47"
                width="390"
-               height="216"
+               height="219"
         />
 
         <text xstart="100" ystart="0" fontcolour="#FFFFFF">
