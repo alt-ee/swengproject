@@ -1,5 +1,7 @@
 package datastorage;
 
+import java.util.Objects;
+
 public abstract class ButtonDataStorage
 {
     public enum Target {slide, media};
@@ -43,5 +45,23 @@ public abstract class ButtonDataStorage
 
     public Target getTarget() {
         return target;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ButtonDataStorage that = (ButtonDataStorage) o;
+        return XPos == that.XPos &&
+                YPos == that.YPos &&
+                width == that.width &&
+                height == that.height &&
+                target == that.target &&
+                id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(target, XPos, YPos, width, height, id);
     }
 }

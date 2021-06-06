@@ -1,6 +1,7 @@
 package datastorage;
 
 import java.awt.*;
+import java.util.Objects;
 
 public class TextButton extends ButtonDataStorage
 {
@@ -31,5 +32,22 @@ public class TextButton extends ButtonDataStorage
 
     public Color getFontColour() {
         return fontColour;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TextButton that = (TextButton) o;
+        return fontsize == that.fontsize &&
+                text.equals(that.text) &&
+                font.equals(that.font) &&
+                fontColour.equals(that.fontColour);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), text, font, fontsize, fontColour);
     }
 }
