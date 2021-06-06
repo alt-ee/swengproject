@@ -18,7 +18,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class SurvivalApp {
 
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
-        File xmlFile = new File("src/main/resources/birds.xml");
+        File xmlFile = new File("src/main/resources/plants.xml");
 
         Controller controller = new Controller(xmlFile);
         controller.drawCurrentSlide();
