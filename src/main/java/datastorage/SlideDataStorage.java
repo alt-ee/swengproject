@@ -1,4 +1,7 @@
 package datastorage;
+import buttonhandler.ButtonHandler;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.Objects;
@@ -19,6 +22,7 @@ public class SlideDataStorage
     private ArrayList<ImageDataStorage> imageArr = new ArrayList<>();
     private ArrayList<LineDataStorage> lineArr = new ArrayList<>();
     private ArrayList<ShapeDataStorage> shapeArr = new ArrayList<>();
+    private ArrayList<ButtonDataStorage> buttonArr = new ArrayList<>();
 
     public SlideDataStorage(String id, int duration) {
         this.id = id;
@@ -70,6 +74,9 @@ public class SlideDataStorage
     {
         shapeArr.add(newShape);
     }
+    public void addButton(ButtonDataStorage newButton) {
+        buttonArr.add(newButton);
+    }
 
     //hasElements
     public boolean hasText()
@@ -96,7 +103,9 @@ public class SlideDataStorage
     {
         return !shapeArr.isEmpty();
     }
-
+    public boolean hasButton() {
+        return !buttonArr.isEmpty();
+    }
     //iterators
     public ListIterator<TextDataStorage> textIterator()
     {
@@ -121,6 +130,9 @@ public class SlideDataStorage
     public ListIterator<ShapeDataStorage> shapeIterator()
     {
         return shapeArr.listIterator();
+    }
+    public ListIterator<ButtonDataStorage> buttonIterator() {
+        return buttonArr.listIterator();
     }
 
     public String getId() {
