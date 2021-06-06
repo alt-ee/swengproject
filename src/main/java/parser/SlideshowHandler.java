@@ -131,7 +131,7 @@ public class SlideshowHandler extends DefaultHandler {
                 int height = Integer.parseInt(attributes.getValue("height"));
                 URL location = null;
                 try {
-                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
+                    location = new URL("file:///" + slideshowPath + attributes.getValue("urlname"));
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -155,7 +155,7 @@ public class SlideshowHandler extends DefaultHandler {
 
                 URL location = null;
                 try {
-                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
+                    location = new URL("file:///" + slideshowPath + attributes.getValue("urlname"));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -185,7 +185,7 @@ public class SlideshowHandler extends DefaultHandler {
 
                 URL location = null;
                 try {
-                    location = new URL("file://" + slideshowPath + attributes.getValue("urlname"));
+                    location = new URL("file:///" + slideshowPath + attributes.getValue("urlname"));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
