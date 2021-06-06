@@ -37,6 +37,7 @@ public class Slideshow {
         Slideshow slideshow = (Slideshow) o;
         return defaultFontSize == slideshow.defaultFontSize &&
                 slides.equals(slideshow.slides) &&
+                currentSlide.equals(slideshow.currentSlide) &&
                 defaultBackgroundColour.equals(slideshow.defaultBackgroundColour) &&
                 defaultFont.equals(slideshow.defaultFont) &&
                 defaultTextColour.equals(slideshow.defaultTextColour) &&
@@ -46,7 +47,7 @@ public class Slideshow {
 
     @Override
     public int hashCode() {
-        return Objects.hash(slides, defaultBackgroundColour, defaultFont, defaultFontSize, defaultTextColour, defaultLineColour, defaultShapeColour);
+        return Objects.hash(slides, currentSlide, defaultBackgroundColour, defaultFont, defaultFontSize, defaultTextColour, defaultLineColour, defaultShapeColour);
     }
 
     public void addSlide(SlideDataStorage slide) {

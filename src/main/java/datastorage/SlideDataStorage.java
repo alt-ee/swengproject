@@ -41,12 +41,13 @@ public class SlideDataStorage
                 audioArr.equals(that.audioArr) &&
                 imageArr.equals(that.imageArr) &&
                 lineArr.equals(that.lineArr) &&
-                shapeArr.equals(that.shapeArr);
+                shapeArr.equals(that.shapeArr) &&
+                buttonArr.equals(that.buttonArr);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, duration, textArr, videoArr, audioArr, imageArr, lineArr, shapeArr);
+        return Objects.hash(id, duration, textArr, videoArr, audioArr, imageArr, lineArr, shapeArr, buttonArr);
     }
 
     //adders
