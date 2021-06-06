@@ -69,7 +69,9 @@ public class AudioPlayer {
      * Close the DataLine, unloading the clip from the player.
      */
     public void closeClip() {
-        audioClip.close();
+        if (audioClip != null) {
+            audioClip.close();
+        }
     }
 
 }
