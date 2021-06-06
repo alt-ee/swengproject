@@ -14,10 +14,20 @@
         </shape>
         <text xstart="7" ystart="34" font="Joker">more test text with specified font</text>
         <image urlname="resources/images/image.png" xstart="10" ystart="10" width="5" height="6"/>
+        <button xstart="300" ystart="300" width="100" height="50">
+            <text font="Calibri" fontsize="16" fontcolour="#dd452a">
+                button1Text
+            </text>
+            <slideid>slide02</slideid>
+        </button>
     </slide>
 
     <slide id="slide02" duration="100">
         <video urlname="resources/videos/video.mp4" loop="true" xstart="20" ystart="9" id="testVideo" />
         <audio urlname="resources/audio/audio.wav" loop="true" starttime="10"/>
+        <button xstart="300" ystart="300" width="100" height="50">
+            <image urlname="resources/images/buttonimage.png"/>
+            <mediaid>media01</mediaid>
+        </button>
     </slide>
 </slideshow>

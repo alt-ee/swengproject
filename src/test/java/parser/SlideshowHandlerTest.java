@@ -151,21 +151,42 @@ class SlideshowHandlerTest {
                 5,
                 6,
                 0);
+        ButtonDataStorage button1 = new TextButton(
+                300,
+                300,
+                100,
+                50,
+                "slide02",
+                "button1Text",
+                "Calibri",
+                16,
+                Color.decode("#dd452a"),
+                ButtonDataStorage.Target.slide);
 
         slide1.addText(text1);
         slide1.addText(text2);
         slide1.addLine(line1);
         slide1.addShape(shape1);
         slide1.addImage(image1);
+        slide1.addButton(button1);
 
         SlideDataStorage slide2 = new SlideDataStorage("slide02", 100);
 
         VideoDataStorage video1 = new VideoDataStorage(20, 9,
                 new URL("file:///src/test/resources/resources/videos/video.mp4"), "testVideo", true);
         AudioDataStorage audio1 = new AudioDataStorage(new URL("file:///src/test/resources/resources/audio/audio.wav"), 10, true);
+        ButtonDataStorage button2 = new ImageButton(
+                300,
+                300,
+                100,
+                50,
+                "media01",
+                new URL("file:///src/test/resources/images/buttonimage.png"),
+                ButtonDataStorage.Target.media);
 
         slide2.addVideo(video1);
         slide2.addAudio(audio1);
+        slide2.addButton(button2);
 
         expectedSlideshow.addSlide(slide1);
         expectedSlideshow.addSlide(slide2);
