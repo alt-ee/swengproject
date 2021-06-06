@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class TextButton extends ButtonDataStorage
 {
-    private final String text;
+    private String text;
     private final String font;
     private final int fontsize;
     private final Color fontColour;
@@ -24,6 +24,10 @@ public class TextButton extends ButtonDataStorage
         this.font = font;
         this.fontsize = fontsize;
         this.fontColour = fontColour;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getText() {
