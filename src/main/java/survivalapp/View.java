@@ -1,6 +1,7 @@
 package survivalapp;
 
 import audiohandler.AudioPlayer;
+import buttonhandler.ButtonHandler;
 import datastorage.*;
 import graphicshandler.GraphicsPanel;
 import imagehandler.ImageType;
@@ -24,7 +25,20 @@ public class View {
     private JPanel videoPanel;
     private WriteText textHandler;
     private AudioPlayer audioPlayer;
+    private ButtonHandler buttonHandler;
     private boolean clipLoaded;
+    private ActionListener slideListener;
+    private ActionListener mediaListener;
+
+    public View(ActionListener slideListener, ActionListener mediaListener) {
+        this.slideListener = slideListener;
+        this.mediaListener = mediaListener;
+
+        textHandler = new WriteText();
+
+        audioPlayer = new AudioPlayer();
+        clipLoaded = false;
+    }
 
     public void newWindow(int width, int height) {
         window = new JFrame();
@@ -32,14 +46,11 @@ public class View {
         window.setSize(width, height);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        textHandler = new WriteText();
-
-        audioPlayer = new AudioPlayer();
-        clipLoaded = false;
-
         panel = new GraphicsPanel();
         panel.setBounds(0, 0, width, height);
         panel.setLayout(null);
+
+        buttonHandler = new ButtonHandler(panel);
 
         videoPanel = new JPanel();
         videoPanel.setOpaque(true);
@@ -210,5 +221,49 @@ public class View {
 
     }
 
+    public void drawButton(ButtonDataStorage button) {
+        ActionListener listener;
+        if (button.getTarget() == ButtonDataStorage.Target.slide) {
+            listener = slideListener;
+        } else if (button.getTarget() == ButtonDataStorage.Target.media) {
+            listener = mediaListener;
+        } else {
+            return;
+        }
 
+        if (button.getClass() == TextButton.class) {
+            drawTextButton((TextButton) button, listener);
+        } else if (button.getClass() == ImageButton.class) {
+            drawImageButton((ImageButton) button, listener);
+        }
+    }
+
+    private void drawTextButton(TextButton button, ActionListener listener) {
+        buttonHandler.addTextButton(
+                button.getXPos(),
+                button.getYPos(),
+                button.getWidth(),
+                button.getHeight(),
+                button.getId(),
+                button.getText(),
+                button.getFont(),
+                button.getFontsize(),
+                button.getFontColour(),
+                listener
+        );
+    }
+
+    private void drawImageButton(ImageButton button, ActionListener listener) {
+        String url = button.getFileLocation().getFile().substring(1);
+
+        buttonHandler.addImageButton(
+                button.getXPos(),
+                button.getYPos(),
+                button.getWidth(),
+                button.getHeight(),
+                button.getId(),
+                url,
+                listener
+        );
+    }
 }
