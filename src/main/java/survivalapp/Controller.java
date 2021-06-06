@@ -18,7 +18,7 @@ public class Controller {
         slideshow = Parser.parse(slideshowFile);
 
         view = new View();
-        view.newWindow(390, 844);
+        view.newWindow(406, 883);
     }
 
     public void drawCurrentSlide() {
@@ -47,6 +47,7 @@ public class Controller {
     private void drawAllText(SlideDataStorage slide) {
         if (slide.hasText()) {
             Iterator<TextDataStorage> textIter = slide.textIterator();
+
 
             while (textIter.hasNext()) {
                 view.drawText(textIter.next());

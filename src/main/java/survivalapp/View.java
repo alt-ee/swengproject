@@ -31,6 +31,7 @@ public class View {
 
         window.setSize(width, height);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setMinimumSize(new Dimension(width, height));
 
         textHandler = new WriteText();
 
@@ -46,6 +47,7 @@ public class View {
         videoPanel.setLayout(null);
 
         layeredPane = new JLayeredPane();
+
         layeredPane.add(panel, 0);
         layeredPane.add(videoPanel, 1);
 
