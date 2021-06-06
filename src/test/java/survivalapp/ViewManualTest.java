@@ -77,11 +77,11 @@ public class ViewManualTest {
 //        }
 
         // Button test
-        ButtonDataStorage textButton = new TextButton(100, 100, 100, 20, "testid", "testButton", "Calibri", 14, Color.BLUE, ButtonDataStorage.Target.slide);
+        ButtonDataStorage textButton = new TextButton(100, 600, 100, 20, "testid", "testButton", "Calibri", 14, Color.BLUE, ButtonDataStorage.Target.slide);
         view.drawButton(textButton);
         try {
             URL buttonImageURL = new URL("file:///src/test/resources/image0.jpg");
-            ButtonDataStorage imageButton = new ImageButton(100, 200, 100, 100, "testid2", buttonImageURL, ButtonDataStorage.Target.media);
+            ButtonDataStorage imageButton = new ImageButton(100, 650, 100, 100, "testid2", buttonImageURL, ButtonDataStorage.Target.media);
             view.drawButton(imageButton);
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class ViewManualTest {
         public void actionPerformed(ActionEvent ae) {
             String id = ((String)((JButton)ae.getSource()).getClientProperty("targetid"));
 
-            System.out.println("SlideListener called with targetid" + id);
+            System.out.println("SlideListener called with targetid: " + id);
         }
     }
 
@@ -106,7 +106,7 @@ public class ViewManualTest {
         public void actionPerformed(ActionEvent ae) {
             String id = ((String)((JButton)ae.getSource()).getClientProperty("targetid"));
 
-            System.out.println("MediaListener called with targetid" + id);
+            System.out.println("MediaListener called with targetid: " + id);
         }
     }
 }
