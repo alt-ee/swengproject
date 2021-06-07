@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PWS_Schema.xsd"?>
+
+<slideshow author="andrew thomas" version="1" comment="">
+    <defaults backgroundcolour="#000000"
+              font="Calibri" fontsize="11"
+              fontcolour="#FF00FF"
+              linecolour="#FF00FF"
+              fillcolour="#FF00FF" />
+
+    <slide id="Cep">
+
+        <line xstart="388" ystart="0" xend="388" yend="100" />
+
+        <!--        margin reference-->
+<!--        <shape type="rectangle"-->
+<!--               xstart="0"-->
+<!--               ystart="0"-->
+<!--               width="15"-->
+<!--               height="844"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+<!--        <shape type="rectangle"-->
+<!--               xstart="375"-->
+<!--               ystart="0"-->
+<!--               width="15"-->
+<!--               height="844"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+
+<!--        <shape type="rectangle"-->
+<!--               xstart="15"-->
+<!--               ystart="829"-->
+<!--               width="390"-->
+<!--               height="15"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="0"
+               width="390"
+               height="47"
+               fillcolour="#000000"
+        />
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="773"
+               width="390"
+               height="71"
+               fillcolour="#b0b3b8"
+        />
+
+        <image urlname="plantimages/elder.jpg"
+               xstart="0"
+               ystart="47"
+               width="390"
+               height="219"
+        />
+
+        <image urlname="icons/home_white.png"
+               xstart="43"
+               ystart="789"
+               width="44"
+               height="44"
+        />
+
+        <image urlname="icons/dove_green.png"
+               xstart="129"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/leaves_white.png"
+               xstart="215"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/firstaid_white.png"
+               xstart="301"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/information_grey.png"
+               xstart="15"
+               ystart="343"
+               width="16"
+               height="16"
+        />
+
+        <image urlname="icons/knifefork_grey.png"
+               xstart="15"
+               ystart="603"
+               width="16"
+               height="16"
+        />
+
+        <image urlname="icons/barchart_grey.png"
+               xstart="15"
+               ystart="463"
+               width="16"
+               height="16"
+        />
+
+        <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b>
+        </text>
+
+
+        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Common Beech</b>
+        </text>
+
+        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Fagus sylvatica</i>
+        </text>
+
+        <text xstart="35" ystart="320" fontcolour="#000000" fontsize="16">
+            <b>Description:</b> Common Beech (Fagus sylvatica) is a \n common deciduous tree in British woodlands. The \n leaves are edible for the first few weeks after they \n appear in the spring and the tree produces an \n edible nut.
+
+            <b>Often Found:</b> Common Beech (also known as \n European Beech)  is native to southern England, \n although there is some debate as to whether it was \n actually introduced up to 4-6,000 years ago. It can be \n found in much of Europe and seems to prefer \n well-drained and slightly acidic soils.
+
+            <b>Eating Common Beech:</b> There are several recipes for \n Beech Leaf Noyau. Most agree on three key \n ingredients – Beech leaves, gin and sugar \n 1. Wash and dry enough Beech leaves to fill a large \n jar/container \n 2. Cover with gin \n 3. Leave for a week (some say a fortnight) then strain \n off liquid \n 4. For each pint add 1lb (453g) of \n sugar dissolved in water (some specify boiling water, volume changes but about 1/2 pint) \n 5. Add brandy (most recipes agree on ‘lots’) and stir \n 6. Bottle when cold
+        </text>
+    </slide>
+</slideshow>
