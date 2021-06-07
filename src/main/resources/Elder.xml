@@ -98,7 +98,7 @@
 
         <image urlname="icons/knifefork_grey.png"
                xstart="15"
-               ystart="603"
+               ystart="525"
                width="16"
                height="16"
         />
@@ -114,18 +114,16 @@
         </text>
 
 
-        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Common Beech</b>
+        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Elder</b>
         </text>
 
-        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Fagus sylvatica</i>
+        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Sambucus nigra</i>
         </text>
 
         <text xstart="35" ystart="320" fontcolour="#000000" fontsize="16">
-            <b>Description:</b> Common Beech (Fagus sylvatica) is a \n common deciduous tree in British woodlands. The \n leaves are edible for the first few weeks after they \n appear in the spring and the tree produces an \n edible nut.
-
-            <b>Often Found:</b> Common Beech (also known as \n European Beech)  is native to southern England, \n although there is some debate as to whether it was \n actually introduced up to 4-6,000 years ago. It can be \n found in much of Europe and seems to prefer \n well-drained and slightly acidic soils.
-
-            <b>Eating Common Beech:</b> There are several recipes for \n Beech Leaf Noyau. Most agree on three key \n ingredients – Beech leaves, gin and sugar \n 1. Wash and dry enough Beech leaves to fill a large \n jar/container \n 2. Cover with gin \n 3. Leave for a week (some say a fortnight) then strain \n off liquid \n 4. For each pint add 1lb (453g) of \n sugar dissolved in water (some specify boiling water, volume changes but about 1/2 pint) \n 5. Add brandy (most recipes agree on ‘lots’) and stir \n 6. Bottle when cold
+            <b>Description:</b> Elder (Sambucus nigra) is a tall flowering \n shrub with clusters of white, fragrant flowers in late \n Spring and red berries in early autumn. It has a long \n history of uses as a source of food, for hedgerows, \n for keeping insects (and perhaps the Devil) at bay, \n and a host of other uses.
+            <b>Often Found:</b> Elder is most often found in the \n British Isles in hedgerows and along the edges \n of fields, woodlands and sometimes scrub areas.
+            <b>Eating Common Beech:</b> This is the simpler, non\n-alcoholic version of Elderflower Champagne without \n the fizz or the time required. \n You will need: \n - 10-15 elderflower heads \n - 2 lemons \n - 1-1.5Liters of water \n - 800g-1kg of granulated sugar \n - A selection of bottles with lids \n Method: \n 1. Pick your elderflower heads (see tips on gathering \n and de-stalking in Elderflower Champagne recipe above)
         </text>
     </slide>
 </slideshow>
