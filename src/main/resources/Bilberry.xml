@@ -68,14 +68,14 @@
                height="44"
         />
 
-        <image urlname="icons/dove_green.png"
+        <image urlname="icons/dove_white.png"
                xstart="129"
                ystart="789"
                width="43"
                height="43"
         />
 
-        <image urlname="icons/leaves_white.png"
+        <image urlname="icons/leaves_green.png"
                xstart="215"
                ystart="789"
                width="43"
@@ -98,7 +98,7 @@
 
         <image urlname="icons/knifefork_grey.png"
                xstart="15"
-               ystart="603"
+               ystart="563"
                width="16"
                height="16"
         />
@@ -114,18 +114,19 @@
         </text>
 
 
-        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Common Beech</b>
+        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Bilberry</b>
         </text>
 
-        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Fagus sylvatica</i>
+        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Vaccinium myrtillus</i>
         </text>
 
         <text xstart="35" ystart="320" fontcolour="#000000" fontsize="16">
-            <b>Description:</b> Common Beech (Fagus sylvatica) is a \n common deciduous tree in British woodlands. The \n leaves are edible for the first few weeks after they \n appear in the spring and the tree produces an \n edible nut.
+            <b>Description:</b> Bilberries are easy to find and identify \n and can be eaten straight from the bush with no \n problems and few misidentification worries. The fruits \n can be picked easily by hand and turned into a variety \n of jams, pies and other fruit preserves.
 
-            <b>Often Found:</b> Common Beech (also known as \n European Beech)  is native to southern England, \n although there is some debate as to whether it was \n actually introduced up to 4-6,000 years ago. It can be \n found in much of Europe and seems to prefer \n well-drained and slightly acidic soils.
+            <b>Often Found:</b> Within the UK you will find Bilberry \n bushes growing amongst heather and gorse plants on \n upland acidic soils. You may also find them growing in \n clearings and glades under conifers.
 
-            <b>Eating Common Beech:</b> There are several recipes for \n Beech Leaf Noyau. Most agree on three key \n ingredients – Beech leaves, gin and sugar \n 1. Wash and dry enough Beech leaves to fill a large \n jar/container \n 2. Cover with gin \n 3. Leave for a week (some say a fortnight) then strain \n off liquid \n 4. For each pint add 1lb (453g) of \n sugar dissolved in water (some specify boiling water, volume changes but about 1/2 pint) \n 5. Add brandy (most recipes agree on ‘lots’) and stir \n 6. Bottle when cold
+            <b>Eating Bilberry:</b> Bilberries are edible straight from the \n bush (assuming you’ve made a good and positive \n identification) and can be safely eaten raw in most \n cases. Some care is needed when picking them as \n they have a tendency to pop easily. Stained fingers \n and clothing often result from a Bilberry foraging \n session.
+
         </text>
     </slide>
 </slideshow>

@@ -68,14 +68,14 @@
                height="44"
         />
 
-        <image urlname="icons/dove_green.png"
+        <image urlname="icons/dove_white.png"
                xstart="129"
                ystart="789"
                width="43"
                height="43"
         />
 
-        <image urlname="icons/leaves_white.png"
+        <image urlname="icons/leaves_green.png"
                xstart="215"
                ystart="789"
                width="43"

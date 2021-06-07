@@ -68,14 +68,14 @@
                height="44"
         />
 
-        <image urlname="icons/dove_green.png"
+        <image urlname="icons/dove_white.png"
                xstart="129"
                ystart="789"
                width="43"
                height="43"
         />
 
-        <image urlname="icons/leaves_white.png"
+        <image urlname="icons/leaves_green.png"
                xstart="215"
                ystart="789"
                width="43"
@@ -98,14 +98,14 @@
 
         <image urlname="icons/knifefork_grey.png"
                xstart="15"
-               ystart="603"
+               ystart="582"
                width="16"
                height="16"
         />
 
         <image urlname="icons/barchart_grey.png"
                xstart="15"
-               ystart="463"
+               ystart="483"
                width="16"
                height="16"
         />
@@ -114,18 +114,18 @@
         </text>
 
 
-        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Common Beech</b>
+        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Cep</b>
         </text>
 
-        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Fagus sylvatica</i>
+        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Boletus edulis</i>
         </text>
 
         <text xstart="35" ystart="320" fontcolour="#000000" fontsize="16">
-            <b>Description:</b> Common Beech (Fagus sylvatica) is a \n common deciduous tree in British woodlands. The \n leaves are edible for the first few weeks after they \n appear in the spring and the tree produces an \n edible nut.
+            <b>Description:</b> Cep (Boletus edulis) is one of the most \n reassuring edible mushroom that you will find in the \n UK. It has a distinctive appearance, few things to \n confuse it with and very tasty. It’s a highly-prized \n mushroom in the kitchen and can be found across the \n Northern Hemisphere.
 
-            <b>Often Found:</b> Common Beech (also known as \n European Beech)  is native to southern England, \n although there is some debate as to whether it was \n actually introduced up to 4-6,000 years ago. It can be \n found in much of Europe and seems to prefer \n well-drained and slightly acidic soils.
+            <b>Often Found:</b> You will probably find Ceps growing \n under coniferous trees (occasionally under deciduous \n but much less frequently in my experience) and from \n mid-Summer to late-Autumn.
 
-            <b>Eating Common Beech:</b> There are several recipes for \n Beech Leaf Noyau. Most agree on three key \n ingredients – Beech leaves, gin and sugar \n 1. Wash and dry enough Beech leaves to fill a large \n jar/container \n 2. Cover with gin \n 3. Leave for a week (some say a fortnight) then strain \n off liquid \n 4. For each pint add 1lb (453g) of \n sugar dissolved in water (some specify boiling water, volume changes but about 1/2 pint) \n 5. Add brandy (most recipes agree on ‘lots’) and stir \n 6. Bottle when cold
+            <b>Eating Cep:</b> Of all the edible mushrooms you are likely \n to come across this is probably the most prized – for \n the size (up to 25cm across), weight and density of the \n flesh. They also keep the flavour when dried and can \n be used in a variety of ways. Younger specimens are \n often more sought-after for use as a fresh ingredient \n as the larger, more mature specimens can often \n harbour larvae and maggots. Young ceps can be used \n raw in salads (although if you are trying them raw for \n the first time then eat only a very small piece at first).
         </text>
     </slide>
 </slideshow>
