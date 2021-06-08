@@ -15,13 +15,16 @@ import java.util.Iterator;
 public class Controller {
     private Slideshow slideshow;
     private View view;
+    private SlideListener sl;
+    private MediaListener ml;
+
 
     // Temporary constructors for testing
     public Controller(File slideshowFile) throws ParserConfigurationException, SAXException, IOException {
         slideshow = Parser.parse(slideshowFile);
 
 
-        view = new View();
+        view = new View(sl, ml);
         view.newWindow(406, 883);
     }
 

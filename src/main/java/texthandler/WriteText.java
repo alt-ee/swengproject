@@ -52,9 +52,6 @@ public class WriteText
         label.setForeground(colour);                                   //changes text colour
         label.setFont(new Font(font, Font.PLAIN, fontSize));           //determines font and font size of text
         label.setBounds(XPos, YPos, maxLineWidth, labelFM.getHeight() * numLines);    //determines x & y bound positions for text
-//        System.out.println("Font metric height: " + labelFM.getHeight());
-//        System.out.println("Lines in text: " + numLines);
-//        System.out.println("Label has height: " + label.getHeight() + " and width: " + label.getWidth());
         label.setVerticalAlignment(JLabel.TOP);
         label.setText(convertToMultiline(text));                       //writes text on panel \n or \\\\n in string will add new line
 
