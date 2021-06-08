@@ -204,7 +204,7 @@ public class View {
         }
 
         // TODO Need to sort out width and height
-        Video videoPlayer = new Video(videoPanel, url, startTime, loop, xPos, yPos, 200, 200, true, true);
+        Video videoPlayer = new Video(videoPanel, url, startTime, loop, xPos, yPos, 390, 220, true, true);
 
         if (!startWithButton) {
             videoPlayer.startVideo();
