@@ -5,6 +5,7 @@ import buttonhandler.ButtonHandler;
 import datastorage.*;
 import graphicshandler.GraphicsPanel;
 import imagehandler.ImageType;
+import media.ToggleableVideo;
 import media.Video;
 import texthandler.WriteText;
 
@@ -16,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 
 public class View {
 
@@ -29,6 +31,7 @@ public class View {
     private boolean clipLoaded;
     private ActionListener slideListener;
     private ActionListener mediaListener;
+    private HashMap<String, Runnable> mediaTriggers;
 
     public View(ActionListener slideListener, ActionListener mediaListener) {
         this.slideListener = slideListener;
@@ -38,6 +41,7 @@ public class View {
 
         audioPlayer = new AudioPlayer();
         clipLoaded = false;
+        mediaTriggers = new HashMap<>();
     }
 
     public void newWindow(int width, int height) {
@@ -68,6 +72,12 @@ public class View {
         panel.repaint();
     }
 
+    public void toggleMedia(String id) {
+        if (mediaTriggers.containsKey(id)) {
+            mediaTriggers.get(id).run();
+        }
+    }
+
     public void clearPanel() {
         panel.clearAll();
         panel.removeAll();
@@ -80,7 +90,7 @@ public class View {
     /***
      * Wrapper method for image handler to use our image type
      *
-     * @param image
+     * @param image the image to be displayed
      */
     public void drawImage(ImageDataStorage image) {
 
@@ -97,7 +107,7 @@ public class View {
     /***
      * Wrapper method for shape handler to use our shape type
      *
-     * @param shape
+     * @param shape the shape to be displayed
      */
     public void drawShape(ShapeDataStorage shape) {
 
@@ -136,7 +146,7 @@ public class View {
     /***
      * Wrapper method for line handler to use our line type
      *
-     * @param line
+     * @param line the line to be displayed
      */
     public void drawLine(LineDataStorage line) {
 
@@ -153,7 +163,7 @@ public class View {
     /***
      * Wrapper method for text handler to use our text type
      *
-     * @param text
+     * @param text the text to be displayed
      */
     public void drawText(TextDataStorage text) {
         int xPos = text.getXPos();
@@ -169,7 +179,7 @@ public class View {
     /***
      * Wrapper method for audio handler to use our audio type
      *
-     * @param audio
+     * @param audio the audio to be played
      */
 
     public void playAudio(AudioDataStorage audio) {
@@ -190,11 +200,9 @@ public class View {
         }
 
         if (clipLoaded) {
-            System.out.println("Clip loaded");
             if (audio.hasStartTime()) {
                 int startTime = audio.getStartTime();
                 if (startTime == 0) {
-                    System.out.println("playing");
                     audioPlayer.playClip(loop);
                 } else {
                     // Trigger a timer to start the clip after startTime has elapsed
@@ -202,6 +210,9 @@ public class View {
                     timer.setRepeats(false);
                     timer.start();
                 }
+            } else {
+                String id = audio.getId();
+                mediaTriggers.put(id, audioPlayer::togglePlayback);
             }
         }
     }
@@ -215,16 +226,19 @@ public class View {
         boolean startWithButton = false;
         boolean loop = video.isLoop();
 
-        if (startTime == -1) {
+        if (!video.hasStartTime()) {
             startWithButton = true;
             startTime = 0;
         }
 
         // TODO Need to sort out width and height
-        Video videoPlayer = new Video(videoPanel, url, startTime, loop, xPos, yPos, 200, 200, true, true);
+        ToggleableVideo videoPlayer = new ToggleableVideo(videoPanel, url, startTime, loop, xPos, yPos, 200, 200, true, true);
 
         if (!startWithButton) {
             videoPlayer.startVideo();
+        } else {
+            String id = video.getId();
+            mediaTriggers.put(id, videoPlayer::togglePlayback);
         }
 
     }
