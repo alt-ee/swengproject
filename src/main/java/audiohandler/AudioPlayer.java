@@ -65,10 +65,16 @@ public class AudioPlayer {
         }
     }
 
-    public void togglePlayback() {
+    public void togglePlayback(boolean loop) {
         if (audioClip != null) {
             if (!audioClip.isActive()) {
-                audioClip.start();
+                audioClip.setFramePosition(0);
+
+                if (loop) {
+                    audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+                } else {
+                    audioClip.start();
+                }
             } else {
                 audioClip.stop();
             }
