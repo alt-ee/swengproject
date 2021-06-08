@@ -46,6 +46,16 @@
                fillcolour="#000000"
         />
 
+        <button xstart="15" ystart="395" width="360" height="25">
+            <text font="Calibri" fontsize="16" fontcolour="#00B050">Play/Pause Audio</text>
+            <mediaid>chaffinchaudio</mediaid>
+        </button>
+
+        <button xstart="43" ystart="789" width="43" height="43">
+            <image urlname="icons/home_white.png" />
+            <slideid>Home</slideid>
+        </button>
+
         <shape type="rectangle"
                xstart="0"
                ystart="773"
@@ -120,13 +130,6 @@
         <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Fringilla coelebs</i>
         </text>
 
-
-<!--        <text xstart="15" ystart="400" fontcolour="#00B050" fontsize="16"> <i>Play Audio</i> </text>-->
-
-        <button xstart="15" ystart="400" width="360" height="20">
-            <text font="Calibri" fontsize="16" fontcolour="#00B050">Play/Pause Audio</text>
-            <mediaid>chaffinchaudio</mediaid>
-        </button>
 
         <audio urlname="birdsounds/Common Chaffinch.wav" loop="false" id="chaffinchaudio"/>
 
@@ -498,5 +501,103 @@
         <line xstart="372" ystart="380" xend="372" yend="350" linecolour="#b0b3b8" duration="0"/>
         <line xstart="373" ystart="373" xend="373" yend="357" linecolour="#b0b3b8" duration="0"/>
         <line xstart="374" ystart="378" xend="374" yend="352" linecolour="#b0b3b8" duration="0"/>
+    </slide>
+
+    <slide id="Home">
+
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="0"
+               width="390"
+               height="47"
+               fillcolour="#000000"
+        />
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="773"
+               width="390"
+               height="71"
+               fillcolour="#b0b3b8"
+        />
+
+        <image urlname="icons/dove_white.png"
+               xstart="158"
+               ystart="159"
+               width="74"
+               height="74"
+        />
+
+        <image urlname="icons/leaves_white.png"
+               xstart="158"
+               ystart="376"
+               width="74"
+               height="74"
+        />
+
+        <image urlname="homepageimages/bird.png"
+               xstart="15"
+               ystart="95"
+               width="360"
+               height="202"
+        />
+
+        <image urlname="homepageimages/plant.png"
+               xstart="15"
+               ystart="312"
+               width="360"
+               height="202"
+        />
+
+        <image urlname="homepageimages/bhf.png"
+               xstart="15"
+               ystart="529"
+               width="360"
+               height="202"
+        />
+
+
+
+        <image urlname="icons/home_green.png"
+               xstart="43"
+               ystart="789"
+               width="44"
+               height="44"
+        />
+
+        <image urlname="icons/dove_white.png"
+               xstart="129"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/leaves_white.png"
+               xstart="215"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/firstaid_white.png"
+               xstart="301"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+
+        <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b>
+        </text>
+
+
+        <text xstart="15" ystart="55" fontcolour="#000000" fontsize="24"> <b>Welcome to Trailblazer.</b>
+        </text>
+
+
+        <text xstart="15" ystart="725" fontcolour="#00B050" fontsize="16"> <i>References</i>
+
+        </text>
     </slide>
 </slideshow>
