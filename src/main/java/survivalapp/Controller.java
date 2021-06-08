@@ -122,7 +122,6 @@ public class Controller {
     }
 
     private class SlideListener implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent ae) {
             String id = ((String)((JButton)ae.getSource()).getClientProperty("targetid"));
@@ -133,12 +132,11 @@ public class Controller {
     }
 
     private class MediaListener implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent ae) {
             String id = ((String)((JButton)ae.getSource()).getClientProperty("targetid"));
 
-            System.out.println("MediaListener called with targetid: " + id);
+            view.toggleMedia(id);
         }
     }
 
