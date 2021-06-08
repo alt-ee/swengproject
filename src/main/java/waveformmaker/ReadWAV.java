@@ -15,7 +15,7 @@ public class ReadWAV
 		try
 		{
 			//Open the file
-			File file =  new File("src/main/resources/birdsounds/European Robin.wav");
+			File file =  new File("src/main/resources/birdsounds/House Sparrow.wav");
 
 			String name = file.getName().replace("."," ");
 			System.out.println(name);
@@ -81,7 +81,7 @@ public class ReadWAV
 				localMax = Double.MIN_VALUE;
 				i++;
 			}
-			while (framesRead == bufferSize);
+			while (i < waveformWidth);
 
 			scalingFactor = waveformHeight / totalMax;
 
