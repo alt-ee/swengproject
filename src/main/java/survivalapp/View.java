@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class View {
@@ -32,6 +33,7 @@ public class View {
     private ActionListener slideListener;
     private ActionListener mediaListener;
     private HashMap<String, Runnable> mediaTriggers;
+    private ArrayList<ToggleableVideo> videos;
 
 
     public View(ActionListener slideListener, ActionListener mediaListener) {
@@ -43,6 +45,7 @@ public class View {
         audioPlayer = new AudioPlayer();
         clipLoaded = false;
         mediaTriggers = new HashMap<>();
+        videos = new ArrayList<>();
     }
 
     public void newWindow(int width, int height) {
@@ -72,6 +75,7 @@ public class View {
 
     public void repaintPanel() {
         panel.repaint();
+        videoPanel.repaint();
     }
 
     public void toggleMedia(String id) {
@@ -83,6 +87,9 @@ public class View {
     public void clearPanel() {
         panel.clearAll();
         panel.removeAll();
+        for (ToggleableVideo video : videos) {
+            video.destroyVideo();
+        }
         videoPanel.removeAll();
         audioPlayer.stopClip();
         audioPlayer.closeClip();
@@ -214,7 +221,7 @@ public class View {
                 }
             } else {
                 String id = audio.getId();
-                mediaTriggers.put(id, audioPlayer::togglePlayback);
+                mediaTriggers.put(id, () -> audioPlayer.togglePlayback(loop));
             }
         }
     }
@@ -242,6 +249,8 @@ public class View {
             String id = video.getId();
             mediaTriggers.put(id, videoPlayer::togglePlayback);
         }
+
+        videos.add(videoPlayer);
 
     }
 
