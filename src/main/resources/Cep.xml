@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PWS_Schema.xsd"?>
+
+<slideshow author="andrew thomas" version="1" comment="">
+    <defaults backgroundcolour="#000000"
+              font="Calibri" fontsize="11"
+              fontcolour="#FF00FF"
+              linecolour="#FF00FF"
+              fillcolour="#FF00FF" />
+
+    <slide id="Cep">
+
+        <line xstart="388" ystart="0" xend="388" yend="100" />
+
+        <!--        margin reference-->
+<!--        <shape type="rectangle"-->
+<!--               xstart="0"-->
+<!--               ystart="0"-->
+<!--               width="15"-->
+<!--               height="844"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+<!--        <shape type="rectangle"-->
+<!--               xstart="375"-->
+<!--               ystart="0"-->
+<!--               width="15"-->
+<!--               height="844"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+
+<!--        <shape type="rectangle"-->
+<!--               xstart="15"-->
+<!--               ystart="829"-->
+<!--               width="390"-->
+<!--               height="15"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="0"
+               width="390"
+               height="47"
+               fillcolour="#000000"
+        />
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="773"
+               width="390"
+               height="71"
+               fillcolour="#b0b3b8"
+        />
+
+        <image urlname="plantimages/cep.jpg"
+               xstart="0"
+               ystart="47"
+               width="390"
+               height="219"
+        />
+
+        <image urlname="icons/home_white.png"
+               xstart="43"
+               ystart="789"
+               width="44"
+               height="44"
+        />
+
+        <image urlname="icons/dove_white.png"
+               xstart="129"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/leaves_green.png"
+               xstart="215"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/firstaid_white.png"
+               xstart="301"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/information_grey.png"
+               xstart="15"
+               ystart="343"
+               width="16"
+               height="16"
+        />
+
+        <image urlname="icons/knifefork_grey.png"
+               xstart="15"
+               ystart="582"
+               width="16"
+               height="16"
+        />
+
+        <image urlname="icons/barchart_grey.png"
+               xstart="15"
+               ystart="483"
+               width="16"
+               height="16"
+        />
+
+        <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b>
+        </text>
+
+
+        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Cep</b>
+        </text>
+
+        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Boletus edulis</i>
+        </text>
+
+        <text xstart="35" ystart="320" fontcolour="#000000" fontsize="16">
+            <b>Description:</b> Cep (Boletus edulis) is one of the most \n reassuring edible mushroom that you will find in the \n UK. It has a distinctive appearance, few things to \n confuse it with and very tasty. It’s a highly-prized \n mushroom in the kitchen and can be found across the \n Northern Hemisphere.
+
+            <b>Often Found:</b> You will probably find Ceps growing \n under coniferous trees (occasionally under deciduous \n but much less frequently in my experience) and from \n mid-Summer to late-Autumn.
+
+            <b>Eating Cep:</b> Of all the edible mushrooms you are likely \n to come across this is probably the most prized – for \n the size (up to 25cm across), weight and density of the \n flesh. They also keep the flavour when dried and can \n be used in a variety of ways. Younger specimens are \n often more sought-after for use as a fresh ingredient \n as the larger, more mature specimens can often \n harbour larvae and maggots. Young ceps can be used \n raw in salads (although if you are trying them raw for \n the first time then eat only a very small piece at first).
+        </text>
+    </slide>
+</slideshow>

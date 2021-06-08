@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PWS_Schema.xsd"?>
+
+<slideshow author="andrew thomas" version="1" comment="">
+    <defaults backgroundcolour="#000000"
+              font="Calibri" fontsize="11"
+              fontcolour="#FF00FF"
+              linecolour="#FF00FF"
+              fillcolour="#FF00FF" />
+
+    <slide id="Bilberry">
+
+        <line xstart="388" ystart="0" xend="388" yend="100" />
+
+        <!--        margin reference-->
+<!--        <shape type="rectangle"-->
+<!--               xstart="0"-->
+<!--               ystart="0"-->
+<!--               width="15"-->
+<!--               height="844"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+<!--        <shape type="rectangle"-->
+<!--               xstart="375"-->
+<!--               ystart="0"-->
+<!--               width="15"-->
+<!--               height="844"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+
+<!--        <shape type="rectangle"-->
+<!--               xstart="15"-->
+<!--               ystart="829"-->
+<!--               width="390"-->
+<!--               height="15"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="0"
+               width="390"
+               height="47"
+               fillcolour="#000000"
+        />
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="773"
+               width="390"
+               height="71"
+               fillcolour="#b0b3b8"
+        />
+
+        <image urlname="plantimages/bilberry.jpg"
+               xstart="0"
+               ystart="47"
+               width="390"
+               height="219"
+        />
+
+        <image urlname="icons/home_white.png"
+               xstart="43"
+               ystart="789"
+               width="44"
+               height="44"
+        />
+
+        <image urlname="icons/dove_white.png"
+               xstart="129"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/leaves_green.png"
+               xstart="215"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/firstaid_white.png"
+               xstart="301"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/information_grey.png"
+               xstart="15"
+               ystart="343"
+               width="16"
+               height="16"
+        />
+
+        <image urlname="icons/knifefork_grey.png"
+               xstart="15"
+               ystart="563"
+               width="16"
+               height="16"
+        />
+
+        <image urlname="icons/barchart_grey.png"
+               xstart="15"
+               ystart="463"
+               width="16"
+               height="16"
+        />
+
+        <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b>
+        </text>
+
+
+        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Bilberry</b>
+        </text>
+
+        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Vaccinium myrtillus</i>
+        </text>
+
+        <text xstart="35" ystart="320" fontcolour="#000000" fontsize="16">
+            <b>Description:</b> Bilberries are easy to find and identify \n and can be eaten straight from the bush with no \n problems and few misidentification worries. The fruits \n can be picked easily by hand and turned into a variety \n of jams, pies and other fruit preserves.
+
+            <b>Often Found:</b> Within the UK you will find Bilberry \n bushes growing amongst heather and gorse plants on \n upland acidic soils. You may also find them growing in \n clearings and glades under conifers.
+
+            <b>Eating Bilberry:</b> Bilberries are edible straight from the \n bush (assuming you’ve made a good and positive \n identification) and can be safely eaten raw in most \n cases. Some care is needed when picking them as \n they have a tendency to pop easily. Stained fingers \n and clothing often result from a Bilberry foraging \n session.
+
+        </text>
+    </slide>
+</slideshow>
