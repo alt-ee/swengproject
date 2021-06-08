@@ -42,7 +42,7 @@ public class ReadWAV
 			int centreLine = 365;
 
 			//Scaling factor used to normalise the waveform
-			double scalingFactor = 1;
+			double scalingFactor;
 
 			System.out.println("Frames: " + numFrames);
 

@@ -8,7 +8,52 @@
               linecolour="#FF00FF"
               fillcolour="#FF00FF" />
 
+    <slide id="Defibrillator">
+        <!--        Notification Bar Start-->
+        <shape type="rectangle" xstart="0" ystart="0" width="390" height="47">
+            <shading x1="175" y1="0" colour1="#000000" x2="175" y2="47" colour2="#b0b3b8" cyclic="false"/>
+        </shape>
 
+        <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b> </text>
+        <!--        Notification Bar End-->
+
+        <!--        Toolbar Start-->
+        <shape type="rectangle" xstart="0" ystart="773" width="390" height="71" fillcolour="#b0b3b8"/>
+
+        <button xstart="43" ystart="789" width="44" height="44">
+            <image urlname="icons/home_white.png"> </image>
+            <slideid>Home</slideid>
+        </button>
+
+        <button xstart="129" ystart="789" width="44" height="44">
+            <image urlname="icons/dove_white.png"> </image>
+            <slideid>Bird Navigation</slideid>
+        </button>
+
+        <button xstart="215" ystart="789" width="44" height="44">
+            <image urlname="icons/leaves_white.png"> </image>
+            <slideid>Plant Navigation</slideid>
+        </button>
+
+        <button xstart="301" ystart="789" width="44" height="44">
+            <image urlname="icons/firstaid_red.png"> </image>
+            <slideid>First Aid Navigation</slideid>
+        </button>
+        <!--        Toolbar End-->
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="773"
+               width="390"
+               height="71"
+               fillcolour="#b0b3b8"
+        />
+
+        <video urlname="firstaidvideos/Defibrillators during the coronavirus pandemic.mp4" loop="true" xstart="0" ystart="47" id="Defibrillator" />
+
+        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Defibrillators during the \ncoronavirus pandemic</b>
+        </text>
+    </slide>
 
     <slide id="Home">
         <!--        Notification Bar Start-->
@@ -2414,5 +2459,102 @@
         <line xstart="374" ystart="368" xend="374" yend="362" linecolour="#b0b3b8" duration="0"/>
 
     </slide>
+
+    <slide id="Plant Navigation">
+        <!--        Notification Bar Start-->
+        <shape type="rectangle" xstart="0" ystart="0" width="390" height="47">
+            <shading x1="175" y1="0" colour1="#000000" x2="175" y2="47" colour2="#b0b3b8" cyclic="false"/>
+        </shape>
+
+        <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b> </text>
+        <!--        Notification Bar End-->
+
+        <!--        Toolbar Start-->
+        <shape type="rectangle" xstart="0" ystart="773" width="390" height="71" fillcolour="#b0b3b8"/>
+
+        <button xstart="43" ystart="789" width="44" height="44">
+            <image urlname="icons/home_white.png"> </image>
+            <slideid>Home</slideid>
+        </button>
+
+        <button xstart="129" ystart="789" width="44" height="44">
+            <image urlname="icons/dove_green.png"> </image>
+            <slideid>Bird Navigation</slideid>
+        </button>
+
+        <button xstart="215" ystart="789" width="44" height="44">
+            <image urlname="icons/leaves_white.png"> </image>
+            <slideid>Plant Navigation</slideid>
+        </button>
+
+        <button xstart="301" ystart="789" width="44" height="44">
+            <image urlname="icons/firstaid_white.png"> </image>
+            <slideid>First Aid Navigation</slideid>
+        </button>
+        <!--        Toolbar End-->
+
+        <image urlname="birdimages/chaffinch.jpg"
+               xstart="15"
+               ystart="100"
+               width="128"
+               height="72"
+        />
+
+        <button xstart="143" ystart="100" width="232" height="72">
+            <text font="Calibri" fontsize="16" fontcolour="#00000000">Chaffinch</text>
+            <slideid>Common Chaffinch</slideid>
+        </button>
+
+        <image urlname="birdimages/woodpigeon.jpg"
+               xstart="15"
+               ystart="187"
+               width="128"
+               height="72"
+        />
+
+        <button xstart="143" ystart="187" width="232" height="72">
+            <text font="Calibri" fontsize="16" fontcolour="#00000000">Common Wood Pigeon</text>
+            <slideid>Common Wood Pigeon</slideid>
+        </button>
+
+        <image urlname="birdimages/wren.jpg"
+               xstart="15"
+               ystart="274"
+               width="128"
+               height="72"
+        />
+
+        <button xstart="143" ystart="274" width="232" height="72">
+            <text font="Calibri" fontsize="16" fontcolour="#00000000">Eurasian Wren</text>
+            <slideid>Eurasian Wren</slideid>
+        </button>
+
+        <image urlname="birdimages/robin.jpg"
+               xstart="15"
+               ystart="361"
+               width="128"
+               height="72"
+        />
+
+        <button xstart="143" ystart="361" width="232" height="72">
+            <text font="Calibri" fontsize="16" fontcolour="#00000000">European Robin</text>
+            <slideid>European Robin</slideid>
+        </button>
+
+        <image urlname="birdimages/housesparrow.jpg"
+               xstart="15"
+               ystart="448"
+               width="128"
+               height="72"
+        />
+
+        <button xstart="143" ystart="448" width="232" height="72">
+            <text font="Calibri" fontsize="16" fontcolour="#00000000">House Sparrow</text>
+            <slideid>House Sparrow</slideid>
+        </button>
+
+        <text xstart="15" ystart="55" fontcolour="#000000" fontsize="24"> <b>Browsing birds</b> </text>
+    </slide>
+
 
 </slideshow>
