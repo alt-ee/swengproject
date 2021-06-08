@@ -214,7 +214,7 @@ public class View {
                 }
             } else {
                 String id = audio.getId();
-                mediaTriggers.put(id, audioPlayer::togglePlayback);
+                mediaTriggers.put(id, () -> audioPlayer.togglePlayback(loop));
             }
         }
     }
