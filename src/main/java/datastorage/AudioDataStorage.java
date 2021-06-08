@@ -62,4 +62,9 @@ public class AudioDataStorage
         return startTime != -1;
     }
 
+    public String getId() {
+        return id;
+    }
+
+
 }
