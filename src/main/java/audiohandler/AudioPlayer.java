@@ -65,6 +65,16 @@ public class AudioPlayer {
         }
     }
 
+    public void togglePlayback() {
+        if (audioClip != null) {
+            if (!audioClip.isActive()) {
+                audioClip.start();
+            } else {
+                audioClip.stop();
+            }
+        }
+    }
+
     /**
      * Close the DataLine, unloading the clip from the player.
      */
