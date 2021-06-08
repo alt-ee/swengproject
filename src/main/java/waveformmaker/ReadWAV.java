@@ -41,6 +41,9 @@ public class ReadWAV
 			//Location of the centre line / zero value of the waveform graphic in pixels
 			int centreLine = 281;
 
+			//Scaling factor to resize the waveform by
+			double scalingFactor = 1;
+
 			System.out.println("Frames: " + numFrames);
 
 			int bufferSize = (int) Math.ceil(numFrames/waveformWidth);
@@ -66,6 +69,10 @@ public class ReadWAV
 					if (buffer[j] > max) {
 						max = buffer[j];
 					}
+
+					if (buffer[j] > 0.5) {
+						scalingFactor = 0.5;
+					}
 				}
 
 				maxSample[i] = max;
@@ -87,20 +94,19 @@ public class ReadWAV
 			//Create a txt file to store the xml representation of the waveform in lines
 			PrintWriter xmlWriter = new PrintWriter("src/main/resources/" + name + " xml.txt","UTF-8");
 
+			int lineHeight;
+
 			for (int s = 0; s < waveformWidth; s++) {
-				gp.addLine(waveformStart + s, centreLine + (int)(waveformHeight * maxSample[s])/2, waveformStart + s, centreLine - (int)(waveformHeight * maxSample[s])/2, "#b0b3b8", 0);
+				lineHeight = (int)(waveformHeight * scalingFactor * (maxSample[s] / 2));
+
+				gp.addLine(waveformStart + s, centreLine + lineHeight, waveformStart + s, centreLine - lineHeight, "#b0b3b8", 0);
 
 				//Write each line to xml file
-				xmlWriter.println("<line xstart=\"" + (waveformStart + s) + "\"" + " ystart=\"" + (centreLine + (int)(waveformHeight * maxSample[s])/2) + "\""
-						+ " xend=\"" + (waveformStart + s) + "\"" + " yend=\"" + (centreLine - (int)(waveformHeight * maxSample[s])/2) + "\"" + " linecolour=\""
+				xmlWriter.println("<line xstart=\"" + (waveformStart + s) + "\"" + " ystart=\"" + (centreLine + lineHeight) + "\""
+						+ " xend=\"" + (waveformStart + s) + "\"" + " yend=\"" + (centreLine - lineHeight) + "\"" + " linecolour=\""
 						+ "#b0b3b8" + "\"" + " duration=\"0\"/>");
 			}
 			gp.repaint();
-
-//			System.out.println("<line xstart=\"" + waveformStart + "\"" + " ystart=\"" + (centreLine + (int)(waveformHeight * maxSample[0])/2) + "\""
-//					+ " xend=\"" + waveformStart + "\"" + " yend=\"" + (centreLine - (int)(waveformHeight * maxSample[0])/2) + "\"" + " linecolour=\""
-//					+ "#b0b3b8" + "\"" + " duration=\"0\"/>");
-
 
 			//Close the writer
 			xmlWriter.close();
