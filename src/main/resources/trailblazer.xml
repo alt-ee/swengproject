@@ -38,13 +38,9 @@
         <!--               fillcolour="#FF0000"-->
         <!--        />-->
 
-        <shape type="rectangle"
-               xstart="0"
-               ystart="0"
-               width="390"
-               height="47"
-               fillcolour="#000000"
-        />
+        <shape type="rectangle" xstart="0" ystart="0" width="390" height="47">
+        <shading x1="175" y1="0" colour1="#000000" x2="175" y2="47" colour2="#b0b3b8" cyclic="false"/>
+        </shape>
 
         <button xstart="15" ystart="395" width="360" height="25">
             <text font="Calibri" fontsize="16" fontcolour="#00B050">Play/Pause Audio</text>
@@ -504,15 +500,9 @@
     </slide>
 
     <slide id="Home">
-
-
-        <shape type="rectangle"
-               xstart="0"
-               ystart="0"
-               width="390"
-               height="47"
-               fillcolour="#000000"
-        />
+        <shape type="rectangle" xstart="0" ystart="0" width="390" height="47">
+            <shading x1="175" y1="0" colour1="#000000" x2="175" y2="47" colour2="#b0b3b8" cyclic="false"/>
+        </shape>
 
         <shape type="rectangle"
                xstart="0"
