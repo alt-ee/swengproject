@@ -33,6 +33,7 @@ public class View {
     private ActionListener mediaListener;
     private HashMap<String, Runnable> mediaTriggers;
 
+
     public View(ActionListener slideListener, ActionListener mediaListener) {
         this.slideListener = slideListener;
         this.mediaListener = mediaListener;
@@ -61,6 +62,7 @@ public class View {
         videoPanel.setLayout(null);
 
         layeredPane = new JLayeredPane();
+
         layeredPane.add(panel, 0);
         layeredPane.add(videoPanel, 1);
 
