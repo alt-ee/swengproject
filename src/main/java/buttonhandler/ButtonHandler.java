@@ -21,6 +21,7 @@ public class ButtonHandler {
         button.setFont(new Font(font, Font.PLAIN, fontsize));
         button.setBackground(Color.white);
         button.setForeground(fontColour);
+        button.setContentAreaFilled(false);
         button.setBounds(xPos, yPos, width, height);
         button.putClientProperty("targetid", id);
         button.addActionListener(listener);
