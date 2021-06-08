@@ -15,8 +15,6 @@ import java.util.Iterator;
 public class Controller {
     private Slideshow slideshow;
     private View view;
-    private SlideListener sl;
-    private MediaListener ml;
 
 
     // Temporary constructors for testing
@@ -24,7 +22,7 @@ public class Controller {
         slideshow = Parser.parse(slideshowFile);
 
 
-        view = new View(sl, ml);
+        view = new View(new SlideListener(), new MediaListener());
         view.newWindow(406, 883);
     }
 

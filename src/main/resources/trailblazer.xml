@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PWS_Schema.xsd"?>
 
-<slideshow author="tom ewing" comment="example file" version="1.0">
+<slideshow author="tom ewing" version="1" comment="">
     <defaults backgroundcolour="#000000"
               font="Calibri" fontsize="11"
               fontcolour="#FF00FF"
@@ -8,31 +9,34 @@
               fillcolour="#FF00FF" />
 
     <slide id="Chaffinch">
+
+        <line xstart="388" ystart="0" xend="388" yend="100" />
+
         <!--        margin reference-->
-<!--        <shape type="rectangle"-->
-<!--               xstart="0"-->
-<!--               ystart="0"-->
-<!--               width="15"-->
-<!--               height="844"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
+        <!--        <shape type="rectangle"-->
+        <!--               xstart="0"-->
+        <!--               ystart="0"-->
+        <!--               width="15"-->
+        <!--               height="844"-->
+        <!--               fillcolour="#FF0000"-->
+        <!--        />-->
 
-<!--        <shape type="rectangle"-->
-<!--               xstart="375"-->
-<!--               ystart="0"-->
-<!--               width="15"-->
-<!--               height="844"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
+        <!--        <shape type="rectangle"-->
+        <!--               xstart="375"-->
+        <!--               ystart="0"-->
+        <!--               width="15"-->
+        <!--               height="844"-->
+        <!--               fillcolour="#FF0000"-->
+        <!--        />-->
 
 
-<!--        <shape type="rectangle"-->
-<!--               xstart="15"-->
-<!--               ystart="829"-->
-<!--               width="390"-->
-<!--               height="15"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
+        <!--        <shape type="rectangle"-->
+        <!--               xstart="15"-->
+        <!--               ystart="829"-->
+        <!--               width="390"-->
+        <!--               height="15"-->
+        <!--               fillcolour="#FF0000"-->
+        <!--        />-->
 
         <shape type="rectangle"
                xstart="0"
@@ -106,8 +110,6 @@
                height="16"
         />
 
-<!--        <audio urlname="birdsounds/Common Chaffinch.wav" loop="false" />-->
-
         <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b>
         </text>
 
@@ -118,8 +120,15 @@
         <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Fringilla coelebs</i>
         </text>
 
-        <text xstart="15" ystart="400" fontcolour="#00B050" fontsize="16"> <i>Play Audio</i> </text>
 
+<!--        <text xstart="15" ystart="400" fontcolour="#00B050" fontsize="16"> <i>Play Audio</i> </text>-->
+
+        <button xstart="15" ystart="400" width="360" height="20">
+            <text font="Calibri" fontsize="16" fontcolour="#00B050">Play/Pause Audio</text>
+            <mediaid>chaffinchaudio</mediaid>
+        </button>
+
+        <audio urlname="birdsounds/Common Chaffinch.wav" loop="false" id="chaffinchaudio"/>
 
         <text xstart="35" ystart="425" fontcolour="#000000" fontsize="16"> <b>Family:</b> Finches
             <b>Description:</b> The chaffinch is one of the most\n widespread and abundant bird in Britain and Ireland.\n Its patterned plumage helps it to blend in when \nfeeding on the ground and it becomes most obvious\n when it flies, revealing a flash of white on the wings\n and white outer tail feathers. It does not feed openly\n on bird feeders - it prefers to hop about under\n the bird table or under the hedge. You'll usually hear\n chaffinches before you see them, with their loud\n song and varied calls.
