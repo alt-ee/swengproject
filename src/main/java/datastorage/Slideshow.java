@@ -2,11 +2,11 @@ package datastorage;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 
 public class Slideshow {
-    HashMap<String, SlideDataStorage> slides;
+    LinkedHashMap<String, SlideDataStorage> slides;
 
     SlideDataStorage currentSlide;
 
@@ -18,7 +18,7 @@ public class Slideshow {
     Color defaultShapeColour;
 
     public Slideshow() {
-        slides = new HashMap<String, SlideDataStorage>();
+        slides = new LinkedHashMap<String, SlideDataStorage>();
     }
 
     public void setDefaults (Color background, String font, int fontSize, Color textColour, Color lineColour, Color shapeColour) {
@@ -62,6 +62,19 @@ public class Slideshow {
 
     public SlideDataStorage getCurrentSlide() {
         return currentSlide;
+    }
+
+    public String getNextSlideID() {
+        String currentId = currentSlide.getId();
+        ArrayList<String> idArray = new ArrayList<>(slides.keySet());
+        int nextIDIndex = idArray.indexOf(currentId) + 1;
+        String nextID;
+        try {
+             nextID = idArray.get(nextIDIndex);
+        } catch (IndexOutOfBoundsException e) {
+             nextID = null;
+        }
+        return nextID;
     }
 
     public Color getDefaultBackgroundColour() {

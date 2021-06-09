@@ -139,4 +139,8 @@ public class SlideDataStorage
     public String getId() {
         return this.id;
     }
+
+    public int getDuration() {
+        return duration;
+    }
 }

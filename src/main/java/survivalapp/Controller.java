@@ -86,6 +86,18 @@ public class Controller {
     private void drawCurrentSlide() {
         view.clearPanel();
         SlideDataStorage slide = slideshow.getCurrentSlide();
+        if (slide.getDuration() != 0) {
+            String nextSlideID = slideshow.getNextSlideID();
+
+            if (nextSlideID != null) {
+                Timer timer = new Timer(slide.getDuration() * 1000, e -> {
+                    slideshow.setCurrentSlide(nextSlideID);
+                    drawCurrentSlide();
+                });
+                timer.setRepeats(false);
+                timer.start();
+            }
+        }
 
         drawAllImages(slide);
         drawAllText(slide);
