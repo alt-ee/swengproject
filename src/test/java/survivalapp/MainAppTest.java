@@ -10,7 +10,8 @@ public class MainAppTest extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 
-		new ControllerManualTest();
+		//new ControllerManualTest().runTest();
+		new StartupManualTest().runTest();
 
 		primaryStage.setWidth(0);
 		primaryStage.setHeight(0);
