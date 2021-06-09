@@ -9,42 +9,9 @@
               fillcolour="#FF00FF" />
 
     <slide id="Elder">
-
-        <line xstart="388" ystart="0" xend="388" yend="100" />
-
-        <!--        margin reference-->
-<!--        <shape type="rectangle"-->
-<!--               xstart="0"-->
-<!--               ystart="0"-->
-<!--               width="15"-->
-<!--               height="844"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
-
-<!--        <shape type="rectangle"-->
-<!--               xstart="375"-->
-<!--               ystart="0"-->
-<!--               width="15"-->
-<!--               height="844"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
-
-
-<!--        <shape type="rectangle"-->
-<!--               xstart="15"-->
-<!--               ystart="829"-->
-<!--               width="390"-->
-<!--               height="15"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
-
-        <shape type="rectangle"
-               xstart="0"
-               ystart="0"
-               width="390"
-               height="47"
-               fillcolour="#000000"
-        />
+        <shape type="rectangle" xstart="0" ystart="0" width="390" height="47">
+            <shading x1="175" y1="0" colour1="#000000" x2="175" y2="47" colour2="#b0b3b8" cyclic="false"/>
+        </shape>
 
         <shape type="rectangle"
                xstart="0"

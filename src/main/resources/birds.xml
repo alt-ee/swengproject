@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="PWS_Schema.xsd"?>
 
-<slideshow author="tom ewing" version="1" comment="">
+<slideshow author="tom ewing" comment="example file" version="1.0">
     <defaults backgroundcolour="#000000"
               font="Calibri" fontsize="11"
               fontcolour="#FF00FF"
@@ -9,9 +8,6 @@
               fillcolour="#FF00FF" />
 
     <slide id="Chaffinch">
-
-        <line xstart="388" ystart="0" xend="388" yend="100" />
-
         <!--        margin reference-->
 <!--        <shape type="rectangle"-->
 <!--               xstart="0"-->
@@ -110,9 +106,10 @@
                height="16"
         />
 
+<!--        <audio urlname="birdsounds/Common Chaffinch.wav" loop="false" />-->
+
         <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b>
         </text>
-
 
         <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Common Chaffinch</b>
         </text>
@@ -121,9 +118,7 @@
         <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Fringilla coelebs</i>
         </text>
 
-        <text xstart="15" ystart="400" fontcolour="#00B050" fontsize="16"> <i>Play Audio</i>
-        </text>
-
+        <text xstart="15" ystart="400" fontcolour="#00B050" fontsize="16"> <i>Play Audio</i> </text>
 
 
         <text xstart="35" ystart="425" fontcolour="#000000" fontsize="16"> <b>Family:</b> Finches
@@ -494,11 +489,5 @@
         <line xstart="372" ystart="380" xend="372" yend="350" linecolour="#b0b3b8" duration="0"/>
         <line xstart="373" ystart="373" xend="373" yend="357" linecolour="#b0b3b8" duration="0"/>
         <line xstart="374" ystart="378" xend="374" yend="352" linecolour="#b0b3b8" duration="0"/>
-
-
-
-
-
-
     </slide>
 </slideshow>

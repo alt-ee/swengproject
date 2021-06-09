@@ -23,6 +23,8 @@ public class Controller {
     public Controller(File slideshowFile) throws ParserConfigurationException, SAXException, IOException {
         slideshow = Parser.parse(slideshowFile);
 
+        sl = new SlideListener();
+        ml = new MediaListener();
 
         view = new View(sl, ml);
         view.newWindow(406, 883);

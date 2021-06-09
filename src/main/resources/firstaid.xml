@@ -12,39 +12,6 @@
 
         <line xstart="388" ystart="0" xend="388" yend="100" />
 
-        <!--        margin reference-->
-<!--        <shape type="rectangle"-->
-<!--               xstart="0"-->
-<!--               ystart="0"-->
-<!--               width="15"-->
-<!--               height="844"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
-
-<!--        <shape type="rectangle"-->
-<!--               xstart="375"-->
-<!--               ystart="0"-->
-<!--               width="15"-->
-<!--               height="844"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
-
-
-<!--        <shape type="rectangle"-->
-<!--               xstart="15"-->
-<!--               ystart="829"-->
-<!--               width="390"-->
-<!--               height="15"-->
-<!--               fillcolour="#FF0000"-->
-<!--        />-->
-
-        <shape type="rectangle"
-               xstart="0"
-               ystart="0"
-               width="390"
-               height="47"
-               fillcolour="#000000"
-        />
 
         <shape type="rectangle"
                xstart="0"
@@ -83,11 +50,6 @@
                width="43"
                height="43"
         />
-
-
-        <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b>
-        </text>
-
 
         <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Defibrillators during the \ncoronavirus pandemic</b>
         </text>
