@@ -80,6 +80,7 @@ public class View {
 
     public void repaintPanel() {
         panel.repaint();
+        videoPanel.repaint();
     }
 
     /***
