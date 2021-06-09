@@ -10,7 +10,6 @@ import java.util.EventListener;
 public class ButtonHandler {
 
     private JPanel panel;
-    private ActionEvent buttonEvent;
 
     public ButtonHandler(JPanel panel) {
         this.panel = panel;
