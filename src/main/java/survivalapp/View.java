@@ -133,7 +133,6 @@ public class View {
             int shaderX2 = shader.getX2();
             int shaderY2 = shader.getY2();
             String shaderColour1 = shader.getColour1InHex();
-            System.out.println(shaderColour1);
             String shaderColour2 = shader.getColour2InHex();
             boolean cyclic = shader.isCyclic();
 
@@ -191,7 +190,6 @@ public class View {
      */
 
     public void playAudio(AudioDataStorage audio) {
-        System.out.println("playAudio");
         String url = audio.getAudioLocation().getPath().substring(1);
         boolean loop = audio.isLoop();
 

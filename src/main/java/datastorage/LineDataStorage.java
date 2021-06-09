@@ -89,7 +89,6 @@ public class LineDataStorage {
         {
             int RGB = colour.getRGB();
             String hex = String.format("#%06X", (0xffffff & RGB));
-            System.out.println(hex);
             return hex;
         }
 

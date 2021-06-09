@@ -127,7 +127,6 @@ public class MediaControl extends BorderPane {
  
         mp.setOnPaused(new Runnable() {
             public void run() {
-                System.out.println("onPaused");
                 playButton.setText(">");
             }
         });
