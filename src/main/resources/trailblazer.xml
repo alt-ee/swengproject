@@ -265,6 +265,10 @@
             <slideid>First Aid Navigation</slideid>
         </button>
         <!--        Toolbar End-->
+        <button xstart="15" ystart="395" width="360" height="25">
+            <text font="Calibri" fontsize="16" fontcolour="#00B050">Play/Pause Audio</text>
+            <mediaid>chaffinchaudio</mediaid>
+        </button>
 
         <image urlname="birdimages/chaffinch.jpg"
                xstart="0"
@@ -272,8 +276,6 @@
                width="390"
                height="219"
         />
-
-
 
         <image urlname="icons/information_grey.png"
                xstart="15"
