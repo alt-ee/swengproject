@@ -265,7 +265,6 @@ public class View {
         }
 
         videos.add(videoPlayer);
-
     }
 
     /***
