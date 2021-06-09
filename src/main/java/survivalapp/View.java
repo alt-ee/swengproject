@@ -35,7 +35,6 @@ public class View {
     private HashMap<String, Runnable> mediaTriggers;
     private ArrayList<ToggleableVideo> videos;
 
-
     public View(ActionListener slideListener, ActionListener mediaListener) {
         this.slideListener = slideListener;
         this.mediaListener = mediaListener;
@@ -48,6 +47,12 @@ public class View {
         videos = new ArrayList<>();
     }
 
+    /**
+     * Initialises a new JFrame and necessary components
+     *
+     * @param width width of window
+     * @param height height of window
+     */
     public void newWindow(int width, int height) {
         window = new JFrame();
 
@@ -77,12 +82,20 @@ public class View {
         panel.repaint();
     }
 
+    /***
+     * Toggles playback of audio or video
+     *
+     * @param id id of the media element to toggle playback for
+     */
     public void toggleMedia(String id) {
         if (mediaTriggers.containsKey(id)) {
             mediaTriggers.get(id).run();
         }
     }
 
+    /***
+     * Clears both panels, as well as resetting the audio player
+     */
     public void clearPanel() {
         panel.clearAll();
         panel.removeAll();
@@ -188,7 +201,6 @@ public class View {
      *
      * @param audio the audio to be played
      */
-
     public void playAudio(AudioDataStorage audio) {
         String url = audio.getAudioLocation().getPath().substring(1);
         boolean loop = audio.isLoop();
@@ -223,6 +235,11 @@ public class View {
         }
     }
 
+    /***
+     * Wrapper method for video handler to use our video type
+     *
+     * @param video the video to be displayed
+     */
     public void drawVideo(VideoDataStorage video) {
 
         int xPos = video.getXPos();
@@ -251,6 +268,12 @@ public class View {
 
     }
 
+    /***
+     *  Wrapper method for button handler to use our button type
+     *  Determines type of button and required listener and then passes to one of two private methods
+     *
+     * @param button the button to be displayed
+     */
     public void drawButton(ButtonDataStorage button) {
         ActionListener listener;
         if (button.getTarget() == ButtonDataStorage.Target.slide) {
@@ -268,6 +291,12 @@ public class View {
         }
     }
 
+    /***
+     * Wrapper method for button handler to draw a TextButton
+     *
+     * @param button the button to be displayed
+     * @param listener the action listener to be called by the button
+     */
     private void drawTextButton(TextButton button, ActionListener listener) {
         buttonHandler.addTextButton(
                 button.getXPos(),
@@ -283,6 +312,12 @@ public class View {
         );
     }
 
+    /***
+     * Wrapper method for button handler to draw an ImageButton
+     *
+     * @param button the button to be displayed
+     * @param listener the action listener to be called by the button
+     */
     private void drawImageButton(ImageButton button, ActionListener listener) {
         String url = button.getFileLocation().getFile().substring(1);
 
@@ -297,10 +332,18 @@ public class View {
         );
     }
 
+    /***
+     * Increments the GraphicsPanel timer by a given amount
+     *
+     * @param period how much to increment the timer
+     */
     public void incrementTimes(int period) {
         panel.incrementCurrentTime(period);
     }
 
+    /***
+     * Resets GraphicsPanel timer
+     */
     public void resetTimes() {
         panel.setCurrentTime(0);
     }
