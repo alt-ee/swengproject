@@ -299,4 +299,12 @@ public class View {
                 listener
         );
     }
+
+    public void incrementTimes(int period) {
+        panel.incrementCurrentTime(period);
+    }
+
+    public void resetTimes() {
+        panel.setCurrentTime(0);
+    }
 }
