@@ -16,30 +16,19 @@ public class Controller {
     private Slideshow slideshow;
     private View view;
     private final String defaultPath = "src/main/resources/";
-    private SlideListener sl;
-    private MediaListener ml;
     private Timer timer;
     private int period;
 
     public Controller(File slideshowFile) throws ParserConfigurationException, SAXException, IOException {
         slideshow = Parser.parse(slideshowFile);
 
-        sl = new SlideListener();
-        ml = new MediaListener();
-
         view = new View(new SlideListener(), new MediaListener());
-        view.newWindow(406, 883);
-
-        period = 100;
-        timer = new Timer(period, new TimerActionListener());
-        timer.start();
     }
 
     public Controller(Slideshow slideshow) {
         this.slideshow = slideshow;
 
         view = new View(new SlideListener(), new MediaListener());
-        view.newWindow(1280, 720);
     }
 
     public Controller() {
@@ -50,6 +39,13 @@ public class Controller {
         if (slideshow == null) {
             loadSlideshow();
         }
+
+        view.newWindow(406, 883);
+
+        period = 100;
+        timer = new Timer(period, new TimerActionListener());
+        timer.start();
+
         drawCurrentSlide();
     }
 
