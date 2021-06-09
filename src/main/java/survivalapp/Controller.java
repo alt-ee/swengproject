@@ -15,20 +15,19 @@ import java.util.Iterator;
 public class Controller {
     private Slideshow slideshow;
     private View view;
+    private final String defaultPath = "src/main/resources/";
     private SlideListener sl;
     private MediaListener ml;
     private Timer timer;
     private int period;
 
-
-    // Temporary constructors for testing
     public Controller(File slideshowFile) throws ParserConfigurationException, SAXException, IOException {
         slideshow = Parser.parse(slideshowFile);
 
         sl = new SlideListener();
         ml = new MediaListener();
 
-        view = new View(sl, ml);
+        view = new View(new SlideListener(), new MediaListener());
         view.newWindow(406, 883);
 
         period = 100;
@@ -43,7 +42,52 @@ public class Controller {
         view.newWindow(1280, 720);
     }
 
-    public void drawCurrentSlide() {
+    public Controller() {
+       view = new View(new SlideListener(), new MediaListener());
+    }
+
+    public void run() {
+        if (slideshow == null) {
+            loadSlideshow();
+        }
+        drawCurrentSlide();
+    }
+
+    private void loadSlideshow() {
+        boolean successfulParse = false;
+        FileChooser chooser = new FileChooser();
+
+        while (!successfulParse) {
+            chooser.openDialog(defaultPath);
+
+            if (!chooser.hadChoseFile()) {
+                System.exit(0);
+            }
+
+            File xmlFile = new File(chooser.getChoseFilePath());
+
+            try {
+                slideshow = Parser.parse(xmlFile);
+                successfulParse = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                int choice = JOptionPane.showConfirmDialog(null,
+                        "Error parsing XML file. Try again?",
+                        "Parsing Error!",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.ERROR_MESSAGE);
+
+                if (choice == JOptionPane.NO_OPTION) {
+                    System.exit(0);
+                }
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void drawCurrentSlide() {
         view.clearPanel();
         SlideDataStorage slide = slideshow.getCurrentSlide();
 
@@ -153,7 +197,6 @@ public class Controller {
             view.toggleMedia(id);
         }
     }
-
     public class TimerActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -161,5 +204,4 @@ public class Controller {
             view.repaintPanel();
         }
     }
-
 }

@@ -16,7 +16,7 @@ public class SurvivalApp {
         File xmlFile = new File("src/main/resources/trailblazer.xml");
 
         Controller controller = new Controller(xmlFile);
-        controller.drawCurrentSlide();
+        controller.run();
     }
 
 

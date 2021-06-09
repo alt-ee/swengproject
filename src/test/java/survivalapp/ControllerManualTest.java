@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class ControllerManualTest {
 
-    public ControllerManualTest() {
+    public void runTest() {
 
         Slideshow slideshow = new Slideshow();
 
@@ -54,7 +54,7 @@ public class ControllerManualTest {
 
         Controller controller = new Controller(slideshow);
 
-        controller.drawCurrentSlide();
+        controller.run();
     }
 
 }
