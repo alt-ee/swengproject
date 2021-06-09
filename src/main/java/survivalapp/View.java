@@ -251,7 +251,6 @@ public class View {
         }
 
         videos.add(videoPlayer);
-
     }
 
     public void drawButton(ButtonDataStorage button) {
