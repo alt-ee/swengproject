@@ -17,15 +17,20 @@ public class Controller {
     private View view;
     private SlideListener sl;
     private MediaListener ml;
+    private Timer timer;
+    int period;
 
 
     // Temporary constructors for testing
     public Controller(File slideshowFile) throws ParserConfigurationException, SAXException, IOException {
         slideshow = Parser.parse(slideshowFile);
-
+        period = 100;
 
         view = new View(sl, ml);
         view.newWindow(406, 883);
+
+        timer = new Timer(period, new TimerActionListener());
+        timer.start();
     }
 
     public Controller(Slideshow slideshow) {
@@ -142,6 +147,14 @@ public class Controller {
             String id = ((String)((JButton)ae.getSource()).getClientProperty("targetid"));
 
             view.toggleMedia(id);
+        }
+    }
+
+    public class TimerActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            view.incrementTimes(period);
+            view.repaintPanel();
         }
     }
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<slideshow author="tom ewing" comment="example file" version="1.0">
+    <defaults backgroundcolour="#FFFFFF" font="Calibri" fontsize="16" fontcolour="#a6aeae" linecolour="#f2c95e" fillcolour="#6dcbdb" />
+
+    <slide id="slide01">
+        <text xstart="100" ystart="200" duration="99">test text
+            <b>some bold text</b>
+            <i>some italic text</i>
+            <b>some more bold text</b>
+            some normal text
+        </text>
+        <line xstart="40" ystart="20" xend="80" yend="20"/>
+        <shape type="oval" xstart="10" ystart="10" width="20" height="34" duration="5000">
+            <shading x1="0" y1="0" colour1="#f2a54b" x2="0" y2="0" colour2="#dd452a" cyclic="false"/>
+        </shape>
+        <text xstart="7" ystart="34" font="Joker">more test text with specified font</text>
+        <image urlname="resources/images/image.png" xstart="10" ystart="10" width="5" height="6"/>
+        <button xstart="300" ystart="300" width="100" height="50">
+            <text font="Calibri" fontsize="16" fontcolour="#dd452a">button1Text</text>
+            <slideid>slide02</slideid>
+        </button>
+    </slide>
+
+    <slide id="slide02" duration="100">
+        <video urlname="resources/videos/video.mp4" loop="true" xstart="20" ystart="9" id="testVideo" />
+        <audio urlname="resources/audio/audio.wav" loop="true" starttime="10"/>
+        <button xstart="300" ystart="300" width="100" height="50">
+            <image urlname="resources/images/buttonimage.png"/>
+            <mediaid>media01</mediaid>
+        </button>
+    </slide>
+</slideshow>

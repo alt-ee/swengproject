@@ -16,17 +16,16 @@ public class GraphicsPanel extends JPanel {
     ArrayList<LineGraphic> lines = new ArrayList<>();
     ArrayList<ShapeGraphic> shapes = new ArrayList<>();
 
-    //The current time in milliseconds that an external timer has been running for
+    //The current time in milliseconds that an external timer has been running for while panel has been active
     int currentTime = 0;
 
     public int getCurrentTime() { return currentTime; }
 
-    public void setCurrentTime(int updatedCurrentTime) {
-        currentTime = updatedCurrentTime;
-    }
+    public void setCurrentTime(int updatedCurrentTime) { currentTime = updatedCurrentTime; }
 
     public void incrementCurrentTime(int increment) {
         currentTime += increment;
+        System.out.println("GP updated, current time is: " + currentTime);
     }
 
     //Override JPanel's paintComponent method

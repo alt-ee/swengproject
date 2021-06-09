@@ -13,9 +13,13 @@ public class WriteText
         return currentTime;
     }
 
-    public void incrementCurrentTime(int increment)
-    {
+    public void setCurrentTime(int updatedCurrentTime) {
+        currentTime = updatedCurrentTime;
+    }
+
+    public void incrementCurrentTime(int increment) {
         currentTime += increment;
+        System.out.println("TH updated, current time is: " + currentTime);
     }
 
     // "\\\\n" or "\n" in string will add new line

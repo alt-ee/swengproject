@@ -71,6 +71,7 @@ public class View {
 
         window.add(layeredPane);
         window.setVisible(true);
+
     }
 
     public void repaintPanel() {
@@ -298,5 +299,17 @@ public class View {
                 url,
                 listener
         );
+    }
+
+
+
+    public void incrementTimes(int currentTime) {
+        panel.incrementCurrentTime(currentTime);
+        textHandler.incrementCurrentTime(currentTime);
+    }
+
+    public void resetTimes() {
+        panel.setCurrentTime(0);
+        textHandler.setCurrentTime(0);
     }
 }
