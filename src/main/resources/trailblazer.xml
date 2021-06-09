@@ -104,7 +104,7 @@
         </button>
 
         <button xstart="129" ystart="789" width="44" height="44">
-            <image urlname="icons/dove_green.png"> </image>
+            <image urlname="icons/dove_white.png"> </image>
             <slideid>Bird Navigation</slideid>
         </button>
 
