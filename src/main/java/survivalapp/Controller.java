@@ -16,14 +16,23 @@ public class Controller {
     private Slideshow slideshow;
     private View view;
     private final String defaultPath = "src/main/resources/";
-
+    private SlideListener sl;
+    private MediaListener ml;
+    private Timer timer;
+    private int period;
 
     public Controller(File slideshowFile) throws ParserConfigurationException, SAXException, IOException {
         slideshow = Parser.parse(slideshowFile);
 
+        sl = new SlideListener();
+        ml = new MediaListener();
 
         view = new View(new SlideListener(), new MediaListener());
         view.newWindow(406, 883);
+
+        period = 100;
+        timer = new Timer(period, new TimerActionListener());
+        timer.start();
     }
 
     public Controller(Slideshow slideshow) {
@@ -90,6 +99,7 @@ public class Controller {
         setupAudio(slide);
         drawAllButtons(slide);
 
+        view.resetTimes();
         view.repaintPanel();
     }
 
@@ -185,6 +195,13 @@ public class Controller {
             String id = ((String)((JButton)ae.getSource()).getClientProperty("targetid"));
 
             view.toggleMedia(id);
+        }
+    }
+    public class TimerActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            view.incrementTimes(period);
+            view.repaintPanel();
         }
     }
 }

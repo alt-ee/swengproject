@@ -15,7 +15,7 @@ public class ReadWAV
 		try
 		{
 			//Open the file
-			File file =  new File("src/main/resources/RedKite1.wav");
+			File file =  new File("src/main/resources/birdsounds/House Sparrow.wav");
 
 			String name = file.getName().replace("."," ");
 			System.out.println(name);
@@ -33,16 +33,16 @@ public class ReadWAV
 			int waveformWidth = 360;
 
 			//Height of the waveform graphic (max amplitude) in pixels
-			int waveformHeight = 100;
+			int waveformHeight = 50;
 
 			//Starting point of the waveform graphic in pixels
 			int waveformStart = 15;
 
 			//Location of the centre line / zero value of the waveform graphic in pixels
-			int centreLine = 281;
+			int centreLine = 365;
 
-			//Scaling factor to resize the waveform by
-			double scalingFactor = 1;
+			//Scaling factor used to normalise the waveform
+			double scalingFactor;
 
 			System.out.println("Frames: " + numFrames);
 
@@ -56,7 +56,8 @@ public class ReadWAV
 			double[] maxSample = new double[waveformWidth];
 
 			int framesRead;
-			double max = Double.MIN_VALUE;
+			double localMax = Double.MIN_VALUE;
+			double totalMax = Double.MIN_VALUE;
 
 			int i = 0;
 			do {
@@ -66,21 +67,23 @@ public class ReadWAV
 
 				// Loop through frames and look for minimum and maximum value
 				for (int j = 0 ; j < framesRead * numChannels ; j++) {
-					if (buffer[j] > max) {
-						max = buffer[j];
+					if (buffer[j] > localMax) {
+						localMax = buffer[j];
 					}
 
-					if (buffer[j] > 0.5) {
-						scalingFactor = 0.5;
+					if (buffer[j] > totalMax) {
+						totalMax = buffer[j];
 					}
 				}
 
-				maxSample[i] = max;
+				maxSample[i] = localMax;
 
-				max = Double.MIN_VALUE;
+				localMax = Double.MIN_VALUE;
 				i++;
 			}
-			while (framesRead == bufferSize);
+			while (i < waveformWidth);
+
+			scalingFactor = waveformHeight / totalMax;
 
 			//Set up a frame and panel to check waveform has been generated properly
 			JFrame f = new JFrame();                            //Create new JFrame, acting as the main window
@@ -97,7 +100,7 @@ public class ReadWAV
 			int lineHeight;
 
 			for (int s = 0; s < waveformWidth; s++) {
-				lineHeight = (int)(waveformHeight * scalingFactor * (maxSample[s] / 2));
+				lineHeight = (int)(scalingFactor * (maxSample[s] / 2));
 
 				gp.addLine(waveformStart + s, centreLine + lineHeight, waveformStart + s, centreLine - lineHeight, "#b0b3b8", 0);
 

@@ -241,7 +241,7 @@ public class View {
         }
 
         // TODO Need to sort out width and height
-        ToggleableVideo videoPlayer = new ToggleableVideo(videoPanel, url, startTime, loop, xPos, yPos, 200, 200, true, true);
+        ToggleableVideo videoPlayer = new ToggleableVideo(videoPanel, url, startTime, loop, xPos, yPos, 390, 219, true, true);
 
         if (!startWithButton) {
             videoPlayer.startVideo();
@@ -298,5 +298,13 @@ public class View {
                 url,
                 listener
         );
+    }
+
+    public void incrementTimes(int period) {
+        panel.incrementCurrentTime(period);
+    }
+
+    public void resetTimes() {
+        panel.setCurrentTime(0);
     }
 }
