@@ -2,10 +2,13 @@ package datastorage;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 
 public class Slideshow {
-    ArrayList<SlideDataStorage> slides;
+    LinkedHashMap<String, SlideDataStorage> slides;
+
+    SlideDataStorage currentSlide;
 
     Color defaultBackgroundColour;
     String defaultFont;
@@ -15,7 +18,7 @@ public class Slideshow {
     Color defaultShapeColour;
 
     public Slideshow() {
-        slides = new ArrayList<SlideDataStorage>();
+        slides = new LinkedHashMap<String, SlideDataStorage>();
     }
 
     public void setDefaults (Color background, String font, int fontSize, Color textColour, Color lineColour, Color shapeColour) {
@@ -27,14 +30,6 @@ public class Slideshow {
         defaultShapeColour = shapeColour;
     }
 
-    public void addSlide(SlideDataStorage slide) {
-        slides.add(slide);
-    }
-
-    public ArrayList<SlideDataStorage> getSlides() {
-        return slides;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,6 +37,7 @@ public class Slideshow {
         Slideshow slideshow = (Slideshow) o;
         return defaultFontSize == slideshow.defaultFontSize &&
                 slides.equals(slideshow.slides) &&
+                currentSlide.equals(slideshow.currentSlide) &&
                 defaultBackgroundColour.equals(slideshow.defaultBackgroundColour) &&
                 defaultFont.equals(slideshow.defaultFont) &&
                 defaultTextColour.equals(slideshow.defaultTextColour) &&
@@ -51,6 +47,57 @@ public class Slideshow {
 
     @Override
     public int hashCode() {
-        return Objects.hash(slides, defaultBackgroundColour, defaultFont, defaultFontSize, defaultTextColour, defaultLineColour, defaultShapeColour);
+        return Objects.hash(slides, currentSlide, defaultBackgroundColour, defaultFont, defaultFontSize, defaultTextColour, defaultLineColour, defaultShapeColour);
+    }
+
+    public void addSlide(SlideDataStorage slide) {
+        String id = slide.getId();
+        slides.put(id, slide);
+    }
+    public void setCurrentSlide(String id) {
+        if (slides.containsKey(id)) {
+            currentSlide = slides.get(id);
+        }
+    }
+
+    public SlideDataStorage getCurrentSlide() {
+        return currentSlide;
+    }
+
+    public String getNextSlideID() {
+        String currentId = currentSlide.getId();
+        ArrayList<String> idArray = new ArrayList<>(slides.keySet());
+        int nextIDIndex = idArray.indexOf(currentId) + 1;
+        String nextID;
+        try {
+             nextID = idArray.get(nextIDIndex);
+        } catch (IndexOutOfBoundsException e) {
+             nextID = null;
+        }
+        return nextID;
+    }
+
+    public Color getDefaultBackgroundColour() {
+        return defaultBackgroundColour;
+    }
+
+    public String getDefaultFont() {
+        return defaultFont;
+    }
+
+    public int getDefaultFontSize() {
+        return defaultFontSize;
+    }
+
+    public Color getDefaultTextColour() {
+        return defaultTextColour;
+    }
+
+    public Color getDefaultLineColour() {
+        return defaultLineColour;
+    }
+
+    public Color getDefaultShapeColour() {
+        return defaultShapeColour;
     }
 }

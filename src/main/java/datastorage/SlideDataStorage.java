@@ -1,6 +1,10 @@
 package datastorage;
+import buttonhandler.ButtonHandler;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Objects;
 
 /*
 Lots of repeated/similar code, working on a better implementation
@@ -18,10 +22,32 @@ public class SlideDataStorage
     private ArrayList<ImageDataStorage> imageArr = new ArrayList<>();
     private ArrayList<LineDataStorage> lineArr = new ArrayList<>();
     private ArrayList<ShapeDataStorage> shapeArr = new ArrayList<>();
+    private ArrayList<ButtonDataStorage> buttonArr = new ArrayList<>();
 
     public SlideDataStorage(String id, int duration) {
         this.id = id;
         this.duration = duration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SlideDataStorage that = (SlideDataStorage) o;
+        return duration == that.duration &&
+                id.equals(that.id) &&
+                textArr.equals(that.textArr) &&
+                videoArr.equals(that.videoArr) &&
+                audioArr.equals(that.audioArr) &&
+                imageArr.equals(that.imageArr) &&
+                lineArr.equals(that.lineArr) &&
+                shapeArr.equals(that.shapeArr) &&
+                buttonArr.equals(that.buttonArr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, duration, textArr, videoArr, audioArr, imageArr, lineArr, shapeArr, buttonArr);
     }
 
     //adders
@@ -49,6 +75,9 @@ public class SlideDataStorage
     {
         shapeArr.add(newShape);
     }
+    public void addButton(ButtonDataStorage newButton) {
+        buttonArr.add(newButton);
+    }
 
     //hasElements
     public boolean hasText()
@@ -75,8 +104,9 @@ public class SlideDataStorage
     {
         return !shapeArr.isEmpty();
     }
-
-
+    public boolean hasButton() {
+        return !buttonArr.isEmpty();
+    }
     //iterators
     public ListIterator<TextDataStorage> textIterator()
     {
@@ -102,5 +132,15 @@ public class SlideDataStorage
     {
         return shapeArr.listIterator();
     }
+    public ListIterator<ButtonDataStorage> buttonIterator() {
+        return buttonArr.listIterator();
+    }
 
+    public String getId() {
+        return this.id;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
 }

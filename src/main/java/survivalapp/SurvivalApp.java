@@ -1,33 +1,23 @@
 package survivalapp;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import datastorage.Slideshow;
-import org.xml.sax.SAXException;
-import parser.*;
+public class SurvivalApp extends Application{
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.xml.parsers.ParserConfigurationException;
+    public void start(Stage primaryStage) {
+        Controller controller = new Controller();
+        controller.run();
 
-public class SurvivalApp {
-
-    public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
-
-        File xmlFile = new File("src/main/resources/firstIterationSlide.xml");
-        URI xmlFileLocation = xmlFile.toURI();
-
-        Parser myParser = new Parser();
-        Slideshow slideshow = myParser.parse(xmlFileLocation);
-
-        ParserHandlerInterface audioGraphicsDemo = new ParserHandlerInterface();
-        audioGraphicsDemo.toHandlers(slideshow);
-
+        // This creates an invisible JavaFX stage
+        // We have to do this to stop the JFX process dying when
+        // videos are removed from the view
+        primaryStage.setWidth(0);
+        primaryStage.setHeight(0);
+        primaryStage.setX(Double.MAX_VALUE);
+        primaryStage.setY(Double.MAX_VALUE);
+        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.show();
     }
-
-
 }

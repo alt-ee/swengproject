@@ -1,11 +1,11 @@
 package datastorage;
 
 import java.awt.Color;
+import java.util.Objects;
 
 public class ShapeDataStorage {
-    public enum Shapes {Rectangle, Oval}
+    public enum Shapes {Rectangle, Oval};
 
-    ;
 
     private final int xPosition;
     private final int yPosition;
@@ -35,6 +35,26 @@ public class ShapeDataStorage {
         this.colour = colour;
         this.duration = duration;
         this.shapetype = shapeType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShapeDataStorage that = (ShapeDataStorage) o;
+        return xPosition == that.xPosition &&
+                yPosition == that.yPosition &&
+                width == that.width &&
+                height == that.height &&
+                duration == that.duration &&
+                colour.equals(that.colour) &&
+                shader.equals(that.shader) &&
+                shapetype == that.shapetype;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(xPosition, yPosition, width, height, colour, shader, duration, shapetype);
     }
 
     public void setShader(ShaderDataStorage shader) {
@@ -81,7 +101,6 @@ public class ShapeDataStorage {
     {
         int RGB = colour.getRGB();
         String hex = String.format("#%06X", (0xffffff & RGB));
-        System.out.println(hex);
         return hex;
     }
 

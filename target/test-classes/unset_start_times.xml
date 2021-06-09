@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<slideshow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="urn:slideshow.Namespace"
+        xsi:schemaLocation="urn:slideshow.Namespace PWS_Schema.xsd"
+        author="alex tee" comment="unset start times" version="0.1">
+    <defaults backgroundcolour="#faf347" font="Calibri" fontsize="16" fontcolour="#855797" linecolour="#fa44dd" fillcolour="#88cd02"/>
+    <slide id="1">
+        <audio urlname="bird.wav" loop="false"/>
+        <video urlname="bird.mov" loop="false" xstart="10" ystart="10"/>
+    </slide>
+</slideshow>
