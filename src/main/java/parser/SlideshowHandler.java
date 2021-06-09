@@ -9,6 +9,7 @@ import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SlideshowHandler extends DefaultHandler {
 
@@ -28,6 +29,8 @@ public class SlideshowHandler extends DefaultHandler {
     private TextDataStorage tempText;
     private ShapeDataStorage tempShape;
     private ShaderDataStorage tempShader;
+    private ButtonDataStorage tempButton;
+    private HashMap<String, Integer> buttonVars;
 
     private String elementValue;
 
@@ -75,42 +78,55 @@ public class SlideshowHandler extends DefaultHandler {
                 break;
             }
             case "text": {
-                int xPos = Integer.parseInt(attributes.getValue("xstart"));
-                int yPos = Integer.parseInt(attributes.getValue("ystart"));
+                if (buttonVars == null) {
+                    int xPos = Integer.parseInt(attributes.getValue("xstart"));
+                    int yPos = Integer.parseInt(attributes.getValue("ystart"));
 
-                String font;
-                String fontString = attributes.getValue("font");
-                if (fontString != null) {
-                    font = fontString;
+                    String font;
+                    String fontString = attributes.getValue("font");
+                    if (fontString != null) {
+                        font = fontString;
+                    } else {
+                        font = defaultFont;
+                    }
+
+                    int fontSize;
+                    String fontSizeString = attributes.getValue("fontsize");
+                    if (fontSizeString != null) {
+                        fontSize = Integer.parseInt(fontSizeString);
+                    } else {
+                        fontSize = defaultFontSize;
+                    }
+
+                    Color fontColour;
+                    String fontColourString = attributes.getValue("fontcolour");
+                    if (fontColourString != null) {
+                        fontColour = Color.decode(fontColourString);
+                    } else {
+                        fontColour = defaultFontColour;
+                    }
+
+                    int duration;
+                    String durationString = attributes.getValue("duration");
+                    if (durationString != null) {
+                        duration = Integer.parseInt(durationString);
+                    } else {
+                        duration = 0;
+                    }
+
+                    tempText = new TextDataStorage(xPos, yPos, "<html>", font, fontSize, fontColour, duration);
                 } else {
-                    font = defaultFont;
+                    tempButton = new TextButton(
+                            buttonVars.get("xPos"),
+                            buttonVars.get("yPos"),
+                            buttonVars.get("width"),
+                            buttonVars.get("height"),
+                            "", // This is hacky but i don't have time to think of a better solution
+                            attributes.getValue("font"),
+                            Integer.parseInt(attributes.getValue("fontsize")),
+                            Color.decode(attributes.getValue("fontcolour"))
+                    );
                 }
-
-                int fontSize;
-                String fontSizeString = attributes.getValue("fontsize");
-                if (fontSizeString != null) {
-                    fontSize = Integer.parseInt(fontSizeString);
-                } else {
-                    fontSize = defaultFontSize;
-                }
-
-                Color fontColour;
-                String fontColourString = attributes.getValue("fontcolour");
-                if (fontColourString != null) {
-                    fontColour = Color.decode(fontColourString);
-                } else {
-                    fontColour = defaultFontColour;
-                }
-
-                int duration;
-                String durationString = attributes.getValue("duration");
-                if (durationString != null) {
-                    duration = Integer.parseInt(durationString);
-                } else {
-                    duration = 0;
-                }
-
-                tempText = new TextDataStorage(xPos, yPos, "<html>", font, fontSize, fontColour, duration);
 
                 break;
             }
@@ -123,12 +139,6 @@ public class SlideshowHandler extends DefaultHandler {
                 break;
             }
             case"image": {
-                ImageDataStorage tempImage;
-
-                int xPos = Integer.parseInt(attributes.getValue("xstart"));
-                int yPos = Integer.parseInt(attributes.getValue("ystart"));
-                int width = Integer.parseInt(attributes.getValue("width"));
-                int height = Integer.parseInt(attributes.getValue("height"));
                 URL location = null;
                 try {
                     location = new URL("file:///" + slideshowPath + attributes.getValue("urlname"));
@@ -137,17 +147,34 @@ public class SlideshowHandler extends DefaultHandler {
                     e.printStackTrace();
                 }
 
-                int duration;
-                String durationString = attributes.getValue("duration");
-                if (durationString != null) {
-                    duration = Integer.parseInt(durationString);
+                if (buttonVars == null) {
+                    ImageDataStorage tempImage;
+
+                    int xPos = Integer.parseInt(attributes.getValue("xstart"));
+                    int yPos = Integer.parseInt(attributes.getValue("ystart"));
+                    int width = Integer.parseInt(attributes.getValue("width"));
+                    int height = Integer.parseInt(attributes.getValue("height"));
+
+                    int duration;
+                    String durationString = attributes.getValue("duration");
+                    if (durationString != null) {
+                        duration = Integer.parseInt(durationString);
+                    } else {
+                        duration = 0;
+                    }
+
+                    tempImage = new ImageDataStorage(xPos, yPos, location, width, height, duration);
+
+                    tempSlide.addImage(tempImage);
                 } else {
-                    duration = 0;
+                    tempButton = new ImageButton(
+                            buttonVars.get("xPos"),
+                            buttonVars.get("yPos"),
+                            buttonVars.get("width"),
+                            buttonVars.get("height"),
+                            location
+                    );
                 }
-
-                tempImage = new ImageDataStorage(xPos, yPos, location, width, height, duration);
-
-                tempSlide.addImage(tempImage);
                 break;
             }
             case "audio": {
@@ -269,7 +296,7 @@ public class SlideshowHandler extends DefaultHandler {
                 }
                 break;
             }
-            case "shading":
+            case "shading": {
 
                 int x1 = Integer.parseInt(attributes.getValue("x1"));
                 int y1 = Integer.parseInt(attributes.getValue("y1"));
@@ -285,10 +312,18 @@ public class SlideshowHandler extends DefaultHandler {
                 tempShape.setShader(tempShader);
 
                 break;
+            }
 
+            case "button": {
+                buttonVars = new HashMap<>();
+                buttonVars.put("xPos", Integer.parseInt(attributes.getValue("xstart")));
+                buttonVars.put("yPos", Integer.parseInt(attributes.getValue("ystart")));
+                buttonVars.put("width", Integer.parseInt(attributes.getValue("width")));
+                buttonVars.put("height", Integer.parseInt(attributes.getValue("height")));
+
+                break;
+            }
         }
-
-
     }
 
     @Override
@@ -302,22 +337,49 @@ public class SlideshowHandler extends DefaultHandler {
                 }
 
                 break;
+
             case "text":
-                tempText.appendText(elementValue);
-                tempText.appendText("</html>");
-                tempSlide.addText(tempText);
+                if (buttonVars == null) {
+                    tempText.appendText(elementValue);
+                    tempText.appendText("</html>");
+                    tempSlide.addText(tempText);
+                } else {
+                    ((TextButton)tempButton).setText(elementValue); // Gross
+                }
 
                 break;
+
             case "b":
                 tempText.appendBoldText(elementValue);
 
                 break;
+
             case "i":
                 tempText.appendItalicText(elementValue);
                 break;
+
             case "shape":
                 tempSlide.addShape(tempShape);
                 break;
+
+            case "button":
+                tempSlide.addButton(tempButton);
+                buttonVars = null;
+                break;
+
+            case "slideid": {
+                tempButton.setTarget(ButtonDataStorage.Target.slide);
+                tempButton.setId(elementValue);
+
+                break;
+            }
+
+            case "mediaid": {
+                tempButton.setTarget(ButtonDataStorage.Target.media);
+                tempButton.setId(elementValue);
+
+                break;
+            }
         }
     }
 

@@ -65,11 +65,29 @@ public class AudioPlayer {
         }
     }
 
+    public void togglePlayback(boolean loop) {
+        if (audioClip != null) {
+            if (!audioClip.isActive()) {
+                audioClip.setFramePosition(0);
+
+                if (loop) {
+                    audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+                } else {
+                    audioClip.start();
+                }
+            } else {
+                audioClip.stop();
+            }
+        }
+    }
+
     /**
      * Close the DataLine, unloading the clip from the player.
      */
     public void closeClip() {
-        audioClip.close();
+        if (audioClip != null) {
+            audioClip.close();
+        }
     }
 
 }

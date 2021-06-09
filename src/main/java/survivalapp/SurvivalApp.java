@@ -1,15 +1,10 @@
 package survivalapp;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
-import datastorage.Slideshow;
+import java.net.URISyntaxException;
 import org.xml.sax.SAXException;
-import parser.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -19,13 +14,9 @@ public class SurvivalApp {
     private static final String resourcesPath = "src/main/resources/";
 
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
-        FileChooser chooser = new FileChooser();
-        chooser.openDialog(resourcesPath);
 
-        File xmlFile = new File(chooser.hadChoseFile()?
-                chooser.getChoseFilePath() :
-                resourcesPath + "birds.xml");
-
+        File xmlFile = new File("src/main/resources/home.xml");
+      
         Controller controller = new Controller(xmlFile);
         controller.drawCurrentSlide();
     }

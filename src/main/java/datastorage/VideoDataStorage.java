@@ -75,6 +75,10 @@ public class VideoDataStorage
         return loop;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public boolean hasStartTime() {
         return startTime != -1;
     }

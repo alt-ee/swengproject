@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PWS_Schema.xsd"?>
+
+<slideshow author="andrew thomas" version="1" comment="">
+    <defaults backgroundcolour="#000000"
+              font="Calibri" fontsize="11"
+              fontcolour="#FF00FF"
+              linecolour="#FF00FF"
+              fillcolour="#FF00FF" />
+
+    <slide id="Marsh Samphire">
+
+        <line xstart="388" ystart="0" xend="388" yend="100" />
+
+        <!--        margin reference-->
+<!--        <shape type="rectangle"-->
+<!--               xstart="0"-->
+<!--               ystart="0"-->
+<!--               width="15"-->
+<!--               height="844"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+<!--        <shape type="rectangle"-->
+<!--               xstart="375"-->
+<!--               ystart="0"-->
+<!--               width="15"-->
+<!--               height="844"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+
+<!--        <shape type="rectangle"-->
+<!--               xstart="15"-->
+<!--               ystart="829"-->
+<!--               width="390"-->
+<!--               height="15"-->
+<!--               fillcolour="#FF0000"-->
+<!--        />-->
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="0"
+               width="390"
+               height="47"
+               fillcolour="#000000"
+        />
+
+        <shape type="rectangle"
+               xstart="0"
+               ystart="773"
+               width="390"
+               height="71"
+               fillcolour="#b0b3b8"
+        />
+
+        <image urlname="plantimages/marshsamphire.jpg"
+               xstart="0"
+               ystart="47"
+               width="390"
+               height="219"
+        />
+
+        <image urlname="icons/home_white.png"
+               xstart="43"
+               ystart="789"
+               width="44"
+               height="44"
+        />
+
+        <image urlname="icons/dove_white.png"
+               xstart="129"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/leaves_green.png"
+               xstart="215"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/firstaid_white.png"
+               xstart="301"
+               ystart="789"
+               width="43"
+               height="43"
+        />
+
+        <image urlname="icons/information_grey.png"
+               xstart="15"
+               ystart="343"
+               width="16"
+               height="16"
+        />
+
+        <image urlname="icons/knifefork_grey.png"
+               xstart="15"
+               ystart="603"
+               width="16"
+               height="16"
+        />
+
+        <image urlname="icons/barchart_grey.png"
+               xstart="15"
+               ystart="483"
+               width="16"
+               height="16"
+        />
+
+        <text xstart="60" ystart="12" fontcolour="#FFFFFF" fontsize="18"> <b>[NOTIFICATION BAR - SAFE AREA]</b>
+        </text>
+
+
+        <text xstart="15" ystart="276" fontcolour="#000000" fontsize="24"> <b>Marsh Samphire</b>
+        </text>
+
+        <text xstart="15" ystart="310" fontcolour="#b0b3b8" fontsize="20"> <i>Salicronia europaea</i>
+        </text>
+
+        <text xstart="35" ystart="320" fontcolour="#000000" fontsize="16">
+            <b>Description:</b> Marsh Samphire (Salicornia europaea) \n has little to do with the similarly-named Rock \n Samphire other than their location and a vaguely \n similar taste. Marsh Samphire, AKA Glasswort, is \n found in estuary mud and the intertidal edges of \n creeks and some muddy harbours.
+
+            <b>Often Found:</b> You aren’t going to come back from a \n foraging mission for Marsh Samphire without risking \n muddy feet – it grows in the rich mud of estuaries and \n salt marshes, almost exclusively in the intertidal zone \n just below the MHW mark.
+
+            <b>Eating Marsh Samphire:</b> Marsh Samphire is edible \n raw, steamed or pickled. One traditional way to eat it \n involves holding it by the root and stripping the flesh \n from the stem with your teeth. The succulent flesh has \n a salty taste, with a hint of the iodine you find with \n seaweed.
+        </text>
+    </slide>
+</slideshow>
