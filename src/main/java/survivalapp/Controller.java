@@ -19,12 +19,14 @@ public class Controller {
     private Timer timer;
     private int period;
 
+    // Constructor used for testing purposes
     public Controller(File slideshowFile) throws ParserConfigurationException, SAXException, IOException {
         slideshow = Parser.parse(slideshowFile);
 
         view = new View(new SlideListener(), new MediaListener());
     }
 
+    // Constructor used for testing purposes
     public Controller(Slideshow slideshow) {
         this.slideshow = slideshow;
 
