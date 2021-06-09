@@ -11,14 +11,13 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class SurvivalApp {
-    private static final String resourcesPath = "src/main/resources/";
 
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, URISyntaxException, LineUnavailableException, UnsupportedAudioFileException {
 
         File xmlFile = new File("src/main/resources/home.xml");
       
         Controller controller = new Controller(xmlFile);
-        controller.drawCurrentSlide();
+        controller.run();
     }
 
 
